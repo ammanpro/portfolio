@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaik Abdul Ammar | AAA Gaming UI Portfolio</title>
+    <link href="./output.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050508;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-hud {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Custom Glowing & Glassmorphism styles */
+        .hud-panel {
+            background: linear-gradient(135deg, rgba(11, 12, 22, 0.92), rgba(18, 20, 38, 0.85) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(0, 240, 255, 0.04);
+        }
+        .hud-panel-violet {
+            background: linear-gradient(135deg, rgba(11, 12, 22, 0.92), rgba(28, 15, 45, 0.85) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(168, 85, 247, 0.04);
+        }
+        .hud-clip {
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+        }
+        .hud-btn {
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+            transition: all 0.25s ease;
+        }
+        .hud-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050508; }
+        ::-webkit-scrollbar-thumb { background: #00f0ff55; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#00f0ff] selection:text-black">
+
+    <header class="sticky top-0 z-50 bg-obsidian/90 backdrop-blur-md border-b border-[#00f0ff]/30 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Agent ID Badge -->
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-[#00f0ff] animate-ping"></div>
+                <div class="font-hud tracking-wider text-xs sm:text-sm font-bold text-[#00f0ff]">
+                    AGENT_ID: <span class="text-white">SHAIK_ABDUL_AMMAR // LVL_20</span>
+                </div>
+            </div>
+
+            <!-- Quick Navigation Links (Clean Tech Gamer Headings) -->
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-hud tracking-wider text-slate-300">
+                <a href="#about" class="hover:text-[#00f0ff] transition">ABOUT ME</a>
+                <a href="#history" class="hover:text-[#00f0ff] transition">WORK HISTORY</a>
+                <a href="#skills" class="hover:text-[#00f0ff] transition">SKILLS & CAPABILITIES</a>
+                <a href="#projects" class="hover:text-[#00f0ff] transition">FEATURED PROJECTS</a>
+            </nav>
+
+            <!-- Action Utilities -->
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleAudio()" id="audio-toggle" class="hud-btn px-3 py-2 bg-panel border border-violet-500/40 text-violet-400 text-xs font-hud hover:bg-violet-950/40 transition">
+                    <i class="fa-solid fa-volume-high mr-1"></i> SFX: ON
+                </button>
+                <button onclick="openModal('deploy-modal')" class="hud-btn px-4 py-2 bg-emerald-500 text-black text-xs font-hud font-bold hover:bg-emerald-400 transition shadow-lg">
+                    <i class="fab fa-github mr-1.5"></i> GITHUB DEPLOY
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-12 space-y-16">
+
+        <!-- HERO SECTION -->
+        <section class="hud-panel hud-clip p-8 sm:p-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div class="space-y-4 max-w-3xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/30 text-xs font-hud tracking-widest">
+                    <span class="w-2 h-2 bg-[#00f0ff] animate-pulse"></span>
+                    SOFTWARE DEVELOPER INTERN @ INFER LABS
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-hud font-black tracking-tight text-white uppercase leading-none">
+                    Shaik Abdul Ammar
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                    Building scalable enterprise software & automated AI workflows. Currently engineering high-performance backend modules and responsive frontend systems for <span class="text-[#00f0ff] font-semibold">iNexus</span>.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#history" class="hud-btn px-8 py-3.5 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-black uppercase tracking-wider transition shadow-lg">
+                        View Work History
+                    </a>
+                    <a href="mailto:shaikammar011@gmail.com" class="hud-btn px-8 py-3.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold uppercase tracking-wider transition">
+                        Direct Comms
+                    </a>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-auto flex justify-center">
+                <div class="w-48 h-48 sm:w-56 sm:h-56 hud-panel-violet hud-clip p-3 flex items-center justify-center relative shadow-2xl">
+                    <div class="absolute inset-0 border border-violet-500/30 m-2 pointer-events-none"></div>
+                    <div class="text-center space-y-2">
+                        <div class="text-xs font-hud text-violet-400 tracking-widest">ELITE AGENT</div>
+                        <div class="text-5xl font-hud font-black text-white">AA</div>
+                        <div class="text-[10px] font-mono text-emerald-400">STATUS: ONLINE</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: ABOUT ME -->
+        <section id="about" class="hud-panel hud-clip p-8 sm:p-12 space-y-8">
+            <div class="border-b border-[#00f0ff]/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+                <div>
+                    <span class="text-xs font-hud text-[#00f0ff] tracking-widest">// SECTION 01</span>
+                    <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">About Me</h2>
+                </div>
+                <span class="text-xs font-mono text-slate-400">HYDERABAD, INDIA</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-300 text-sm sm:text-base leading-relaxed">
+                <div class="space-y-4">
+                    <p>
+                        I am a dedicated software developer based in Hyderabad, currently interning at <strong class="text-white">Infer Labs</strong>. My core expertise spans full-stack development, architecting robust backend APIs with FastAPI, managing PostgreSQL databases with SQLAlchemy, and crafting responsive React interfaces.
+                    </p>
+                    <p>
+                        Beyond traditional engineering, I actively leverage advanced AI development ecosystems such as <strong class="text-white">Claude Code</strong> and <strong class="text-white">Antigravity</strong> to optimize development pipelines, accelerate problem-solving, and deliver production-grade code efficiently.
+                    </p>
+                </div>
+                <div class="hud-panel-violet hud-clip p-6 space-y-4">
+                    <h3 class="font-hud text-xs font-bold text-violet-400 tracking-wider">ACADEMIC & CORE CREDENTIALS</h3>
+                    <div class="space-y-3 text-xs sm:text-sm font-mono">
+                        <div class="flex justify-between border-b border-violet-500/20 pb-2">
+                            <span class="text-slate-400">DEGREE:</span>
+                            <span class="text-white font-bold">B.Tech Civil Engineering</span>
+                        </div>
+                        <div class="flex justify-between border-b border-violet-500/20 pb-2">
+                            <span class="text-slate-400">INSTITUTION:</span>
+                            <span class="text-white font-bold">SRIT (2023)</span>
+                        </div>
+                        <div class="flex justify-between border-b border-violet-500/20 pb-2">
+                            <span class="text-slate-400">CURRENT ROLE:</span>
+                            <span class="text-[#00f0ff] font-bold">Software Developer Intern</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">EMAIL:</span>
+                            <span class="text-white font-bold">shaikammar011@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: WORK HISTORY -->
+        <section id="history" class="hud-panel-violet hud-clip p-8 sm:p-12 space-y-8">
+            <div class="border-b border-violet-500/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+                <div>
+                    <span class="text-xs font-hud text-violet-400 tracking-widest">// SECTION 02</span>
+                    <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">Work History</h2>
+                </div>
+                <span class="text-xs font-hud px-3 py-1 bg-violet-500/20 text-violet-300 border border-violet-500/40">MAY 8, 2026 – PRESENT</span>
+            </div>
+
+            <div class="space-y-6">
+                <div class="hud-panel hud-clip p-8 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-hud font-bold text-white">Software Developer Intern</h3>
+                            <p class="text-[#00f0ff] font-hud text-xs mt-1">INFER LABS</p>
+                        </div>
+                        <span class="text-xs font-hud px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">ACTIVE MISSION</span>
+                    </div>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Contributing directly to the enterprise <strong class="text-white">iNexus</strong> platform, with focused responsibilities across the <strong class="text-white">iPersonnel</strong> and <strong class="text-white">iPayroll</strong> modules.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div class="space-y-3">
+                            <h4 class="font-hud text-xs font-bold text-[#00f0ff]">KEY RESPONSIBILITIES & CONTRIBUTIONS</h4>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                                <li>Developing and maintaining frontend UI components using <span class="text-white font-semibold">React & JavaScript</span>.</li>
+                                <li>Building and inspecting backend business logic and REST APIs with <span class="text-white font-semibold">Python & FastAPI</span>.</li>
+                                <li>Managing database migrations and schemas via <span class="text-white font-semibold">PostgreSQL & SQLAlchemy</span>.</li>
+                                <li>Performing rigorous API validation and testing through <span class="text-white font-semibold">Swagger</span>.</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-hud text-xs font-bold text-violet-400">AUTOMATION & OBSERVABILITY</h4>
+                            <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                                <li>Utilizing advanced AI tools like <span class="text-white font-semibold">Claude Code & Antigravity</span> to accelerate code navigation and debugging.</li>
+                                <li>Gaining hands-on operational exposure to AWS cloud infrastructure (EC2, S3, VPC).</li>
+                                <li>Monitoring system telemetry using <span class="text-white font-semibold">Prometheus & Grafana</span> dashboards.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-[#00f0ff]/20">
+                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">Python</span>
+                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">FastAPI</span>
+                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">React</span>
+                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-obsidian text-violet-300 text-xs font-mono border border-violet-500/30">Claude Code</span>
+                        <span class="px-3 py-1 bg-obsidian text-violet-300 text-xs font-mono border border-violet-500/30">Antigravity</span>
+                        <span class="px-3 py-1 bg-obsidian text-emerald-400 text-xs font-mono border border-emerald-500/30">AWS & Grafana</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SKILLS & CAPABILITIES -->
+        <section id="skills" class="hud-panel hud-clip p-8 sm:p-12 space-y-8">
+            <div class="border-b border-[#00f0ff]/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+                <div>
+                    <span class="text-xs font-hud text-[#00f0ff] tracking-widest">// SECTION 03</span>
+                    <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">Skills & Capabilities</h2>
+                </div>
+                <span class="text-xs font-mono text-slate-400">TACTICAL LOADOUT</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="hud-panel p-6 hud-clip space-y-4 border-[#00f0ff]/40">
+                    <div class="flex justify-between items-center text-xs font-hud text-[#00f0ff]">
+                        <span>SLOT_A01</span>
+                        <span>EPIC</span>
+                    </div>
+                    <h3 class="font-hud font-bold text-white text-base">Backend Core</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        Python, FastAPI, RESTful architectures, PostgreSQL databases, and SQLAlchemy ORM modeling.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="hud-panel-violet p-6 hud-clip space-y-4 border-violet-500/40">
+                    <div class="flex justify-between items-center text-xs font-hud text-violet-400">
+                        <span>SLOT_B02</span>
+                        <span>RARE</span>
+                    </div>
+                    <h3 class="font-hud font-bold text-white text-base">Frontend Suite</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        React, JavaScript (ES6+), Vite, HTML5, CSS3, and Tailwind CSS responsive design.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="hud-panel p-6 hud-clip space-y-4 border-[#00f0ff]/40">
+                    <div class="flex justify-between items-center text-xs font-hud text-[#00f0ff]">
+                        <span>SLOT_C03</span>
+                        <span>LEGENDARY</span>
+                    </div>
+                    <h3 class="font-hud font-bold text-white text-base">AI Arsenal</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        Claude Code, Antigravity, advanced prompt engineering, and AI-assisted debugging workflows.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="hud-panel-violet p-6 hud-clip space-y-4 border-violet-500/40">
+                    <div class="flex justify-between items-center text-xs font-hud text-violet-400">
+                        <span>SLOT_D04</span>
+                        <span>EPIC</span>
+                    </div>
+                    <h3 class="font-hud font-bold text-white text-base">DevOps & Cloud</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed">
+                        AWS (EC2, S3), Linux command-line operations, Swagger API testing, Prometheus, and Grafana.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FEATURED PROJECTS -->
+        <section id="projects" class="hud-panel hud-clip p-8 sm:p-12 space-y-8">
+            <div class="border-b border-[#00f0ff]/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+                <div>
+                    <span class="text-xs font-hud text-[#00f0ff] tracking-widest">// SECTION 04</span>
+                    <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">Featured Projects</h2>
+                </div>
+                <span class="text-xs font-mono text-emerald-400">PRODUCTION DEPLOYMENT</span>
+            </div>
+
+            <div class="hud-panel-violet hud-clip p-8 space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <h3 class="text-xl sm:text-2xl font-hud font-bold text-white">iNexus Enterprise Platform</h3>
+                    <span class="text-xs font-hud px-3 py-1 bg-cyan-500/10 text-[#00f0ff] border border-[#00f0ff]/30">CORE ARCHITECTURE</span>
+                </div>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    An enterprise-grade internal management platform designed for scale. Contributing specifically to the <strong class="text-white">iPersonnel</strong> and <strong class="text-white">iPayroll</strong> modules to streamline employee records, human resource workflows, and automated payroll processing calculations.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                    <div class="bg-obsidian/80 p-5 border border-[#00f0ff]/20 hud-clip space-y-2">
+                        <div class="text-[#00f0ff] font-hud text-xs">// 01. FRONTEND LAYER</div>
+                        <p class="text-slate-300 text-xs">React components & responsive UI dashboards for personnel management.</p>
+                    </div>
+                    <div class="bg-obsidian/80 p-5 border border-violet-500/20 hud-clip space-y-2">
+                        <div class="text-violet-400 font-hud text-xs">// 02. BACKEND API</div>
+                        <p class="text-slate-300 text-xs">FastAPI endpoints handling complex salary calculations and data validation.</p>
+                    </div>
+                    <div class="bg-obsidian/80 p-5 border border-[#00f0ff]/20 hud-clip space-y-2">
+                        <div class="text-[#00f0ff] font-hud text-xs">// 03. DATABASE & AI</div>
+                        <p class="text-slate-300 text-xs">PostgreSQL relational models queried with SQLAlchemy, optimized via Claude Code.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE CLI TERMINAL -->
+        <section class="hud-panel hud-clip p-6 sm:p-8 space-y-4">
+            <div class="flex justify-between items-center border-b border-[#00f0ff]/20 pb-3">
+                <div class="flex items-center space-x-2 font-hud text-xs text-[#00f0ff]">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>COMMAND_CONSOLE // AMMAN_OS v4.2</span>
+                </div>
+                <div class="flex space-x-1.5">
+                    <div class="w-2.5 h-2.5 bg-red-500/80"></div>
+                    <div class="w-2.5 h-2.5 bg-amber-500/80"></div>
+                    <div class="w-2.5 h-2.5 bg-emerald-500/80"></div>
+                </div>
+            </div>
+
+            <div id="terminal-output" class="bg-obsidian p-4 border border-[#00f0ff]/20 font-mono text-xs text-[#00f0ff] h-40 overflow-y-auto space-y-1.5 shadow-inner">
+                <p class="text-slate-400">// Welcome, Evaluator. Type <span class="text-white font-bold">help</span> to view available system commands.</p>
+                <p class="text-emerald-400">> System initialized. Agent Shaik Abdul Ammar loaded.</p>
+            </div>
+
+            <div class="flex gap-2">
+                <span class="text-[#00f0ff] font-mono text-sm self-center">></span>
+                <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" placeholder="Type command (help, about, experience, skills, contact, clear)..." class="flex-1 bg-obsidian border border-[#00f0ff]/30 px-4 py-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#00f0ff] hud-clip">
+                <button onclick="executeCommandBtn()" class="hud-btn px-6 py-2.5 bg-[#00f0ff] text-black font-hud text-xs font-bold hover:bg-[#00f0ff]/90 transition">
+                    EXECUTE
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GITHUB DEPLOYMENT MODAL -->
+    <div id="deploy-modal" class="hidden fixed inset-0 bg-obsidian/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="hud-panel hud-clip max-w-xl w-full p-8 space-y-6 border-[#00f0ff]/50">
+            <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-4">
+                <h3 class="font-hud text-lg font-bold text-white"><i class="fab fa-github mr-2 text-[#00f0ff]"></i> GitHub Pages Deployment</h3>
+                <button onclick="closeModal('deploy-modal')" class="text-slate-400 hover:text-white"><i class="fas fa-xmark text-lg"></i></button>
+            </div>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                To publish this AAA gaming portfolio live at <code class="text-[#00f0ff] font-mono">https://ammanpro.github.io/stm/</code>, run these terminal commands in your local project folder:
+            </p>
+            <div class="bg-obsidian p-4 border border-[#00f0ff]/30 font-mono text-xs text-emerald-400 space-y-1 hud-clip shadow-inner">
+                <p>git init</p>
+                <p>git add index.html</p>
+                <p>git commit -m "Deploy AAA gaming portfolio"</p>
+                <p>git branch -M main</p>
+                <p>git remote add origin https://github.com/ammanpro/stm.git</p>
+                <p>git push -u origin main</p>
+            </div>
+            <button onclick="closeModal('deploy-modal')" class="hud-btn w-full py-3 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-bold transition">
+                CONFIRM & CLOSE
+            </button>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE JAVASCRIPT CONTROLLER & AUDIO SYNTHESIZER -->
+    <script>
+        let soundEnabled = true;
+
+        // Web Audio API Sci-Fi Sound Synthesizer
+        function playSciFiSound(type = 'click') {
+            if (!soundEnabled) return;
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.05);
+                } else if (type === 'execute') {
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.1);
+                }
+            } catch (e) {
+                // AudioContext restricted
+            }
+        }
+
+        function toggleAudio() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('audio-toggle');
+            btn.innerHTML = soundEnabled ? '<i class="fa-solid fa-volume-high mr-1"></i> SFX: ON' : '<i class="fa-solid fa-volume-xmark mr-1"></i> SFX: OFF';
+            playSciFiSound('click');
+        }
+
+        function openModal(id) {
+            playSciFiSound('click');
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            playSciFiSound('click');
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Terminal logic
+        function handleTerminalInput(e) {
+            if (e.key === 'Enter') {
+                executeCommand();
+            }
+        }
+
+        function executeCommandBtn() {
+            executeCommand();
+        }
+
+        function executeCommand() {
+            playSciFiSound('execute');
+            const input = document.getElementById('terminal-input');
+            const output = document.getElementById('terminal-output');
+            const cmd = input.value.trim().toLowerCase();
+            if (!cmd) return;
+
+            output.innerHTML += `<p class="text-white font-bold">> ${input.value}</p>`;
+            input.value = '';
+
+            let response = '';
+            if (cmd === 'help') {
+                response = 'Available Commands: <span class="text-white">about</span>, <span class="text-white">experience</span>, <span class="text-white">skills</span>, <span class="text-white">contact</span>, <span class="text-white">clear</span>';
+            } else if (cmd === 'about' || cmd === 'status') {
+                response = 'Shaik Abdul Ammar | Software Developer Intern @ Infer Labs | B.Tech Civil Engineering (SRIT, 2023) | Location: Hyderabad';
+            } else if (cmd === 'experience' || cmd === 'infer') {
+                response = 'Work History: Software Developer Intern at Infer Labs (May 8, 2026 – Present) on iNexus enterprise platform (iPersonnel & iPayroll modules).';
+            } else if (cmd === 'skills') {
+                response = 'Skills: Python, FastAPI, React, JavaScript, PostgreSQL, SQLAlchemy, AWS, Prometheus, Grafana, Swagger, Claude Code, Antigravity.';
+            } else if (cmd === 'contact') {
+                response = 'Email: shaikammar011@gmail.com | Phone: +91 7893175137 | GitHub: ammanpro';
+            } else if (cmd === 'clear') {
+                output.innerHTML = '<p class="text-slate-400">// Terminal cleared.</p>';
+                return;
+            } else {
+                response = `Command not recognized: "${cmd}". Type <span class="text-white font-bold">help</span> for valid commands.`;
+            }
+
+            output.innerHTML += `<p class="text-emerald-400">${response}</p>`;
+            output.scrollTop = output.scrollHeight;
+        }
+    </script>
+</body>
+</html>
