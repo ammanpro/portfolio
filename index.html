@@ -1,134 +1,210 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050508">
+    <meta name="description" content="Shaik Abdul Ammar - Software Developer Portfolio. Building scalable enterprise software & automated AI workflows.">
     <title>Shaik Abdul Ammar | AAA Gaming UI Portfolio</title>
+    
     <link href="./output.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Orbitron & Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             background-color: #050508;
             color: #f8fafc;
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
         .font-hud {
             font-family: 'Orbitron', sans-serif;
         }
         /* Custom Glowing & Glassmorphism styles */
         .hud-panel {
-            background: linear-gradient(135deg, rgba(11, 12, 22, 0.92), rgba(18, 20, 38, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(11, 12, 22, 0.94), rgba(18, 20, 38, 0.88) 100%);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 240, 255, 0.25);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(0, 240, 255, 0.04);
         }
         .hud-panel-violet {
-            background: linear-gradient(135deg, rgba(11, 12, 22, 0.92), rgba(28, 15, 45, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(11, 12, 22, 0.94), rgba(28, 15, 45, 0.88) 100%);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(168, 85, 247, 0.3);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(168, 85, 247, 0.04);
         }
         .hud-clip {
-            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+        @media (max-width: 640px) {
+            .hud-clip {
+                clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+            }
         }
         .hud-btn {
-            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-            transition: all 0.25s ease;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .hud-btn:hover {
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            transform: translateY(-1px);
+        }
+        .hud-btn:active {
+            transform: translateY(1px);
         }
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #050508; }
-        ::-webkit-scrollbar-thumb { background: #00f0ff55; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.35); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
+        
+        /* Subtle Cyber Background Grid */
+        .cyber-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-[#00f0ff] selection:text-black">
+<body class="min-h-screen flex flex-col selection:bg-[#00f0ff] selection:text-black cyber-grid">
 
-    <header class="sticky top-0 z-50 bg-obsidian/90 backdrop-blur-md border-b border-[#00f0ff]/30 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-[#050508]/95 backdrop-blur-md border-b border-[#00f0ff]/30 px-3 sm:px-6 py-3 sm:py-4 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
             
             <!-- Agent ID Badge -->
-            <div class="flex items-center space-x-3">
-                <div class="w-3 h-3 bg-[#00f0ff] animate-ping"></div>
-                <div class="font-hud tracking-wider text-xs sm:text-sm font-bold text-[#00f0ff]">
-                    AGENT_ID: <span class="text-white">SHAIK_ABDUL_AMMAR // LVL_20</span>
+            <a href="#" data-sfx="click" class="flex items-center space-x-2.5 group focus:outline-none focus:ring-1 focus:ring-[#00f0ff]">
+                <div class="relative flex items-center justify-center w-3 h-3">
+                    <span class="w-2.5 h-2.5 bg-[#00f0ff] rounded-full animate-ping absolute opacity-75"></span>
+                    <span class="w-2 h-2 bg-[#00f0ff] rounded-full relative"></span>
                 </div>
-            </div>
+                <div class="font-hud tracking-wider text-[11px] xs:text-xs sm:text-sm font-bold text-[#00f0ff] truncate max-w-[200px] xs:max-w-none">
+                    <span class="hidden xs:inline">AGENT_ID: </span><span class="text-white group-hover:text-[#00f0ff] transition">AMMAR</span><span class="text-slate-400 font-normal"> // LVL_20</span>
+                </div>
+            </a>
 
-            <!-- Quick Navigation Links (Clean Tech Gamer Headings) -->
-            <nav class="hidden md:flex items-center space-x-6 text-xs font-hud tracking-wider text-slate-300">
-                <a href="#about" class="hover:text-[#00f0ff] transition">ABOUT ME</a>
-                <a href="#history" class="hover:text-[#00f0ff] transition">WORK HISTORY</a>
-                <a href="#skills" class="hover:text-[#00f0ff] transition">SKILLS & CAPABILITIES</a>
-                <a href="#projects" class="hover:text-[#00f0ff] transition">FEATURED PROJECTS</a>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-5 lg:space-x-7 text-xs font-hud tracking-wider text-slate-300" aria-label="Desktop Navigation">
+                <a href="#about" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">ABOUT</a>
+                <a href="#history" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">HISTORY</a>
+                <a href="#skills" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">SKILLS</a>
+                <a href="#projects" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">PROJECTS</a>
+                <a href="#terminal" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">TERMINAL</a>
             </nav>
 
-            <!-- Action Utilities -->
-            <div class="flex items-center space-x-3">
-                <button onclick="toggleAudio()" id="audio-toggle" class="hud-btn px-3 py-2 bg-panel border border-violet-500/40 text-violet-400 text-xs font-hud hover:bg-violet-950/40 transition">
-                    <i class="fa-solid fa-volume-high mr-1"></i> SFX: ON
+            <!-- Action Utilities & Mobile Toggle -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <!-- SFX Toggle -->
+                <button onclick="toggleAudio()" id="audio-toggle" data-sfx="none" title="Toggle Sound Effects" aria-label="Toggle Sound Effects" class="hud-btn px-2.5 sm:px-3 py-1.5 sm:py-2 bg-panel border border-violet-500/40 text-violet-400 text-[11px] sm:text-xs font-hud hover:bg-violet-950/40 transition">
+                    <i class="fa-solid fa-volume-high"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: ON</span>
                 </button>
-                <button onclick="openModal('deploy-modal')" class="hud-btn px-4 py-2 bg-emerald-500 text-black text-xs font-hud font-bold hover:bg-emerald-400 transition shadow-lg">
+                
+                <!-- GitHub Deploy Modal Button (desktop/tablet) -->
+                <button onclick="openModal('deploy-modal')" data-sfx="modal-open" title="GitHub Deployment Guide" class="hidden sm:inline-flex items-center hud-btn px-3.5 py-1.5 sm:py-2 bg-emerald-500 text-black text-[11px] sm:text-xs font-hud font-bold hover:bg-emerald-400 transition shadow-lg">
                     <i class="fab fa-github mr-1.5"></i> GITHUB DEPLOY
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" id="mobile-menu-btn" data-sfx="click" aria-label="Open Mobile Menu" aria-expanded="false" class="md:hidden hud-btn p-2 w-9 h-9 flex items-center justify-center bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff]/10 focus:outline-none">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-sm"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <nav id="mobile-menu" class="hidden md:hidden border-t border-[#00f0ff]/20 mt-3 pt-3 pb-2 space-y-2 font-hud text-xs tracking-wider" aria-label="Mobile Navigation">
+            <a href="#about" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+                <span class="text-[#00f0ff] mr-2">// 01</span> ABOUT ME
+            </a>
+            <a href="#history" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+                <span class="text-violet-400 mr-2">// 02</span> WORK HISTORY
+            </a>
+            <a href="#skills" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+                <span class="text-[#00f0ff] mr-2">// 03</span> SKILLS & CAPABILITIES
+            </a>
+            <a href="#projects" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+                <span class="text-emerald-400 mr-2">// 04</span> FEATURED PROJECTS
+            </a>
+            <a href="#terminal" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+                <span class="text-[#00f0ff] mr-2">// 05</span> COMMAND TERMINAL
+            </a>
+            <div class="pt-2 flex flex-col gap-2">
+                <button onclick="openModal('deploy-modal'); closeMobileMenu();" data-sfx="modal-open" class="hud-btn w-full py-2.5 bg-emerald-500 text-black font-bold text-center flex items-center justify-center">
+                    <i class="fab fa-github mr-2"></i> GITHUB DEPLOY
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-12 space-y-16">
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3.5 py-6 sm:px-6 sm:py-10 lg:px-10 lg:py-14 space-y-10 sm:space-y-16">
 
         <!-- HERO SECTION -->
-        <section class="hud-panel hud-clip p-8 sm:p-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-            <div class="space-y-4 max-w-3xl">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/30 text-xs font-hud tracking-widest">
-                    <span class="w-2 h-2 bg-[#00f0ff] animate-pulse"></span>
-                    SOFTWARE DEVELOPER INTERN @ INFER LABS
+        <section class="hud-panel hud-clip p-5 xs:p-7 sm:p-10 lg:p-14 flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-12">
+            <div class="space-y-4 max-w-3xl w-full text-left">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/30 text-[10px] xs:text-xs font-hud tracking-wider sm:tracking-widest max-w-full flex-wrap">
+                    <span class="w-2 h-2 bg-[#00f0ff] rounded-full animate-pulse shrink-0"></span>
+                    <span class="truncate">SOFTWARE DEVELOPER INTERN @ INFER LABS</span>
                 </div>
-                <h1 class="text-4xl sm:text-6xl font-hud font-black tracking-tight text-white uppercase leading-none">
+                
+                <!-- Main Name / Title -->
+                <h1 class="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-hud font-black tracking-tight text-white uppercase leading-tight sm:leading-none break-words">
                     Shaik Abdul Ammar
                 </h1>
-                <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                
+                <!-- Bio description -->
+                <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
                     Building scalable enterprise software & automated AI workflows. Currently engineering high-performance backend modules and responsive frontend systems for <span class="text-[#00f0ff] font-semibold">iNexus</span>.
                 </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#history" class="hud-btn px-8 py-3.5 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-black uppercase tracking-wider transition shadow-lg">
-                        View Work History
+                
+                <!-- CTA Action Buttons -->
+                <div class="flex flex-col xs:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4 w-full sm:w-auto">
+                    <a href="#history" data-sfx="nav" class="hud-btn px-6 sm:px-8 py-3.5 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-black uppercase tracking-wider text-center flex items-center justify-center shadow-lg min-h-[44px]">
+                        <i class="fa-solid fa-crosshairs mr-2"></i> View Work History
                     </a>
-                    <a href="mailto:shaikammar011@gmail.com" class="hud-btn px-8 py-3.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold uppercase tracking-wider transition">
-                        Direct Comms
+                    <a href="mailto:shaikammar011@gmail.com" data-sfx="click" class="hud-btn px-6 sm:px-8 py-3.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center min-h-[44px]">
+                        <i class="fa-solid fa-satellite-dish mr-2"></i> Direct Comms
                     </a>
                 </div>
             </div>
             
-            <div class="w-full md:w-auto flex justify-center">
-                <div class="w-48 h-48 sm:w-56 sm:h-56 hud-panel-violet hud-clip p-3 flex items-center justify-center relative shadow-2xl">
+            <!-- Agent Badge Visual -->
+            <div class="w-full md:w-auto flex justify-center shrink-0">
+                <div data-sfx="click" role="button" tabindex="0" title="Agent Profile Badge" class="w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 hud-panel-violet hud-clip p-3 flex items-center justify-center relative shadow-2xl cursor-pointer hover:border-violet-400 transition">
                     <div class="absolute inset-0 border border-violet-500/30 m-2 pointer-events-none"></div>
-                    <div class="text-center space-y-2">
-                        <div class="text-xs font-hud text-violet-400 tracking-widest">ELITE AGENT</div>
-                        <div class="text-5xl font-hud font-black text-white">AA</div>
-                        <div class="text-[10px] font-mono text-emerald-400">STATUS: ONLINE</div>
+                    <div class="text-center space-y-1 sm:space-y-2">
+                        <div class="text-[10px] sm:text-xs font-hud text-violet-400 tracking-widest">// ELITE AGENT</div>
+                        <div class="text-4xl xs:text-5xl font-hud font-black text-white tracking-wider">AA</div>
+                        <div class="inline-block px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono text-emerald-400">
+                            STATUS: ONLINE
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 1: ABOUT ME -->
-        <section id="about" class="hud-panel hud-clip p-8 sm:p-12 space-y-8">
-            <div class="border-b border-[#00f0ff]/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+        <section id="about" class="hud-panel hud-clip p-5 xs:p-7 sm:p-10 lg:p-12 space-y-6 sm:space-y-8">
+            <div class="border-b border-[#00f0ff]/20 pb-4 flex flex-col xs:flex-row justify-between items-start xs:items-center gap-2">
                 <div>
                     <span class="text-xs font-hud text-[#00f0ff] tracking-widest">// SECTION 01</span>
                     <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">About Me</h2>
                 </div>
-                <span class="text-xs font-mono text-slate-400">HYDERABAD, INDIA</span>
+                <span class="text-xs font-mono text-slate-400 bg-panel px-3 py-1 border border-slate-700/60">
+                    <i class="fa-solid fa-location-dot text-[#00f0ff] mr-1"></i> HYDERABAD, INDIA
+                </span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-slate-300 text-sm sm:text-base leading-relaxed">
                 <div class="space-y-4">
                     <p>
                         I am a dedicated software developer based in Hyderabad, currently interning at <strong class="text-white">Infer Labs</strong>. My core expertise spans full-stack development, architecting robust backend APIs with FastAPI, managing PostgreSQL databases with SQLAlchemy, and crafting responsive React interfaces.
@@ -137,24 +213,29 @@
                         Beyond traditional engineering, I actively leverage advanced AI development ecosystems such as <strong class="text-white">Claude Code</strong> and <strong class="text-white">Antigravity</strong> to optimize development pipelines, accelerate problem-solving, and deliver production-grade code efficiently.
                     </p>
                 </div>
-                <div class="hud-panel-violet hud-clip p-6 space-y-4">
-                    <h3 class="font-hud text-xs font-bold text-violet-400 tracking-wider">ACADEMIC & CORE CREDENTIALS</h3>
-                    <div class="space-y-3 text-xs sm:text-sm font-mono">
-                        <div class="flex justify-between border-b border-violet-500/20 pb-2">
-                            <span class="text-slate-400">DEGREE:</span>
+                
+                <!-- Credentials Card -->
+                <div class="hud-panel-violet hud-clip p-5 sm:p-6 space-y-4">
+                    <div class="flex items-center justify-between border-b border-violet-500/30 pb-2">
+                        <h3 class="font-hud text-xs font-bold text-violet-400 tracking-wider">ACADEMIC & CORE CREDENTIALS</h3>
+                        <i class="fa-solid fa-id-card text-violet-400 text-xs"></i>
+                    </div>
+                    <div class="space-y-2.5 text-xs sm:text-sm font-mono">
+                        <div class="flex flex-col xs:flex-row xs:items-center justify-between border-b border-violet-500/20 pb-2 gap-1">
+                            <span class="text-slate-400 text-xs">DEGREE:</span>
                             <span class="text-white font-bold">B.Tech Civil Engineering</span>
                         </div>
-                        <div class="flex justify-between border-b border-violet-500/20 pb-2">
-                            <span class="text-slate-400">INSTITUTION:</span>
+                        <div class="flex flex-col xs:flex-row xs:items-center justify-between border-b border-violet-500/20 pb-2 gap-1">
+                            <span class="text-slate-400 text-xs">INSTITUTION:</span>
                             <span class="text-white font-bold">SRIT (2023)</span>
                         </div>
-                        <div class="flex justify-between border-b border-violet-500/20 pb-2">
-                            <span class="text-slate-400">CURRENT ROLE:</span>
+                        <div class="flex flex-col xs:flex-row xs:items-center justify-between border-b border-violet-500/20 pb-2 gap-1">
+                            <span class="text-slate-400 text-xs">CURRENT ROLE:</span>
                             <span class="text-[#00f0ff] font-bold">Software Developer Intern</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-slate-400">EMAIL:</span>
-                            <span class="text-white font-bold">shaikammar011@gmail.com</span>
+                        <div class="flex flex-col xs:flex-row xs:items-center justify-between pt-1 gap-1">
+                            <span class="text-slate-400 text-xs">EMAIL:</span>
+                            <a href="mailto:shaikammar011@gmail.com" data-sfx="click" class="text-white hover:text-[#00f0ff] font-bold break-all transition">shaikammar011@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -162,23 +243,27 @@
         </section>
 
         <!-- SECTION 2: WORK HISTORY -->
-        <section id="history" class="hud-panel-violet hud-clip p-8 sm:p-12 space-y-8">
-            <div class="border-b border-violet-500/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+        <section id="history" class="hud-panel-violet hud-clip p-5 xs:p-7 sm:p-10 lg:p-12 space-y-6 sm:space-y-8">
+            <div class="border-b border-violet-500/20 pb-4 flex flex-col xs:flex-row justify-between items-start xs:items-center gap-2">
                 <div>
                     <span class="text-xs font-hud text-violet-400 tracking-widest">// SECTION 02</span>
                     <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">Work History</h2>
                 </div>
-                <span class="text-xs font-hud px-3 py-1 bg-violet-500/20 text-violet-300 border border-violet-500/40">MAY 8, 2026 – PRESENT</span>
+                <span class="text-xs font-hud px-3 py-1 bg-violet-500/20 text-violet-300 border border-violet-500/40">
+                    <i class="fa-regular fa-calendar-days mr-1.5"></i> MAY 8, 2026 – PRESENT
+                </span>
             </div>
 
             <div class="space-y-6">
-                <div class="hud-panel hud-clip p-8 space-y-6">
-                    <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="hud-panel hud-clip p-5 xs:p-6 sm:p-8 space-y-5 sm:space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                             <h3 class="text-xl sm:text-2xl font-hud font-bold text-white">Software Developer Intern</h3>
-                            <p class="text-[#00f0ff] font-hud text-xs mt-1">INFER LABS</p>
+                            <p class="text-[#00f0ff] font-hud text-xs mt-1">INFER LABS // ENTERPRISE ARCHITECTURE</p>
                         </div>
-                        <span class="text-xs font-hud px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">ACTIVE MISSION</span>
+                        <span class="self-start sm:self-auto inline-flex items-center text-xs font-hud px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping mr-2"></span> ACTIVE MISSION
+                        </span>
                     </div>
 
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -186,8 +271,10 @@
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                        <div class="space-y-3">
-                            <h4 class="font-hud text-xs font-bold text-[#00f0ff]">KEY RESPONSIBILITIES & CONTRIBUTIONS</h4>
+                        <div class="space-y-3 bg-panel/60 p-4 border border-[#00f0ff]/20">
+                            <h4 class="font-hud text-xs font-bold text-[#00f0ff] flex items-center">
+                                <i class="fa-solid fa-code mr-2"></i> KEY RESPONSIBILITIES & CONTRIBUTIONS
+                            </h4>
                             <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc list-inside leading-relaxed">
                                 <li>Developing and maintaining frontend UI components using <span class="text-white font-semibold">React & JavaScript</span>.</li>
                                 <li>Building and inspecting backend business logic and REST APIs with <span class="text-white font-semibold">Python & FastAPI</span>.</li>
@@ -195,8 +282,11 @@
                                 <li>Performing rigorous API validation and testing through <span class="text-white font-semibold">Swagger</span>.</li>
                             </ul>
                         </div>
-                        <div class="space-y-3">
-                            <h4 class="font-hud text-xs font-bold text-violet-400">AUTOMATION & OBSERVABILITY</h4>
+                        
+                        <div class="space-y-3 bg-panel/60 p-4 border border-violet-500/20">
+                            <h4 class="font-hud text-xs font-bold text-violet-400 flex items-center">
+                                <i class="fa-solid fa-microchip mr-2"></i> AUTOMATION & OBSERVABILITY
+                            </h4>
                             <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc list-inside leading-relaxed">
                                 <li>Utilizing advanced AI tools like <span class="text-white font-semibold">Claude Code & Antigravity</span> to accelerate code navigation and debugging.</li>
                                 <li>Gaining hands-on operational exposure to AWS cloud infrastructure (EC2, S3, VPC).</li>
@@ -205,73 +295,82 @@
                         </div>
                     </div>
 
+                    <!-- Tech Tags -->
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-[#00f0ff]/20">
-                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">Python</span>
-                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">FastAPI</span>
-                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">React</span>
-                        <span class="px-3 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30">PostgreSQL</span>
-                        <span class="px-3 py-1 bg-obsidian text-violet-300 text-xs font-mono border border-violet-500/30">Claude Code</span>
-                        <span class="px-3 py-1 bg-obsidian text-violet-300 text-xs font-mono border border-violet-500/30">Antigravity</span>
-                        <span class="px-3 py-1 bg-obsidian text-emerald-400 text-xs font-mono border border-emerald-500/30">AWS & Grafana</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30 cursor-pointer hover:border-[#00f0ff] transition">Python</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30 cursor-pointer hover:border-[#00f0ff] transition">FastAPI</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30 cursor-pointer hover:border-[#00f0ff] transition">React</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-[#00f0ff] text-xs font-mono border border-[#00f0ff]/30 cursor-pointer hover:border-[#00f0ff] transition">PostgreSQL</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-violet-300 text-xs font-mono border border-violet-500/30 cursor-pointer hover:border-violet-400 transition">Claude Code</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-violet-300 text-xs font-mono border border-violet-500/30 cursor-pointer hover:border-violet-400 transition">Antigravity</span>
+                        <span data-sfx="click" class="px-2.5 py-1 bg-obsidian text-emerald-400 text-xs font-mono border border-emerald-500/30 cursor-pointer hover:border-emerald-400 transition">AWS & Grafana</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 3: SKILLS & CAPABILITIES -->
-        <section id="skills" class="hud-panel hud-clip p-8 sm:p-12 space-y-8">
-            <div class="border-b border-[#00f0ff]/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+        <section id="skills" class="hud-panel hud-clip p-5 xs:p-7 sm:p-10 lg:p-12 space-y-6 sm:space-y-8">
+            <div class="border-b border-[#00f0ff]/20 pb-4 flex flex-col xs:flex-row justify-between items-start xs:items-center gap-2">
                 <div>
                     <span class="text-xs font-hud text-[#00f0ff] tracking-widest">// SECTION 03</span>
                     <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">Skills & Capabilities</h2>
                 </div>
-                <span class="text-xs font-mono text-slate-400">TACTICAL LOADOUT</span>
+                <span class="text-xs font-mono text-slate-400 bg-panel px-3 py-1 border border-slate-700/60">TACTICAL LOADOUT</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <!-- Card 1 -->
-                <div class="hud-panel p-6 hud-clip space-y-4 border-[#00f0ff]/40">
+                <div data-sfx="click" role="button" tabindex="0" class="hud-panel p-5 sm:p-6 hud-clip space-y-3.5 border-[#00f0ff]/40 hover:border-[#00f0ff] transition cursor-pointer select-none">
                     <div class="flex justify-between items-center text-xs font-hud text-[#00f0ff]">
                         <span>SLOT_A01</span>
-                        <span>EPIC</span>
+                        <span class="px-1.5 py-0.5 bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[10px]">EPIC</span>
                     </div>
-                    <h3 class="font-hud font-bold text-white text-base">Backend Core</h3>
+                    <h3 class="font-hud font-bold text-white text-base flex items-center">
+                        <i class="fa-solid fa-server text-[#00f0ff] mr-2 text-sm"></i> Backend Core
+                    </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
                         Python, FastAPI, RESTful architectures, PostgreSQL databases, and SQLAlchemy ORM modeling.
                     </p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="hud-panel-violet p-6 hud-clip space-y-4 border-violet-500/40">
+                <div data-sfx="click" role="button" tabindex="0" class="hud-panel-violet p-5 sm:p-6 hud-clip space-y-3.5 border-violet-500/40 hover:border-violet-400 transition cursor-pointer select-none">
                     <div class="flex justify-between items-center text-xs font-hud text-violet-400">
                         <span>SLOT_B02</span>
-                        <span>RARE</span>
+                        <span class="px-1.5 py-0.5 bg-violet-500/10 border border-violet-500/30 text-[10px]">RARE</span>
                     </div>
-                    <h3 class="font-hud font-bold text-white text-base">Frontend Suite</h3>
+                    <h3 class="font-hud font-bold text-white text-base flex items-center">
+                        <i class="fa-brands fa-react text-violet-400 mr-2 text-sm"></i> Frontend Suite
+                    </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
                         React, JavaScript (ES6+), Vite, HTML5, CSS3, and Tailwind CSS responsive design.
                     </p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="hud-panel p-6 hud-clip space-y-4 border-[#00f0ff]/40">
+                <div data-sfx="click" role="button" tabindex="0" class="hud-panel p-5 sm:p-6 hud-clip space-y-3.5 border-[#00f0ff]/40 hover:border-[#00f0ff] transition cursor-pointer select-none">
                     <div class="flex justify-between items-center text-xs font-hud text-[#00f0ff]">
                         <span>SLOT_C03</span>
-                        <span>LEGENDARY</span>
+                        <span class="px-1.5 py-0.5 bg-[#00f0ff]/10 border border-[#00f0ff]/30 text-[10px]">LEGENDARY</span>
                     </div>
-                    <h3 class="font-hud font-bold text-white text-base">AI Arsenal</h3>
+                    <h3 class="font-hud font-bold text-white text-base flex items-center">
+                        <i class="fa-solid fa-wand-magic-sparkles text-[#00f0ff] mr-2 text-sm"></i> AI Arsenal
+                    </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
                         Claude Code, Antigravity, advanced prompt engineering, and AI-assisted debugging workflows.
                     </p>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="hud-panel-violet p-6 hud-clip space-y-4 border-violet-500/40">
+                <div data-sfx="click" role="button" tabindex="0" class="hud-panel-violet p-5 sm:p-6 hud-clip space-y-3.5 border-violet-500/40 hover:border-violet-400 transition cursor-pointer select-none">
                     <div class="flex justify-between items-center text-xs font-hud text-violet-400">
                         <span>SLOT_D04</span>
-                        <span>EPIC</span>
+                        <span class="px-1.5 py-0.5 bg-violet-500/10 border border-violet-500/30 text-[10px]">EPIC</span>
                     </div>
-                    <h3 class="font-hud font-bold text-white text-base">DevOps & Cloud</h3>
+                    <h3 class="font-hud font-bold text-white text-base flex items-center">
+                        <i class="fa-solid fa-cloud text-violet-400 mr-2 text-sm"></i> DevOps & Cloud
+                    </h3>
                     <p class="text-slate-300 text-xs leading-relaxed">
                         AWS (EC2, S3), Linux command-line operations, Swagger API testing, Prometheus, and Grafana.
                     </p>
@@ -280,63 +379,81 @@
         </section>
 
         <!-- SECTION 4: FEATURED PROJECTS -->
-        <section id="projects" class="hud-panel hud-clip p-8 sm:p-12 space-y-8">
-            <div class="border-b border-[#00f0ff]/20 pb-4 flex justify-between items-center flex-wrap gap-2">
+        <section id="projects" class="hud-panel hud-clip p-5 xs:p-7 sm:p-10 lg:p-12 space-y-6 sm:space-y-8">
+            <div class="border-b border-[#00f0ff]/20 pb-4 flex flex-col xs:flex-row justify-between items-start xs:items-center gap-2">
                 <div>
                     <span class="text-xs font-hud text-[#00f0ff] tracking-widest">// SECTION 04</span>
                     <h2 class="text-2xl sm:text-3xl font-hud font-black text-white mt-1">Featured Projects</h2>
                 </div>
-                <span class="text-xs font-mono text-emerald-400">PRODUCTION DEPLOYMENT</span>
+                <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 border border-emerald-500/30">
+                    <i class="fa-solid fa-shield-halved mr-1.5"></i> PRODUCTION DEPLOYMENT
+                </span>
             </div>
 
-            <div class="hud-panel-violet hud-clip p-8 space-y-6">
-                <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="hud-panel-violet hud-clip p-5 xs:p-6 sm:p-8 space-y-5 sm:space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <h3 class="text-xl sm:text-2xl font-hud font-bold text-white">iNexus Enterprise Platform</h3>
-                    <span class="text-xs font-hud px-3 py-1 bg-cyan-500/10 text-[#00f0ff] border border-[#00f0ff]/30">CORE ARCHITECTURE</span>
+                    <span class="self-start sm:self-auto text-xs font-hud px-3 py-1 bg-cyan-500/10 text-[#00f0ff] border border-[#00f0ff]/30">
+                        CORE ARCHITECTURE
+                    </span>
                 </div>
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                     An enterprise-grade internal management platform designed for scale. Contributing specifically to the <strong class="text-white">iPersonnel</strong> and <strong class="text-white">iPayroll</strong> modules to streamline employee records, human resource workflows, and automated payroll processing calculations.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-                    <div class="bg-obsidian/80 p-5 border border-[#00f0ff]/20 hud-clip space-y-2">
-                        <div class="text-[#00f0ff] font-hud text-xs">// 01. FRONTEND LAYER</div>
-                        <p class="text-slate-300 text-xs">React components & responsive UI dashboards for personnel management.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 pt-2">
+                    <div data-sfx="click" role="button" tabindex="0" class="bg-obsidian/85 p-5 border border-[#00f0ff]/20 hover:border-[#00f0ff]/60 hud-clip space-y-2.5 cursor-pointer transition select-none">
+                        <div class="text-[#00f0ff] font-hud text-xs font-bold">// 01. FRONTEND LAYER</div>
+                        <p class="text-slate-300 text-xs leading-relaxed">React components & responsive UI dashboards for personnel management, attendance records, and admin control.</p>
                     </div>
-                    <div class="bg-obsidian/80 p-5 border border-violet-500/20 hud-clip space-y-2">
-                        <div class="text-violet-400 font-hud text-xs">// 02. BACKEND API</div>
-                        <p class="text-slate-300 text-xs">FastAPI endpoints handling complex salary calculations and data validation.</p>
+                    <div data-sfx="click" role="button" tabindex="0" class="bg-obsidian/85 p-5 border border-violet-500/20 hover:border-violet-500/60 hud-clip space-y-2.5 cursor-pointer transition select-none">
+                        <div class="text-violet-400 font-hud text-xs font-bold">// 02. BACKEND API</div>
+                        <p class="text-slate-300 text-xs leading-relaxed">FastAPI endpoints handling complex salary calculations, tax computations, and robust schema validation.</p>
                     </div>
-                    <div class="bg-obsidian/80 p-5 border border-[#00f0ff]/20 hud-clip space-y-2">
-                        <div class="text-[#00f0ff] font-hud text-xs">// 03. DATABASE & AI</div>
-                        <p class="text-slate-300 text-xs">PostgreSQL relational models queried with SQLAlchemy, optimized via Claude Code.</p>
+                    <div data-sfx="click" role="button" tabindex="0" class="bg-obsidian/85 p-5 border border-[#00f0ff]/20 hover:border-[#00f0ff]/60 hud-clip space-y-2.5 cursor-pointer transition select-none">
+                        <div class="text-[#00f0ff] font-hud text-xs font-bold">// 03. DATABASE & AI</div>
+                        <p class="text-slate-300 text-xs leading-relaxed">PostgreSQL relational models queried with SQLAlchemy, optimized via Claude Code and automated CI scripts.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- INTERACTIVE CLI TERMINAL -->
-        <section class="hud-panel hud-clip p-6 sm:p-8 space-y-4">
-            <div class="flex justify-between items-center border-b border-[#00f0ff]/20 pb-3">
+        <section id="terminal" class="hud-panel hud-clip p-5 xs:p-6 sm:p-8 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#00f0ff]/20 pb-3">
                 <div class="flex items-center space-x-2 font-hud text-xs text-[#00f0ff]">
                     <i class="fa-solid fa-terminal"></i>
                     <span>COMMAND_CONSOLE // AMMAN_OS v4.2</span>
                 </div>
-                <div class="flex space-x-1.5">
-                    <div class="w-2.5 h-2.5 bg-red-500/80"></div>
-                    <div class="w-2.5 h-2.5 bg-amber-500/80"></div>
-                    <div class="w-2.5 h-2.5 bg-emerald-500/80"></div>
+                <div class="flex items-center space-x-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
                 </div>
             </div>
 
-            <div id="terminal-output" class="bg-obsidian p-4 border border-[#00f0ff]/20 font-mono text-xs text-[#00f0ff] h-40 overflow-y-auto space-y-1.5 shadow-inner">
-                <p class="text-slate-400">// Welcome, Evaluator. Type <span class="text-white font-bold">help</span> to view available system commands.</p>
+            <!-- Terminal Output Window -->
+            <div id="terminal-output" class="bg-obsidian p-4 border border-[#00f0ff]/20 font-mono text-xs text-[#00f0ff] h-44 sm:h-52 overflow-y-auto space-y-1.5 shadow-inner" role="log" aria-live="polite">
+                <p class="text-slate-400">// Welcome, Evaluator. Tap a quick chip below or type a command.</p>
                 <p class="text-emerald-400">> System initialized. Agent Shaik Abdul Ammar loaded.</p>
             </div>
 
-            <div class="flex gap-2">
-                <span class="text-[#00f0ff] font-mono text-sm self-center">></span>
-                <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" placeholder="Type command (help, about, experience, skills, contact, clear)..." class="flex-1 bg-obsidian border border-[#00f0ff]/30 px-4 py-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#00f0ff] hud-clip">
-                <button onclick="executeCommandBtn()" class="hud-btn px-6 py-2.5 bg-[#00f0ff] text-black font-hud text-xs font-bold hover:bg-[#00f0ff]/90 transition">
+            <!-- Quick Command Chips for Touch/Mobile Devices -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] font-mono">
+                <span class="text-slate-400 mr-1 hidden xs:inline text-xs">CHIPS:</span>
+                <button onclick="runQuickCmd('help')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">help</button>
+                <button onclick="runQuickCmd('about')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">about</button>
+                <button onclick="runQuickCmd('experience')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-violet-500/40 text-violet-300 hover:bg-violet-950/40 transition rounded-none hud-clip">experience</button>
+                <button onclick="runQuickCmd('skills')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">skills</button>
+                <button onclick="runQuickCmd('contact')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition rounded-none hud-clip">contact</button>
+                <button onclick="runQuickCmd('clear')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-slate-700 text-slate-400 hover:text-white transition rounded-none hud-clip">clear</button>
+            </div>
+
+            <!-- Input Row -->
+            <div class="flex gap-2 items-center">
+                <span class="text-[#00f0ff] font-mono text-sm pl-1">></span>
+                <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" placeholder="Type command (help, about, skills, contact)..." aria-label="Terminal Command Input" class="flex-1 bg-obsidian border border-[#00f0ff]/30 px-3 sm:px-4 py-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#00f0ff] hud-clip">
+                <button onclick="executeCommandBtn()" data-sfx="execute" aria-label="Execute command" class="hud-btn px-4 sm:px-6 py-2.5 bg-[#00f0ff] text-black font-hud text-xs font-bold hover:bg-[#00f0ff]/90 transition shrink-0 min-h-[40px]">
                     EXECUTE
                 </button>
             </div>
@@ -344,84 +461,348 @@
 
     </main>
 
+    <!-- FOOTER SECTION -->
+    <footer class="border-t border-[#00f0ff]/20 bg-[#050508]/90 py-8 px-4 sm:px-6 lg:px-10 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400 font-mono">
+            <!-- Left Info -->
+            <div class="space-y-1 text-center md:text-left">
+                <div class="font-hud font-bold text-white text-sm tracking-wider">
+                    SHAIK ABDUL AMMAR <span class="text-[#00f0ff]">// 2026</span>
+                </div>
+                <p class="text-slate-400 text-xs">
+                    Software Developer Intern @ Infer Labs &bull; Hyderabad, India
+                </p>
+            </div>
+
+            <!-- Live Status & Ticker -->
+            <div class="flex items-center space-x-4 bg-panel px-4 py-2 border border-slate-800 text-[11px]">
+                <div class="flex items-center space-x-1.5">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="text-emerald-400 font-bold">NODE OPERATIONAL</span>
+                </div>
+                <span class="text-slate-600">|</span>
+                <div id="live-time" class="text-slate-300">SYS_TIME: --:--:--</div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="GitHub">
+                    <i class="fab fa-github text-sm"></i>
+                </a>
+                <a href="mailto:shaikammar011@gmail.com" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="Email">
+                    <i class="fa-solid fa-envelope text-sm"></i>
+                </a>
+                <a href="tel:+917893175137" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="Phone">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <!-- GITHUB DEPLOYMENT MODAL -->
-    <div id="deploy-modal" class="hidden fixed inset-0 bg-obsidian/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-        <div class="hud-panel hud-clip max-w-xl w-full p-8 space-y-6 border-[#00f0ff]/50">
-            <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-4">
-                <h3 class="font-hud text-lg font-bold text-white"><i class="fab fa-github mr-2 text-[#00f0ff]"></i> GitHub Pages Deployment</h3>
-                <button onclick="closeModal('deploy-modal')" class="text-slate-400 hover:text-white"><i class="fas fa-xmark text-lg"></i></button>
+    <div id="deploy-modal" class="hidden fixed inset-0 bg-[#050508]/85 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="hud-panel hud-clip max-w-xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-5 sm:space-y-6 border-[#00f0ff]/50 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-3">
+                <h3 id="modal-title" class="font-hud text-base sm:text-lg font-bold text-white flex items-center">
+                    <i class="fab fa-github mr-2 text-[#00f0ff]"></i> GitHub Pages Deployment
+                </h3>
+                <button onclick="closeModal('deploy-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-2 -mr-2 text-slate-400 hover:text-white transition">
+                    <i class="fas fa-xmark text-lg"></i>
+                </button>
             </div>
+            
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                To publish this AAA gaming portfolio live at <code class="text-[#00f0ff] font-mono">https://ammanpro.github.io/stm/</code>, run these terminal commands in your local project folder:
+                To publish this AAA gaming portfolio live at <code class="text-[#00f0ff] font-mono break-all">https://ammanpro.github.io/stm/</code>, run these terminal commands in your local project folder:
             </p>
-            <div class="bg-obsidian p-4 border border-[#00f0ff]/30 font-mono text-xs text-emerald-400 space-y-1 hud-clip shadow-inner">
-                <p>git init</p>
-                <p>git add index.html</p>
-                <p>git commit -m "Deploy AAA gaming portfolio"</p>
-                <p>git branch -M main</p>
-                <p>git remote add origin https://github.com/ammanpro/stm.git</p>
-                <p>git push -u origin main</p>
+            
+            <div class="relative group">
+                <div id="git-commands" class="bg-obsidian p-3.5 sm:p-4 border border-[#00f0ff]/30 font-mono text-[11px] sm:text-xs text-emerald-400 space-y-1 hud-clip overflow-x-auto shadow-inner select-all">
+git init
+git add index.html
+git commit -m "Deploy AAA gaming portfolio"
+git branch -M main
+git remote add origin https://github.com/ammanpro/stm.git
+git push -u origin main</div>
+                <button onclick="copyGitCommands()" id="copy-btn" data-sfx="execute" class="mt-2.5 hud-btn w-full sm:w-auto px-4 py-2 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold transition flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-copy"></i> <span id="copy-text">COPY COMMANDS</span>
+                </button>
             </div>
-            <button onclick="closeModal('deploy-modal')" class="hud-btn w-full py-3 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-bold transition">
+
+            <button onclick="closeModal('deploy-modal')" data-sfx="modal-close" class="hud-btn w-full py-3 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-bold transition min-h-[44px]">
                 CONFIRM & CLOSE
             </button>
         </div>
     </div>
 
-    <!-- INTERACTIVE JAVASCRIPT CONTROLLER & AUDIO SYNTHESIZER -->
+    <!-- JAVASCRIPT CONTROLLERS & AUDIO SYNTHESIZER -->
     <script>
+        // High-Performance Web Audio API SFX Synthesizer
         let soundEnabled = true;
+        let audioCtxInstance = null;
+        let lastSound = { type: null, time: 0 };
 
-        // Web Audio API Sci-Fi Sound Synthesizer
+        // Load saved SFX preference
+        try {
+            const savedSound = localStorage.getItem('amman_sfx_enabled');
+            if (savedSound !== null) {
+                soundEnabled = savedSound === 'true';
+            }
+        } catch(e) {}
+
+        function getAudioContext() {
+            if (!audioCtxInstance) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtxInstance = new AudioContextClass();
+                }
+            }
+            if (audioCtxInstance && audioCtxInstance.state === 'suspended') {
+                audioCtxInstance.resume();
+            }
+            return audioCtxInstance;
+        }
+
+        // Global User-Gesture Unblocker
+        function unlockAudio() {
+            const ctx = getAudioContext();
+            if (ctx && ctx.state === 'suspended') {
+                ctx.resume();
+            }
+        }
+        ['click', 'touchstart', 'touchend', 'keydown', 'pointerdown'].forEach((evt) => {
+            window.addEventListener(evt, unlockAudio, { passive: true });
+        });
+
+        // Sci-Fi Sound Synthesizer Engine
         function playSciFiSound(type = 'click') {
-            if (!soundEnabled) return;
+            if (!soundEnabled && type !== 'power-off') return;
             try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
+                const ctx = getAudioContext();
+                if (!ctx) return;
+
+                const nowMs = performance.now();
+                // Prevent duplicate sound within 40ms of the same type
+                if (lastSound.type === type && (nowMs - lastSound.time) < 40) {
+                    return;
+                }
+                lastSound = { type, time: nowMs };
+
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
                 osc.connect(gain);
-                gain.connect(audioCtx.destination);
+                gain.connect(ctx.destination);
 
                 if (type === 'click') {
+                    // Crisp high-tech HUD confirmation tick
                     osc.type = 'sine';
-                    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
-                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.05);
+                    osc.frequency.setValueAtTime(860, now);
+                    osc.frequency.exponentialRampToValueAtTime(430, now + 0.05);
+                    gain.gain.setValueAtTime(0.09, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'nav') {
+                    // Sci-fi section warp chime
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(520, now);
+                    osc.frequency.exponentialRampToValueAtTime(980, now + 0.07);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.07);
+                    osc.start(now);
+                    osc.stop(now + 0.07);
                 } else if (type === 'execute') {
+                    // Tactical command execution buzz
                     osc.type = 'square';
-                    osc.frequency.setValueAtTime(440, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
-                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.1);
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.exponentialRampToValueAtTime(880, now + 0.09);
+                    gain.gain.setValueAtTime(0.11, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.09);
+                    osc.start(now);
+                    osc.stop(now + 0.09);
+                } else if (type === 'modal-open') {
+                    // Shield airlock power-up
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(260, now);
+                    osc.frequency.exponentialRampToValueAtTime(680, now + 0.12);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } else if (type === 'modal-close') {
+                    // Shield power-down
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(680, now);
+                    osc.frequency.exponentialRampToValueAtTime(220, now + 0.09);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.09);
+                    osc.start(now);
+                    osc.stop(now + 0.09);
+                } else if (type === 'power-on') {
+                    // System online arpeggio
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(320, now);
+                    osc.frequency.exponentialRampToValueAtTime(760, now + 0.12);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } else if (type === 'power-off') {
+                    // System offline arpeggio
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(760, now);
+                    osc.frequency.exponentialRampToValueAtTime(240, now + 0.12);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } else if (type === 'error') {
+                    // Rejection alert
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.setValueAtTime(130, now + 0.08);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.15);
+                    osc.start(now);
+                    osc.stop(now + 0.15);
+                } else if (type === 'hover') {
+                    // Subtle tactical cursor blip
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(1250, now);
+                    gain.gain.setValueAtTime(0.016, now);
+                    gain.gain.linearRampToValueAtTime(0.0001, now + 0.02);
+                    osc.start(now);
+                    osc.stop(now + 0.02);
                 }
             } catch (e) {
-                // AudioContext restricted
+                // Audio not allowed or unavailable
             }
         }
 
+        // Toggle Audio Controller
         function toggleAudio() {
-            soundEnabled = !soundEnabled;
+            unlockAudio();
             const btn = document.getElementById('audio-toggle');
-            btn.innerHTML = soundEnabled ? '<i class="fa-solid fa-volume-high mr-1"></i> SFX: ON' : '<i class="fa-solid fa-volume-xmark mr-1"></i> SFX: OFF';
-            playSciFiSound('click');
+            if (soundEnabled) {
+                playSciFiSound('power-off');
+                soundEnabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: OFF</span>';
+            } else {
+                soundEnabled = true;
+                playSciFiSound('power-on');
+                btn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: ON</span>';
+            }
+            try {
+                localStorage.setItem('amman_sfx_enabled', soundEnabled);
+            } catch(e) {}
         }
 
+        // Initialize UI with sound toggle state
+        if (!soundEnabled) {
+            const btn = document.getElementById('audio-toggle');
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: OFF</span>';
+        }
+
+        // Universal Delegated Click Listener for ALL Buttons, Links, & HUD Elements
+        document.addEventListener('click', (e) => {
+            const el = e.target.closest('button, a, .hud-btn, [role="button"], input[type="button"], input[type="submit"], [data-sfx]');
+            if (!el) return;
+
+            unlockAudio();
+
+            if (!soundEnabled) return;
+
+            // If element specifically requests no sfx (e.g. toggleAudio which manages its own sounds)
+            if (el.getAttribute('data-sfx') === 'none') return;
+
+            let sfxType = el.getAttribute('data-sfx');
+            if (!sfxType) {
+                if (el.tagName === 'A' && el.getAttribute('href') && el.getAttribute('href').startsWith('#')) {
+                    sfxType = 'nav';
+                } else if (el.id === 'audio-toggle') {
+                    return;
+                } else {
+                    sfxType = 'click';
+                }
+            }
+
+            playSciFiSound(sfxType);
+        }, true); // Capture phase ensures immediate feedback
+
+        // Hover sound on buttons & interactive links
+        let lastHoverTime = 0;
+        document.addEventListener('mouseover', (e) => {
+            if (!soundEnabled) return;
+            const el = e.target.closest('button, .hud-btn, nav a, #terminal button, footer a, [role="button"]');
+            if (el) {
+                const now = performance.now();
+                if (now - lastHoverTime > 80) {
+                    lastHoverTime = now;
+                    playSciFiSound('hover');
+                }
+            }
+        }, { passive: true });
+
+        // Mobile Menu Controller
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            const icon = document.getElementById('mobile-menu-icon');
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+                icon.className = 'fa-solid fa-bars text-sm';
+            } else {
+                menu.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                icon.className = 'fa-solid fa-xmark text-sm';
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu) menu.classList.add('hidden');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+            if (icon) icon.className = 'fa-solid fa-bars text-sm';
+        }
+
+        // Modal Controllers
         function openModal(id) {
-            playSciFiSound('click');
-            document.getElementById(id).classList.remove('hidden');
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeModal(id) {
-            playSciFiSound('click');
-            document.getElementById(id).classList.add('hidden');
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
         }
 
-        // Terminal logic
+        // Copy Git commands
+        function copyGitCommands() {
+            const text = document.getElementById('git-commands').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const copyText = document.getElementById('copy-text');
+                const originalText = copyText.innerText;
+                copyText.innerText = 'COPIED TO CLIPBOARD!';
+                setTimeout(() => {
+                    copyText.innerText = originalText;
+                }, 2000);
+            }).catch(() => {
+                alert('Commands ready to copy:\n' + text);
+            });
+        }
+
+        // Terminal Controller
         function handleTerminalInput(e) {
             if (e.key === 'Enter') {
                 executeCommand();
@@ -432,8 +813,13 @@
             executeCommand();
         }
 
+        function runQuickCmd(cmd) {
+            const input = document.getElementById('terminal-input');
+            input.value = cmd;
+            executeCommand();
+        }
+
         function executeCommand() {
-            playSciFiSound('execute');
             const input = document.getElementById('terminal-input');
             const output = document.getElementById('terminal-output');
             const cmd = input.value.trim().toLowerCase();
@@ -443,6 +829,8 @@
             input.value = '';
 
             let response = '';
+            let isError = false;
+
             if (cmd === 'help') {
                 response = 'Available Commands: <span class="text-white">about</span>, <span class="text-white">experience</span>, <span class="text-white">skills</span>, <span class="text-white">contact</span>, <span class="text-white">clear</span>';
             } else if (cmd === 'about' || cmd === 'status') {
@@ -452,17 +840,41 @@
             } else if (cmd === 'skills') {
                 response = 'Skills: Python, FastAPI, React, JavaScript, PostgreSQL, SQLAlchemy, AWS, Prometheus, Grafana, Swagger, Claude Code, Antigravity.';
             } else if (cmd === 'contact') {
-                response = 'Email: shaikammar011@gmail.com | Phone: +91 7893175137 | GitHub: ammanpro';
+                response = 'Email: shaikammar011@gmail.com | Phone: +91 7893175137 | GitHub: github.com/ammanpro';
             } else if (cmd === 'clear') {
                 output.innerHTML = '<p class="text-slate-400">// Terminal cleared.</p>';
+                playSciFiSound('execute');
                 return;
             } else {
                 response = `Command not recognized: "${cmd}". Type <span class="text-white font-bold">help</span> for valid commands.`;
+                isError = true;
             }
+
+            playSciFiSound(isError ? 'error' : 'execute');
 
             output.innerHTML += `<p class="text-emerald-400">${response}</p>`;
             output.scrollTop = output.scrollHeight;
         }
+
+        // Live Clock Ticker
+        function updateClock() {
+            const el = document.getElementById('live-time');
+            if (!el) return;
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+            el.innerText = `SYS_TIME: ${timeStr}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Close modal on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal('deploy-modal');
+                closeMobileMenu();
+                playSciFiSound('modal-close');
+            }
+        });
     </script>
 </body>
 </html>
