@@ -1,2 +1,11 @@
 node_modules/
 npm-debug.log*
+
+# Editor & Local IDE settings
+.vscode/
+.idea/
+
+# Source documents & generator scripts
+*.docx
+generate_pdf.py
+resume_template.html

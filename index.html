@@ -4,8 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#050508">
-    <meta name="description" content="Shaik Abdul Ammar - Software Developer Portfolio. Building scalable enterprise software & automated AI workflows.">
+    <meta name="description" content="Shaik Abdul Ammar - Software Developer Portfolio. Building scalable enterprise software & automated AI workflows. Software Developer Intern @ Infer Labs.">
+    <meta name="author" content="Shaik Abdul Ammar">
+    <meta name="keywords" content="Shaik Abdul Ammar, Software Developer, Python, FastAPI, React, PostgreSQL, Infer Labs, Portfolio, Full-Stack">
     <title>Shaik Abdul Ammar | AAA Gaming UI Portfolio</title>
+    
+    <!-- SVG Sci-Fi HUD Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5' fill='%23050508' stroke='%2300f0ff' stroke-width='6'/><text x='50' y='62' fill='%2300f0ff' font-family='sans-serif' font-weight='900' font-size='38' text-anchor='middle'>AA</text></svg>">
+    
+    <!-- Open Graph / Facebook / LinkedIn / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ammanpro.github.io/portfolio/">
+    <meta property="og:title" content="Shaik Abdul Ammar | Software Developer Portfolio">
+    <meta property="og:description" content="Building scalable enterprise software & automated AI workflows. Software Developer Intern @ Infer Labs. Full-stack Python, FastAPI, React, PostgreSQL.">
+    <meta property="og:site_name" content="Shaik Abdul Ammar Portfolio">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shaik Abdul Ammar | Software Developer Portfolio">
+    <meta name="twitter:description" content="Building scalable enterprise software & automated AI workflows. Software Developer Intern @ Infer Labs.">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shaik Abdul Ammar",
+      "jobTitle": "Software Developer Intern",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Infer Labs"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Srinivasa Ramanujan Institute of Technology (SRIT)"
+      },
+      "email": "shaikammar011@gmail.com",
+      "telephone": "+917893175137",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hyderabad",
+        "addressCountry": "India"
+      },
+      "sameAs": [
+        "https://github.com/ammanpro",
+        "https://linkedin.com/in/shaik-abdul-ammar"
+      ]
+    }
+    </script>
     
     <link href="./output.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -24,6 +70,11 @@
         }
         .font-hud {
             font-family: 'Orbitron', sans-serif;
+        }
+        /* Accessible Focus Outline */
+        :focus-visible {
+            outline: 2px solid #00f0ff !important;
+            outline-offset: 2px;
         }
         /* Custom Glowing & Glassmorphism styles */
         .hud-panel {
@@ -72,6 +123,56 @@
                 linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
         }
+
+        /* Equalizer bar animation */
+        @keyframes eq-pulse {
+            0%, 100% { height: 3px; }
+            50% { height: 11px; }
+        }
+        .eq-bar-1 { animation: eq-pulse 0.4s ease-in-out infinite; }
+        .eq-bar-2 { animation: eq-pulse 0.4s ease-in-out infinite 0.15s; }
+        .eq-bar-3 { animation: eq-pulse 0.4s ease-in-out infinite 0.3s; }
+        .eq-active { opacity: 1; }
+        .eq-inactive { opacity: 0.2; }
+
+        /* Fixed & Fullscreen Terminal Styles */
+        .terminal-container {
+            height: 520px;
+        }
+        @media (min-width: 640px) {
+            .terminal-container {
+                height: 560px;
+            }
+        }
+        #terminal.terminal-fullscreen {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            z-index: 99999 !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            clip-path: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            background: #050508 !important;
+            padding: 1rem 1.25rem !important;
+            border: 2px solid #00f0ff !important;
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.5), inset 0 0 30px rgba(0, 240, 255, 0.08) !important;
+        }
+        @media (min-width: 640px) {
+            #terminal.terminal-fullscreen {
+                padding: 1.5rem 2rem !important;
+            }
+        }
+        #terminal.terminal-fullscreen #terminal-output {
+            flex: 1 1 0% !important;
+            height: auto !important;
+            max-height: none !important;
+            min-height: 0 !important;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#00f0ff] selection:text-black cyber-grid">
@@ -91,26 +192,37 @@
                 </div>
             </a>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-5 lg:space-x-7 text-xs font-hud tracking-wider text-slate-300" aria-label="Desktop Navigation">
-                <a href="#about" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">ABOUT</a>
-                <a href="#history" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">HISTORY</a>
-                <a href="#skills" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">SKILLS</a>
-                <a href="#projects" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">PROJECTS</a>
-                <a href="#terminal" data-sfx="nav" class="hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent hover:border-[#00f0ff]">TERMINAL</a>
+            <!-- Desktop Navigation Links (with scrollspy hooks) -->
+            <nav id="desktop-nav" class="hidden md:flex items-center space-x-5 lg:space-x-7 text-xs font-hud tracking-wider text-slate-300" aria-label="Desktop Navigation">
+                <a href="#about" data-target="about" data-sfx="nav" class="nav-link hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent">ABOUT</a>
+                <a href="#history" data-target="history" data-sfx="nav" class="nav-link hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent">HISTORY</a>
+                <a href="#skills" data-target="skills" data-sfx="nav" class="nav-link hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent">SKILLS</a>
+                <a href="#projects" data-target="projects" data-sfx="nav" class="nav-link hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent">PROJECTS</a>
+                <a href="#terminal" data-target="terminal" data-sfx="nav" class="nav-link hover:text-[#00f0ff] transition py-1 border-b-2 border-transparent">TERMINAL</a>
             </nav>
 
             <!-- Action Utilities & Mobile Toggle -->
             <div class="flex items-center space-x-2 sm:space-x-3">
-                <!-- SFX Toggle -->
-                <button onclick="toggleAudio()" id="audio-toggle" data-sfx="none" title="Toggle Sound Effects" aria-label="Toggle Sound Effects" class="hud-btn px-2.5 sm:px-3 py-1.5 sm:py-2 bg-panel border border-violet-500/40 text-violet-400 text-[11px] sm:text-xs font-hud hover:bg-violet-950/40 transition">
-                    <i class="fa-solid fa-volume-high"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: ON</span>
+                <!-- SFX Toggle with Equalizer Wave -->
+                <button onclick="toggleAudio()" id="audio-toggle" data-sfx="none" title="Toggle Sound Effects" aria-label="Toggle Sound Effects" class="hud-btn px-2.5 sm:px-3 py-1.5 sm:py-2 bg-panel border border-violet-500/40 text-violet-400 text-[11px] sm:text-xs font-hud hover:bg-violet-950/40 transition flex items-center">
+                    <i id="audio-icon" class="fa-solid fa-volume-high"></i>
+                    <span class="hidden xs:inline ml-1" id="audio-text">SFX: ON</span>
+                    <span id="audio-eq" class="eq-active inline-flex items-end gap-[2px] h-3 ml-1.5" aria-hidden="true">
+                        <span class="w-[2px] bg-violet-400 rounded-full eq-bar-1"></span>
+                        <span class="w-[2px] bg-violet-400 rounded-full eq-bar-2"></span>
+                        <span class="w-[2px] bg-violet-400 rounded-full eq-bar-3"></span>
+                    </span>
                 </button>
                 
-                <!-- GitHub Deploy Modal Button (desktop/tablet) -->
-                <button onclick="openModal('deploy-modal')" data-sfx="modal-open" title="GitHub Deployment Guide" class="hidden sm:inline-flex items-center hud-btn px-3.5 py-1.5 sm:py-2 bg-emerald-500 text-black text-[11px] sm:text-xs font-hud font-bold hover:bg-emerald-400 transition shadow-lg">
-                    <i class="fab fa-github mr-1.5"></i> GITHUB DEPLOY
+                <!-- Resume Modal Button -->
+                <button onclick="openModal('resume-modal')" data-sfx="modal-open" title="View Dossier / Resume" class="hidden sm:inline-flex items-center hud-btn px-3 py-1.5 sm:py-2 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white hover:bg-[#00f0ff]/10 text-[11px] sm:text-xs font-hud font-bold transition">
+                    <i class="fa-solid fa-file-lines mr-1.5"></i> RESUME
                 </button>
+
+                <!-- GitHub Profile Link (Replaces Deploy Button) -->
+                <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" data-sfx="click" title="GitHub Profile: ammanpro" class="hidden sm:inline-flex items-center hud-btn px-3.5 py-1.5 sm:py-2 bg-emerald-500 text-black text-[11px] sm:text-xs font-hud font-bold hover:bg-emerald-400 transition shadow-lg">
+                    <i class="fab fa-github mr-1.5"></i> GIT PROFILE
+                </a>
 
                 <!-- Mobile Menu Button -->
                 <button onclick="toggleMobileMenu()" id="mobile-menu-btn" data-sfx="click" aria-label="Open Mobile Menu" aria-expanded="false" class="md:hidden hud-btn p-2 w-9 h-9 flex items-center justify-center bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff]/10 focus:outline-none">
@@ -121,24 +233,27 @@
 
         <!-- Mobile Navigation Drawer -->
         <nav id="mobile-menu" class="hidden md:hidden border-t border-[#00f0ff]/20 mt-3 pt-3 pb-2 space-y-2 font-hud text-xs tracking-wider" aria-label="Mobile Navigation">
-            <a href="#about" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+            <a href="#about" onclick="closeMobileMenu()" data-target="about" data-sfx="nav" class="mobile-nav-link block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
                 <span class="text-[#00f0ff] mr-2">// 01</span> ABOUT ME
             </a>
-            <a href="#history" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+            <a href="#history" onclick="closeMobileMenu()" data-target="history" data-sfx="nav" class="mobile-nav-link block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
                 <span class="text-violet-400 mr-2">// 02</span> WORK HISTORY
             </a>
-            <a href="#skills" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+            <a href="#skills" onclick="closeMobileMenu()" data-target="skills" data-sfx="nav" class="mobile-nav-link block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
                 <span class="text-[#00f0ff] mr-2">// 03</span> SKILLS & CAPABILITIES
             </a>
-            <a href="#projects" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+            <a href="#projects" onclick="closeMobileMenu()" data-target="projects" data-sfx="nav" class="mobile-nav-link block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
                 <span class="text-emerald-400 mr-2">// 04</span> FEATURED PROJECTS
             </a>
-            <a href="#terminal" onclick="closeMobileMenu()" data-sfx="nav" class="block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
+            <a href="#terminal" onclick="closeMobileMenu()" data-target="terminal" data-sfx="nav" class="mobile-nav-link block px-3 py-2 text-slate-200 hover:text-[#00f0ff] hover:bg-[#00f0ff]/10 rounded border-l-2 border-transparent hover:border-[#00f0ff] transition">
                 <span class="text-[#00f0ff] mr-2">// 05</span> COMMAND TERMINAL
             </a>
             <div class="pt-2 flex flex-col gap-2">
-                <button onclick="openModal('deploy-modal'); closeMobileMenu();" data-sfx="modal-open" class="hud-btn w-full py-2.5 bg-emerald-500 text-black font-bold text-center flex items-center justify-center">
-                    <i class="fab fa-github mr-2"></i> GITHUB DEPLOY
+                <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" data-sfx="click" class="hud-btn w-full py-2.5 bg-emerald-500 text-black font-bold text-center flex items-center justify-center">
+                    <i class="fab fa-github mr-2"></i> GITHUB PROFILE
+                </a>
+                <button onclick="openModal('resume-modal'); closeMobileMenu();" data-sfx="modal-open" class="hud-btn w-full py-2.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] font-bold text-center flex items-center justify-center">
+                    <i class="fa-solid fa-file-lines mr-2"></i> VIEW RESUME / DOSSIER
                 </button>
             </div>
         </nav>
@@ -171,9 +286,12 @@
                     <a href="#history" data-sfx="nav" class="hud-btn px-6 sm:px-8 py-3.5 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-black uppercase tracking-wider text-center flex items-center justify-center shadow-lg min-h-[44px]">
                         <i class="fa-solid fa-crosshairs mr-2"></i> View Work History
                     </a>
-                    <a href="mailto:shaikammar011@gmail.com" data-sfx="click" class="hud-btn px-6 sm:px-8 py-3.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center min-h-[44px]">
+                    <button onclick="openModal('comms-modal')" data-sfx="modal-open" class="hud-btn px-6 sm:px-8 py-3.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center min-h-[44px]">
                         <i class="fa-solid fa-satellite-dish mr-2"></i> Direct Comms
-                    </a>
+                    </button>
+                    <button onclick="openModal('resume-modal')" data-sfx="modal-open" class="hud-btn px-5 py-3.5 bg-panel border border-violet-500/40 text-violet-300 hover:text-white font-hud text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center min-h-[44px]">
+                        <i class="fa-solid fa-file-lines mr-2"></i> Dossier / CV
+                    </button>
                 </div>
             </div>
             
@@ -227,7 +345,7 @@
                         </div>
                         <div class="flex flex-col xs:flex-row xs:items-center justify-between border-b border-violet-500/20 pb-2 gap-1">
                             <span class="text-slate-400 text-xs">INSTITUTION:</span>
-                            <span class="text-white font-bold">SRIT (2023)</span>
+                            <span class="text-white font-bold">Srinivasa Ramanujan Institute of Technology (2023)</span>
                         </div>
                         <div class="flex flex-col xs:flex-row xs:items-center justify-between border-b border-violet-500/20 pb-2 gap-1">
                             <span class="text-slate-400 text-xs">CURRENT ROLE:</span>
@@ -419,40 +537,57 @@
         </section>
 
         <!-- INTERACTIVE CLI TERMINAL -->
-        <section id="terminal" class="hud-panel hud-clip p-5 xs:p-6 sm:p-8 space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#00f0ff]/20 pb-3">
+        <section id="terminal" class="hud-panel hud-clip p-4 xs:p-5 sm:p-7 space-y-3.5 terminal-container flex flex-col justify-between transition-all" onclick="focusTerminalInput(event)">
+            <!-- Terminal Header with Fullscreen & Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#00f0ff]/20 pb-3 shrink-0">
                 <div class="flex items-center space-x-2 font-hud text-xs text-[#00f0ff]">
                     <i class="fa-solid fa-terminal"></i>
-                    <span>COMMAND_CONSOLE // AMMAN_OS v4.2</span>
+                    <span>COMMAND_CONSOLE // AMMAN_OS v4.2 (GNU/Linux)</span>
                 </div>
-                <div class="flex items-center space-x-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                <div class="flex items-center space-x-2">
+                    <span class="hidden sm:inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-1 border border-emerald-500/30">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        BASH 5.2 ONLINE
+                    </span>
+                    <!-- Fullscreen Toggle Button -->
+                    <button onclick="toggleTerminalFullscreen()" id="terminal-fullscreen-btn" data-sfx="execute" title="Toggle Fullscreen Terminal (Esc to exit)" class="hud-btn px-2.5 py-1 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition flex items-center gap-1.5 text-xs font-hud font-bold">
+                        <i id="terminal-fullscreen-icon" class="fa-solid fa-expand"></i>
+                        <span id="terminal-fullscreen-text" class="hidden xs:inline">FULLSCREEN</span>
+                    </button>
+                    <!-- Quick Clear Button -->
+                    <button onclick="runQuickCmd('clear')" data-sfx="execute" title="Clear Terminal Output" class="hud-btn p-1.5 px-2 bg-panel border border-slate-700 text-slate-300 hover:text-white hover:border-slate-500 transition text-xs">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Terminal Output Window -->
-            <div id="terminal-output" class="bg-obsidian p-4 border border-[#00f0ff]/20 font-mono text-xs text-[#00f0ff] h-44 sm:h-52 overflow-y-auto space-y-1.5 shadow-inner" role="log" aria-live="polite">
-                <p class="text-slate-400">// Welcome, Evaluator. Tap a quick chip below or type a command.</p>
-                <p class="text-emerald-400">> System initialized. Agent Shaik Abdul Ammar loaded.</p>
+            <!-- Terminal Output Window (Fixed size, auto-scrollable) -->
+            <div id="terminal-output" class="bg-obsidian p-3.5 sm:p-4 border border-[#00f0ff]/20 font-mono text-xs text-[#00f0ff] flex-1 min-h-0 overflow-y-auto space-y-2 shadow-inner cursor-text" role="log" aria-live="polite" aria-atomic="false">
+                <p class="text-slate-400">// AMMAN_OS Linux 6.8.0-generic (x86_64) &bull; Bash shell environment initialized.</p>
+                <p class="text-slate-400">// Type <span class="text-white font-bold">help</span>, <span class="text-white font-bold">whoami</span>, <span class="text-white font-bold">ls -la</span>, or <span class="text-white font-bold">tree</span> to explore filesystem.</p>
+                <p class="text-emerald-400">> System Ready. Logged in as: <strong class="text-white">ammar@amman-os:~/portfolio$</strong></p>
             </div>
 
             <!-- Quick Command Chips for Touch/Mobile Devices -->
-            <div class="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] font-mono">
-                <span class="text-slate-400 mr-1 hidden xs:inline text-xs">CHIPS:</span>
-                <button onclick="runQuickCmd('help')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">help</button>
-                <button onclick="runQuickCmd('about')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">about</button>
-                <button onclick="runQuickCmd('experience')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-violet-500/40 text-violet-300 hover:bg-violet-950/40 transition rounded-none hud-clip">experience</button>
-                <button onclick="runQuickCmd('skills')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">skills</button>
-                <button onclick="runQuickCmd('contact')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition rounded-none hud-clip">contact</button>
+            <div class="flex flex-wrap items-center gap-1.5 pt-0.5 text-[11px] font-mono shrink-0">
+                <span class="text-slate-400 mr-1 hidden xs:inline text-xs">LINUX_CHIPS:</span>
+                <button onclick="runQuickCmd('whoami')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">whoami</button>
+                <button onclick="runQuickCmd('ls -la')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">ls -la</button>
+                <button onclick="runQuickCmd('tree')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40 transition rounded-none hud-clip">tree</button>
+                <button onclick="runQuickCmd('cat about.txt')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-violet-500/40 text-violet-300 hover:bg-violet-950/40 transition rounded-none hud-clip">cat about.txt</button>
+                <button onclick="runQuickCmd('cat experience')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-violet-500/40 text-violet-300 hover:bg-violet-950/40 transition rounded-none hud-clip">cat experience</button>
+                <button onclick="runQuickCmd('cat projects')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40 transition rounded-none hud-clip">cat projects</button>
+                <button onclick="runQuickCmd('cat education.txt')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition rounded-none hud-clip">cat education.txt</button>
+                <button onclick="runQuickCmd('cat resume.pdf')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-amber-500/40 text-amber-300 hover:bg-amber-950/40 transition rounded-none hud-clip">cat resume.pdf</button>
+                <button onclick="runQuickCmd('./contact.sh')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition rounded-none hud-clip">./contact.sh</button>
                 <button onclick="runQuickCmd('clear')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-slate-700 text-slate-400 hover:text-white transition rounded-none hud-clip">clear</button>
             </div>
 
             <!-- Input Row -->
-            <div class="flex gap-2 items-center">
-                <span class="text-[#00f0ff] font-mono text-sm pl-1">></span>
-                <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" placeholder="Type command (help, about, skills, contact)..." aria-label="Terminal Command Input" class="flex-1 bg-obsidian border border-[#00f0ff]/30 px-3 sm:px-4 py-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#00f0ff] hud-clip">
+            <div class="flex gap-2 items-center shrink-0 pt-0.5">
+                <span class="text-emerald-400 font-mono text-xs pl-1 font-bold shrink-0 hidden xs:inline">ammar@amman-os:~$</span>
+                <span class="text-[#00f0ff] font-mono text-sm pl-1 xs:hidden font-bold shrink-0">></span>
+                <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" placeholder="Type Linux command (whoami, ls -la, tree, cat about.txt, cat resume.pdf)..." aria-label="Terminal Linux Command Input" autocomplete="off" spellcheck="false" class="flex-1 bg-obsidian border border-[#00f0ff]/30 px-3 sm:px-4 py-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#00f0ff] hud-clip">
                 <button onclick="executeCommandBtn()" data-sfx="execute" aria-label="Execute command" class="hud-btn px-4 sm:px-6 py-2.5 bg-[#00f0ff] text-black font-hud text-xs font-bold hover:bg-[#00f0ff]/90 transition shrink-0 min-h-[40px]">
                     EXECUTE
                 </button>
@@ -484,53 +619,303 @@
                 <div id="live-time" class="text-slate-300">SYS_TIME: --:--:--</div>
             </div>
 
-            <!-- Social Links -->
-            <div class="flex items-center space-x-4">
-                <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="GitHub">
+            <!-- Social Links (Includes Resume PDF, GitHub, LinkedIn, Email, Phone) -->
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" data-sfx="execute" class="w-9 h-9 flex items-center justify-center bg-panel border border-emerald-500/60 text-emerald-400 hover:text-black hover:bg-emerald-400 hover:border-emerald-400 transition" title="Download Resume (PDF)">
+                    <i class="fa-solid fa-file-pdf text-sm"></i>
+                </a>
+                <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="GitHub Profile">
                     <i class="fab fa-github text-sm"></i>
                 </a>
-                <a href="mailto:shaikammar011@gmail.com" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="Email">
-                    <i class="fa-solid fa-envelope text-sm"></i>
+                <a href="https://linkedin.com/in/shaik-abdul-ammar" target="_blank" rel="noopener noreferrer" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="LinkedIn Profile">
+                    <i class="fab fa-linkedin-in text-sm"></i>
                 </a>
-                <a href="tel:+917893175137" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="Phone">
+                <button onclick="openModal('comms-modal')" data-sfx="modal-open" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="Direct Comms Dispatch">
+                    <i class="fa-solid fa-envelope text-sm"></i>
+                </button>
+                <a href="tel:+917893175137" data-sfx="click" class="w-9 h-9 flex items-center justify-center bg-panel border border-slate-700/80 text-slate-300 hover:text-[#00f0ff] hover:border-[#00f0ff] transition" title="Direct Phone">
                     <i class="fa-solid fa-phone text-sm"></i>
                 </a>
             </div>
         </div>
     </footer>
 
-    <!-- GITHUB DEPLOYMENT MODAL -->
-    <div id="deploy-modal" class="hidden fixed inset-0 bg-[#050508]/85 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="hud-panel hud-clip max-w-xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-5 sm:space-y-6 border-[#00f0ff]/50 shadow-2xl">
+    <!-- FLOATING RETURN-TO-TOP BUTTON -->
+    <button id="scroll-to-top" onclick="scrollToTop()" data-sfx="nav" aria-label="Return to top" class="hidden fixed bottom-6 right-6 z-40 hud-btn px-3 py-2.5 bg-panel border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition shadow-2xl font-hud text-xs flex items-center gap-1.5">
+        <i class="fa-solid fa-chevron-up text-xs"></i> <span class="hidden xs:inline">TOP</span>
+    </button>
+
+    <!-- RESUME / TACTICAL DOSSIER MODAL -->
+    <div id="resume-modal" class="modal-backdrop hidden fixed inset-0 bg-[#050508]/85 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" onclick="handleBackdropClick(event, 'resume-modal')">
+        <div class="hud-panel hud-clip max-w-3xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-6 border-[#00f0ff]/50 shadow-2xl">
+            <!-- Modal Header -->
             <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-3">
-                <h3 id="modal-title" class="font-hud text-base sm:text-lg font-bold text-white flex items-center">
-                    <i class="fab fa-github mr-2 text-[#00f0ff]"></i> GitHub Pages Deployment
+                <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 bg-[#00f0ff] rounded-full animate-ping"></span>
+                    <h3 id="resume-modal-title" class="font-hud text-base sm:text-lg font-bold text-white flex items-center">
+                        <i class="fa-solid fa-file-lines mr-2 text-[#00f0ff]"></i> TACTICAL DOSSIER // RESUME
+                    </h3>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" data-sfx="execute" title="Download Styled PDF Resume" class="hud-btn px-3 py-1.5 bg-emerald-500 text-black text-xs font-hud font-bold hover:bg-emerald-400 transition inline-flex items-center shadow">
+                        <i class="fa-solid fa-file-pdf mr-1.5"></i> DOWNLOAD PDF
+                    </a>
+                    <button onclick="closeModal('resume-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-2 -mr-2 text-slate-400 hover:text-white transition">
+                        <i class="fas fa-xmark text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Summary Header -->
+            <div class="bg-obsidian/85 p-4 sm:p-5 border border-[#00f0ff]/30 space-y-3 font-mono">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#00f0ff]/20 pb-3">
+                    <div>
+                        <div class="text-[#00f0ff] font-bold text-base sm:text-lg font-hud">ABDUL AMMAR</div>
+                        <div class="text-white text-xs font-bold font-hud">Software Developer Intern &bull; Infer Labs</div>
+                    </div>
+                    <div class="text-[11px] text-slate-300 space-y-0.5 sm:text-right">
+                        <div><i class="fa-solid fa-location-dot text-[#00f0ff] mr-1"></i> Hyderabad, India</div>
+                        <div><i class="fa-solid fa-phone text-[#00f0ff] mr-1"></i> +91 7893175137</div>
+                        <div><i class="fa-solid fa-envelope text-[#00f0ff] mr-1"></i> shaikammar011@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-xs font-hud text-[#00f0ff] font-bold mb-1">// PROFESSIONAL SUMMARY</div>
+                    <p class="text-slate-300 text-xs font-sans leading-relaxed">
+                        Software Developer Intern at <strong>Infer Labs</strong>, working on the <strong>iNexus</strong> enterprise application platform. Familiar with React, JavaScript, Python, FastAPI, PostgreSQL, and Git. Use AI-assisted development tools such as <strong>Claude Code</strong> and <strong>Antigravity</strong> to understand existing code, troubleshoot issues, and assist with development tasks. Have knowledge of AWS cloud services, Linux operating systems and commands, and monitoring tools such as Prometheus and Grafana. Familiar with manual software testing and API testing using Swagger. Passionate about exploring AI tools and discovering ways to automate repetitive tasks, streamline workflows, and improve productivity. Interested in improving software development skills and gaining practical experience in backend development, cloud computing, DevOps, and software testing.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Technical Skills Matrix -->
+            <div class="space-y-3 text-xs">
+                <div class="flex justify-between items-center">
+                    <h4 class="font-hud text-xs font-bold text-[#00f0ff]">// TECHNICAL SKILLS ARSENAL</h4>
+                    <span class="text-[10px] font-mono text-slate-400">TACTICAL LOADOUT</span>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    <div class="bg-obsidian/80 p-3 border border-[#00f0ff]/20 space-y-1">
+                        <div class="font-hud text-[#00f0ff] text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-code mr-1.5 text-xs"></i> Programming & Scripting
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Python, JavaScript, SQL, Bash</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-violet-500/20 space-y-1">
+                        <div class="font-hud text-violet-400 text-[11px] font-bold flex items-center">
+                            <i class="fa-brands fa-react mr-1.5 text-xs"></i> Frontend Development
+                        </div>
+                        <p class="text-slate-300 text-[11px]">React, Vite, HTML, CSS</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-[#00f0ff]/20 space-y-1">
+                        <div class="font-hud text-[#00f0ff] text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-server mr-1.5 text-xs"></i> Backend & APIs
+                        </div>
+                        <p class="text-slate-300 text-[11px]">FastAPI, REST APIs</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-emerald-500/20 space-y-1">
+                        <div class="font-hud text-emerald-400 text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-database mr-1.5 text-xs"></i> Databases & ORM
+                        </div>
+                        <p class="text-slate-300 text-[11px]">PostgreSQL, SQLAlchemy</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-[#00f0ff]/20 space-y-1">
+                        <div class="font-hud text-[#00f0ff] text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-xs"></i> AI Development Tools
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Claude Code, Antigravity</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-violet-500/20 space-y-1">
+                        <div class="font-hud text-violet-400 text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-cloud mr-1.5 text-xs"></i> Cloud & Infrastructure
+                        </div>
+                        <p class="text-slate-300 text-[11px]">AWS (EC2, VPC, S3, Load Balancing)</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-[#00f0ff]/20 space-y-1">
+                        <div class="font-hud text-[#00f0ff] text-[11px] font-bold flex items-center">
+                            <i class="fa-brands fa-linux mr-1.5 text-xs"></i> Operating Systems
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Linux, CLI Operations, Shell Scripting</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-emerald-500/20 space-y-1">
+                        <div class="font-hud text-emerald-400 text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-chart-line mr-1.5 text-xs"></i> Monitoring & Version Control
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Prometheus, Grafana, Git, GitHub</p>
+                    </div>
+
+                    <div class="bg-obsidian/80 p-3 border border-violet-500/20 space-y-1">
+                        <div class="font-hud text-violet-400 text-[11px] font-bold flex items-center">
+                            <i class="fa-solid fa-vial mr-1.5 text-xs"></i> Testing & Integration
+                        </div>
+                        <p class="text-slate-300 text-[11px]">Manual Testing, Swagger API, Debugging</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Experience Snapshot -->
+            <div class="space-y-3 text-xs">
+                <h4 class="font-hud text-xs font-bold text-violet-400">// CURRENT MISSION // WORK EXPERIENCE</h4>
+                <div class="hud-panel-violet p-4 sm:p-5 space-y-3 border-violet-500/30">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-violet-500/20 pb-2">
+                        <div>
+                            <span class="text-white font-bold text-sm">Software Developer Intern</span>
+                            <span class="text-violet-300 font-mono text-xs block sm:inline sm:ml-2">&bull; Infer Labs</span>
+                        </div>
+                        <span class="text-emerald-400 font-mono text-xs font-bold">May 8, 2026 – Present</span>
+                    </div>
+                    <p class="text-slate-300 text-xs font-sans leading-relaxed">
+                        Contributing directly to the <strong class="text-white">iNexus</strong> enterprise application suite, specializing in the <strong class="text-white">iPersonnel</strong> and <strong class="text-white">iPayroll</strong> modules.
+                    </p>
+                    <ul class="list-disc list-inside space-y-1.5 text-slate-300 text-xs font-sans leading-relaxed">
+                        <li>Explore and understand existing frontend and backend code to support development tasks.</li>
+                        <li>Work with <strong class="text-white">React and JavaScript</strong> on frontend components and application functionality.</li>
+                        <li>Use <strong class="text-white">Python and FastAPI</strong> to understand backend APIs and implement application logic.</li>
+                        <li>Explore <strong class="text-white">PostgreSQL</strong> database models and manage <strong class="text-white">SQLAlchemy</strong> relationships.</li>
+                        <li>Leverage <strong class="text-white">Claude Code and Antigravity</strong> to understand complex code, investigate issues, and assist implementation.</li>
+                        <li>Use <strong class="text-white">Git and GitHub</strong> to manage branches and integrate code changes smoothly.</li>
+                        <li>Perform manual testing to check application functionality and identify edge-case issues.</li>
+                        <li>Perform API testing using <strong class="text-white">Swagger</strong> to examine endpoints, send requests, and validate responses.</li>
+                        <li>Develop operational knowledge of AWS cloud services and Linux commands relevant to infrastructure.</li>
+                        <li>Build familiarity with monitoring and observability tools, including <strong class="text-white">Prometheus and Grafana</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project Experience -->
+            <div class="space-y-3 text-xs">
+                <h4 class="font-hud text-xs font-bold text-[#00f0ff]">// PROJECT EXPERIENCE</h4>
+                <div class="bg-obsidian/85 p-4 sm:p-5 border border-[#00f0ff]/30 space-y-2.5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-[#00f0ff]/20 pb-2">
+                        <div class="text-white font-bold text-sm font-hud">iNexus &ndash; Enterprise Application Platform</div>
+                        <span class="text-[#00f0ff] font-mono text-xs">Full-Stack Enterprise</span>
+                    </div>
+                    <div class="text-[11px] font-mono text-violet-300">
+                        Technologies: React, JavaScript, Python, FastAPI, PostgreSQL, SQLAlchemy, Git
+                    </div>
+                    <ul class="list-disc list-inside space-y-1 text-slate-300 text-xs font-sans leading-relaxed">
+                        <li>Work with the iPersonnel and iPayroll modules for internal enterprise workforce management.</li>
+                        <li>Understand how frontend components connect to backend APIs and relational databases.</li>
+                        <li>Explore payroll workflows and their dependencies on employee-management data.</li>
+                        <li>Investigate code and integration issues using development tools and AI-assisted coding workflows.</li>
+                        <li>Support application testing and investigate API and frontend-backend integration issues.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="space-y-3 text-xs">
+                <h4 class="font-hud text-xs font-bold text-emerald-400">// EDUCATION</h4>
+                <div class="bg-panel p-4 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono">
+                    <div>
+                        <div class="text-white font-bold text-sm">Bachelor of Technology (B.Tech) &ndash; Civil Engineering</div>
+                        <div class="text-slate-400 text-xs">Srinivasa Ramanujan Institute of Technology (SRIT)</div>
+                    </div>
+                    <span class="text-emerald-400 text-xs font-bold">Graduated 2023</span>
+                </div>
+            </div>
+
+            <!-- Professional Interests -->
+            <div class="space-y-3 text-xs">
+                <h4 class="font-hud text-xs font-bold text-violet-400">// PROFESSIONAL INTERESTS</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div class="bg-panel p-3 border border-violet-500/20 space-y-1">
+                        <div class="text-white font-bold text-xs">// AI & Workflow Automation</div>
+                        <p class="text-slate-300 text-[11px]">Exploring AI tools and experimenting with ways to automate repetitive tasks, simplify workflows, and improve productivity.</p>
+                    </div>
+                    <div class="bg-panel p-3 border border-[#00f0ff]/20 space-y-1">
+                        <div class="text-white font-bold text-xs">// AI-Assisted Development</div>
+                        <p class="text-slate-300 text-[11px]">Using Claude Code and Antigravity to understand codebases, accelerate development workflows, and solve complex technical challenges.</p>
+                    </div>
+                    <div class="bg-panel p-3 border border-emerald-500/20 space-y-1">
+                        <div class="text-white font-bold text-xs">// Continuous Learning</div>
+                        <p class="text-slate-300 text-[11px]">Expanding knowledge of modern software engineering, cloud computing, DevOps pipelines, and emerging AI technologies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Action Footer -->
+            <div class="pt-3 border-t border-[#00f0ff]/20 flex flex-col sm:flex-row gap-3">
+                <a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" data-sfx="execute" class="hud-btn flex-1 py-3 bg-emerald-500 text-black font-hud text-xs font-bold hover:bg-emerald-400 transition text-center flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-file-arrow-down mr-2 text-sm"></i> DOWNLOAD RESUME (PDF)
+                </a>
+                <a href="./Ammar_resume.pdf" target="_blank" data-sfx="execute" class="hud-btn flex-1 py-3 bg-[#00f0ff] text-black font-hud text-xs font-bold hover:bg-[#00f0ff]/90 transition text-center flex items-center justify-center">
+                    <i class="fa-solid fa-eye mr-2"></i> OPEN PDF IN TAB
+                </a>
+                <a href="mailto:shaikammar011@gmail.com?subject=Job%20Opportunity%20for%20Abdul%20Ammar" data-sfx="click" class="hud-btn flex-1 py-3 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold transition text-center flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> INITIATE CONTACT
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIRECT COMMS DISPATCH MODAL -->
+    <div id="comms-modal" class="modal-backdrop hidden fixed inset-0 bg-[#050508]/85 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="comms-modal-title" onclick="handleBackdropClick(event, 'comms-modal')">
+        <div class="hud-panel hud-clip max-w-xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-5 border-[#00f0ff]/50 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-3">
+                <h3 id="comms-modal-title" class="font-hud text-base sm:text-lg font-bold text-white flex items-center">
+                    <i class="fa-solid fa-satellite-dish mr-2 text-[#00f0ff]"></i> DIRECT COMMS DISPATCH
                 </h3>
-                <button onclick="closeModal('deploy-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-2 -mr-2 text-slate-400 hover:text-white transition">
+                <button onclick="closeModal('comms-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-2 -mr-2 text-slate-400 hover:text-white transition">
                     <i class="fas fa-xmark text-lg"></i>
                 </button>
             </div>
-            
+
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                To publish this AAA gaming portfolio live at <code class="text-[#00f0ff] font-mono break-all">https://ammanpro.github.io/stm/</code>, run these terminal commands in your local project folder:
+                Connect directly through secure transmission channels. Click below to copy details or dispatch a message immediately.
             </p>
-            
-            <div class="relative group">
-                <div id="git-commands" class="bg-obsidian p-3.5 sm:p-4 border border-[#00f0ff]/30 font-mono text-[11px] sm:text-xs text-emerald-400 space-y-1 hud-clip overflow-x-auto shadow-inner select-all">
-git init
-git add index.html
-git commit -m "Deploy AAA gaming portfolio"
-git branch -M main
-git remote add origin https://github.com/ammanpro/stm.git
-git push -u origin main</div>
-                <button onclick="copyGitCommands()" id="copy-btn" data-sfx="execute" class="mt-2.5 hud-btn w-full sm:w-auto px-4 py-2 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:text-white font-hud text-xs font-bold transition flex items-center justify-center gap-2">
-                    <i class="fa-regular fa-copy"></i> <span id="copy-text">COPY COMMANDS</span>
-                </button>
+
+            <!-- Channel Details -->
+            <div class="space-y-3 font-mono text-xs">
+                <!-- Email Item -->
+                <div class="bg-obsidian p-3.5 border border-[#00f0ff]/30 flex flex-col xs:flex-row xs:items-center justify-between gap-2">
+                    <div>
+                        <div class="text-slate-400 text-[10px] uppercase tracking-wider">ELECTRONIC MAIL</div>
+                        <div class="text-white font-bold select-all">shaikammar011@gmail.com</div>
+                    </div>
+                    <button onclick="copyToClipboard('shaikammar011@gmail.com', 'email-copy-btn')" id="email-copy-btn" data-sfx="execute" class="hud-btn px-3 py-1.5 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] text-[11px] font-hud hover:text-white transition">
+                        <i class="fa-regular fa-copy mr-1"></i> COPY
+                    </button>
+                </div>
+
+                <!-- Phone Item -->
+                <div class="bg-obsidian p-3.5 border border-violet-500/30 flex flex-col xs:flex-row xs:items-center justify-between gap-2">
+                    <div>
+                        <div class="text-slate-400 text-[10px] uppercase tracking-wider">SECURE VOICE LINE</div>
+                        <div class="text-white font-bold select-all">+91 7893175137</div>
+                    </div>
+                    <a href="tel:+917893175137" data-sfx="click" class="hud-btn px-3 py-1.5 bg-panel border border-violet-500/40 text-violet-300 text-[11px] font-hud hover:text-white transition text-center">
+                        <i class="fa-solid fa-phone mr-1"></i> CALL
+                    </a>
+                </div>
+
+                <!-- Location Item -->
+                <div class="bg-obsidian p-3.5 border border-emerald-500/30 flex items-center justify-between">
+                    <div>
+                        <div class="text-slate-400 text-[10px] uppercase tracking-wider">OPERATIONAL BASE</div>
+                        <div class="text-white font-bold">Hyderabad, Telangana, India</div>
+                    </div>
+                    <i class="fa-solid fa-location-dot text-emerald-400 text-base mr-2"></i>
+                </div>
             </div>
 
-            <button onclick="closeModal('deploy-modal')" data-sfx="modal-close" class="hud-btn w-full py-3 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-bold transition min-h-[44px]">
-                CONFIRM & CLOSE
-            </button>
+            <!-- Launch Mail Client -->
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="mailto:shaikammar011@gmail.com?subject=Transmission%20from%20Portfolio%20Visitor" data-sfx="click" class="hud-btn w-full py-3 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-bold transition text-center flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> OPEN MAIL CLIENT
+                </a>
+                <button onclick="closeModal('comms-modal')" data-sfx="modal-close" class="hud-btn w-full py-2.5 bg-panel border border-slate-700 text-slate-300 font-hud text-xs transition">
+                    DISMISS
+                </button>
+            </div>
         </div>
     </div>
 
@@ -573,6 +958,14 @@ git push -u origin main</div>
             window.addEventListener(evt, unlockAudio, { passive: true });
         });
 
+        // Trigger Equalizer Pulse Animation on sound
+        function triggerEqualizerVisual() {
+            const eq = document.getElementById('audio-eq');
+            if (!eq || !soundEnabled) return;
+            eq.classList.remove('eq-inactive');
+            eq.classList.add('eq-active');
+        }
+
         // Sci-Fi Sound Synthesizer Engine
         function playSciFiSound(type = 'click') {
             if (!soundEnabled && type !== 'power-off') return;
@@ -586,6 +979,8 @@ git push -u origin main</div>
                     return;
                 }
                 lastSound = { type, time: nowMs };
+
+                triggerEqualizerVisual();
 
                 const now = ctx.currentTime;
                 const osc = ctx.createOscillator();
@@ -682,15 +1077,27 @@ git push -u origin main</div>
         // Toggle Audio Controller
         function toggleAudio() {
             unlockAudio();
-            const btn = document.getElementById('audio-toggle');
+            const btnText = document.getElementById('audio-text');
+            const btnIcon = document.getElementById('audio-icon');
+            const eq = document.getElementById('audio-eq');
             if (soundEnabled) {
                 playSciFiSound('power-off');
                 soundEnabled = false;
-                btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: OFF</span>';
+                if (btnIcon) btnIcon.className = 'fa-solid fa-volume-xmark';
+                if (btnText) btnText.innerText = 'SFX: OFF';
+                if (eq) {
+                    eq.classList.remove('eq-active');
+                    eq.classList.add('eq-inactive');
+                }
             } else {
                 soundEnabled = true;
                 playSciFiSound('power-on');
-                btn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: ON</span>';
+                if (btnIcon) btnIcon.className = 'fa-solid fa-volume-high';
+                if (btnText) btnText.innerText = 'SFX: ON';
+                if (eq) {
+                    eq.classList.remove('eq-inactive');
+                    eq.classList.add('eq-active');
+                }
             }
             try {
                 localStorage.setItem('amman_sfx_enabled', soundEnabled);
@@ -699,8 +1106,15 @@ git push -u origin main</div>
 
         // Initialize UI with sound toggle state
         if (!soundEnabled) {
-            const btn = document.getElementById('audio-toggle');
-            if (btn) btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> <span class="hidden xs:inline ml-1" id="audio-text">SFX: OFF</span>';
+            const btnIcon = document.getElementById('audio-icon');
+            const btnText = document.getElementById('audio-text');
+            const eq = document.getElementById('audio-eq');
+            if (btnIcon) btnIcon.className = 'fa-solid fa-volume-xmark';
+            if (btnText) btnText.innerText = 'SFX: OFF';
+            if (eq) {
+                eq.classList.remove('eq-active');
+                eq.classList.add('eq-inactive');
+            }
         }
 
         // Universal Delegated Click Listener for ALL Buttons, Links, & HUD Elements
@@ -727,7 +1141,7 @@ git push -u origin main</div>
             }
 
             playSciFiSound(sfxType);
-        }, true); // Capture phase ensures immediate feedback
+        }, true);
 
         // Hover sound on buttons & interactive links
         let lastHoverTime = 0;
@@ -770,7 +1184,7 @@ git push -u origin main</div>
             if (icon) icon.className = 'fa-solid fa-bars text-sm';
         }
 
-        // Modal Controllers
+        // Modal Controllers with Backdrop Click & Scroll Lock
         function openModal(id) {
             const modal = document.getElementById(id);
             if (modal) {
@@ -787,23 +1201,143 @@ git push -u origin main</div>
             }
         }
 
-        // Copy Git commands
-        function copyGitCommands() {
-            const text = document.getElementById('git-commands').innerText;
+        function handleBackdropClick(event, modalId) {
+            if (event.target.id === modalId) {
+                closeModal(modalId);
+                playSciFiSound('modal-close');
+            }
+        }
+
+        // Generic Clipboard Copier with Feedback
+        function copyToClipboard(text, btnId) {
             navigator.clipboard.writeText(text).then(() => {
-                const copyText = document.getElementById('copy-text');
-                const originalText = copyText.innerText;
-                copyText.innerText = 'COPIED TO CLIPBOARD!';
-                setTimeout(() => {
-                    copyText.innerText = originalText;
-                }, 2000);
+                const btn = document.getElementById(btnId);
+                if (btn) {
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = '<i class="fa-solid fa-check mr-1 text-emerald-400"></i> COPIED!';
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                    }, 2000);
+                }
             }).catch(() => {
-                alert('Commands ready to copy:\n' + text);
+                prompt('Copy to clipboard: Ctrl+C, Enter', text);
             });
         }
 
-        // Terminal Controller
+        // Terminal Controller with Linux Commands, Tree, History & Tab Autocomplete
+        let isTerminalFullscreen = false;
+
+        function toggleTerminalFullscreen() {
+            const terminal = document.getElementById('terminal');
+            const btnIcon = document.getElementById('terminal-fullscreen-icon');
+            const btnText = document.getElementById('terminal-fullscreen-text');
+            const btn = document.getElementById('terminal-fullscreen-btn');
+            const input = document.getElementById('terminal-input');
+            const output = document.getElementById('terminal-output');
+
+            isTerminalFullscreen = !isTerminalFullscreen;
+
+            if (isTerminalFullscreen) {
+                terminal.classList.add('terminal-fullscreen');
+                document.body.style.overflow = 'hidden';
+                if (btnIcon) btnIcon.className = 'fa-solid fa-compress';
+                if (btnText) btnText.innerText = 'EXIT FULLSCREEN';
+                if (btn) btn.title = 'Exit Fullscreen (Esc)';
+                playSciFiSound('power-on');
+            } else {
+                terminal.classList.remove('terminal-fullscreen');
+                document.body.style.overflow = '';
+                if (btnIcon) btnIcon.className = 'fa-solid fa-expand';
+                if (btnText) btnText.innerText = 'FULLSCREEN';
+                if (btn) btn.title = 'Toggle Fullscreen Terminal (Esc to exit)';
+                playSciFiSound('power-off');
+            }
+
+            if (output) {
+                output.scrollTop = output.scrollHeight;
+            }
+            if (input) {
+                setTimeout(() => input.focus(), 50);
+            }
+        }
+
+        const VALID_COMMANDS = [
+            'whoami', 'pwd', 'uname', 'uname -a', 'ls', 'dir', 'll', 'ls -la', 'ls -l', 
+            'tree', 'cat', 'cat about.txt', 'cat education.txt', 'cat resume.pdf', 
+            'cat experience', 'cat projects', 'cat skills', './contact.sh', 'contact.sh',
+            'about.txt', 'education.txt', 'resume.pdf',
+            'cd', 'echo', 'date', 'uptime', 'ps', 'top', 'history', 'sudo', 'git', 
+            'fullscreen', 'exit', 'quit', 'clear', 'cls', 'help', 'man'
+        ];
+        let cmdHistory = [];
+        let historyIndex = -1;
+
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        function focusTerminalInput(event) {
+            // Don't hijack if user is clicking a button or already focused
+            if (event.target.tagName !== 'BUTTON' && event.target.tagName !== 'A') {
+                const input = document.getElementById('terminal-input');
+                if (input && document.activeElement !== input) {
+                    input.focus();
+                }
+            }
+        }
+
         function handleTerminalInput(e) {
+            const input = document.getElementById('terminal-input');
+            
+            // Tab Autocomplete
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const currentVal = input.value.trim().toLowerCase();
+                if (!currentVal) return;
+
+                const fileCandidates = [
+                    'cat about.txt', 'cat education.txt', 'cat resume.pdf', 
+                    'cat experience', 'cat projects', 'cat skills', './contact.sh',
+                    'dir projects', 'dir experience', 'dir education', 'dir skills',
+                    'ls -la', 'ls projects', 'ls experience', 'ls skills'
+                ];
+                let match = fileCandidates.find(c => c.startsWith(currentVal));
+                if (!match) {
+                    match = VALID_COMMANDS.find(c => c.startsWith(currentVal));
+                }
+                if (match) {
+                    input.value = match;
+                    playSciFiSound('hover');
+                }
+                return;
+            }
+
+            // Command History Navigation
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (cmdHistory.length === 0) return;
+                if (historyIndex < cmdHistory.length - 1) {
+                    historyIndex++;
+                    input.value = cmdHistory[cmdHistory.length - 1 - historyIndex];
+                }
+                return;
+            }
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = cmdHistory[cmdHistory.length - 1 - historyIndex];
+                } else if (historyIndex === 0) {
+                    historyIndex = -1;
+                    input.value = '';
+                }
+                return;
+            }
+
+            // Enter Command
             if (e.key === 'Enter') {
                 executeCommand();
             }
@@ -822,37 +1356,462 @@ git push -u origin main</div>
         function executeCommand() {
             const input = document.getElementById('terminal-input');
             const output = document.getElementById('terminal-output');
-            const cmd = input.value.trim().toLowerCase();
-            if (!cmd) return;
+            const rawVal = input.value.trim();
+            if (!rawVal) return;
 
-            output.innerHTML += `<p class="text-white font-bold">> ${input.value}</p>`;
+            // Push to command history
+            cmdHistory.push(rawVal);
+            historyIndex = -1;
+
+            const safeInput = escapeHTML(rawVal);
+            output.innerHTML += `<p class="font-mono text-xs"><span class="text-emerald-400 font-bold">ammar@amman-os</span>:<span class="text-[#00f0ff]">~/portfolio</span>$ <span class="text-white font-bold">${safeInput}</span></p>`;
             input.value = '';
+
+            const trimmed = rawVal.trim();
+            const lower = trimmed.toLowerCase();
+            const parts = trimmed.split(/\s+/);
+            const main = parts[0].toLowerCase();
+            const arg = parts.slice(1).join(' ').toLowerCase();
 
             let response = '';
             let isError = false;
 
-            if (cmd === 'help') {
-                response = 'Available Commands: <span class="text-white">about</span>, <span class="text-white">experience</span>, <span class="text-white">skills</span>, <span class="text-white">contact</span>, <span class="text-white">clear</span>';
-            } else if (cmd === 'about' || cmd === 'status') {
-                response = 'Shaik Abdul Ammar | Software Developer Intern @ Infer Labs | B.Tech Civil Engineering (SRIT, 2023) | Location: Hyderabad';
-            } else if (cmd === 'experience' || cmd === 'infer') {
-                response = 'Work History: Software Developer Intern at Infer Labs (May 8, 2026 – Present) on iNexus enterprise platform (iPersonnel & iPayroll modules).';
-            } else if (cmd === 'skills') {
-                response = 'Skills: Python, FastAPI, React, JavaScript, PostgreSQL, SQLAlchemy, AWS, Prometheus, Grafana, Swagger, Claude Code, Antigravity.';
-            } else if (cmd === 'contact') {
-                response = 'Email: shaikammar011@gmail.com | Phone: +91 7893175137 | GitHub: github.com/ammanpro';
-            } else if (cmd === 'clear') {
-                output.innerHTML = '<p class="text-slate-400">// Terminal cleared.</p>';
+            // 1. WHOAMI
+            if (main === 'whoami') {
+                response = `
+                    <div class="space-y-1 text-xs font-mono">
+                        <div><span class="text-white font-bold text-sm">ammar</span> <span class="text-slate-400 text-[11px]">(uid=1000 gid=1000 groups=1000(ammar),27(sudo),100(infer-labs))</span></div>
+                        <div class="text-emerald-400 font-bold">Shaik Abdul Ammar &bull; Software Developer Intern @ Infer Labs</div>
+                        <div class="text-slate-300 text-[11px]">Operational Base: Hyderabad, India &bull; Stack: Python, FastAPI, React, PostgreSQL & AI engineering workflows.</div>
+                    </div>
+                `;
+            }
+
+            // 2. PWD
+            else if (main === 'pwd') {
+                response = '<span class="text-white font-bold">/home/ammar/portfolio</span>';
+            }
+
+            // 3. UNAME
+            else if (main === 'uname') {
+                if (arg.includes('-a') || arg.includes('-r') || arg.includes('-s') || !arg) {
+                    response = '<span class="text-slate-200">Linux amman-os 6.8.0-42-generic #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux</span>';
+                } else {
+                    response = '<span class="text-slate-200">Linux</span>';
+                }
+            }
+
+            // 4. TREE
+            else if (main === 'tree') {
+                response = `
+                    <div class="text-[#00f0ff] font-mono text-[11px] leading-relaxed">
+.
+├── <span class="text-slate-200">about.txt</span>
+├── <span class="text-slate-200">education.txt</span>
+├── <span class="text-amber-300 font-bold">resume.pdf</span>
+├── <span class="text-emerald-400 font-bold">contact.sh*</span>
+├── <span class="text-[#00f0ff] font-bold">experience/</span>
+│   └── <span class="text-slate-200">infer-labs.md</span>
+├── <span class="text-[#00f0ff] font-bold">projects/</span>
+│   └── <span class="text-slate-200">inexus-platform.md</span>
+└── <span class="text-[#00f0ff] font-bold">skills/</span>
+    ├── <span class="text-slate-200">languages.json</span>
+    ├── <span class="text-slate-200">frontend.json</span>
+    ├── <span class="text-slate-200">backend.json</span>
+    ├── <span class="text-slate-200">databases.json</span>
+    ├── <span class="text-slate-200">cloud-aws.json</span>
+    └── <span class="text-slate-200">ai-tools.json</span>
+<div class="text-slate-400 pt-1">3 directories, 10 files</div>
+<div class="text-slate-400 text-[10px] pt-0.5">// Hint: Run <span class="text-white font-bold">cat &lt;file&gt;</span> (e.g. <span class="text-white font-bold">cat education.txt</span> or <span class="text-white font-bold">cat resume.pdf</span>)</div>
+                    </div>
+                `;
+            }
+
+            // 5. LS / DIR / LL
+            else if (main === 'ls' || main === 'dir' || main === 'll') {
+                if (arg === 'projects' || arg === 'project' || arg === 'projects/') {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-[#00f0ff] font-bold">projects/:</div>
+                            <div class="text-slate-300">-rw-r--r-- 1 ammar ammar 2048 Oct 14 10:00 <strong class="text-white">inexus-platform.md</strong></div>
+                            <div class="text-slate-400 text-[11px] pt-1">// Type <span class="text-white font-bold">cat projects</span> or <span class="text-white font-bold">cat projects/inexus-platform.md</span> to read.</div>
+                        </div>
+                    `;
+                } else if (arg === 'experience' || arg === 'exper' || arg === 'exp' || arg === 'experience/') {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-violet-400 font-bold">experience/:</div>
+                            <div class="text-slate-300">-rw-r--r-- 1 ammar ammar 3072 Oct 14 10:00 <strong class="text-white">infer-labs.md</strong></div>
+                            <div class="text-slate-400 text-[11px] pt-1">// Type <span class="text-white font-bold">cat experience</span> or <span class="text-white font-bold">cat experience/infer-labs.md</span> to read.</div>
+                        </div>
+                    `;
+                } else if (arg === 'education' || arg === 'edu' || arg === 'education.txt') {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-emerald-400 font-bold">==> education.txt &lt;==</div>
+                            <div><strong class="text-white">Degree:</strong> Bachelor of Technology (B.Tech) &ndash; Civil Engineering</div>
+                            <div><strong class="text-white">Institution:</strong> Srinivasa Ramanujan Institute of Technology (SRIT)</div>
+                            <div><strong class="text-white">Graduation:</strong> 2023</div>
+                            <div class="pt-1 text-slate-300 text-[11px]"><strong class="text-white">Professional Interests:</strong></div>
+                            <ul class="list-disc list-inside text-slate-300 text-[11px] space-y-0.5">
+                                <li>AI & Workflow Automation: Automating repetitive tasks, custom agentic workflows.</li>
+                                <li>AI-Assisted Development: Claude Code & Antigravity acceleration for complex codebases.</li>
+                                <li>Continuous Learning: Scalable backend engineering, cloud DevOps, and observability.</li>
+                            </ul>
+                        </div>
+                    `;
+                } else if (arg === 'skills' || arg === 'skill' || arg === 'skills/') {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-[#00f0ff] font-bold">skills/:</div>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 text-[11px] text-slate-300">
+                                <span>languages.json</span>
+                                <span>frontend.json</span>
+                                <span>backend.json</span>
+                                <span>databases.json</span>
+                                <span>cloud-aws.json</span>
+                                <span>ai-tools.json</span>
+                            </div>
+                            <div class="text-slate-400 text-[11px] pt-1">// Type <span class="text-white font-bold">cat skills</span> to inspect complete skills matrix.</div>
+                        </div>
+                    `;
+                } else if (arg.includes('-l') || main === 'll') {
+                    response = `
+                        <div class="space-y-0.5 font-mono text-[11px] leading-tight">
+                            <div class="text-slate-400">total 48</div>
+                            <div>drwxr-xr-x 5 ammar ammar 4096 Oct 14 10:00 <span class="text-[#00f0ff] font-bold">.</span></div>
+                            <div>drwxr-xr-x 3 root  root  4096 Oct 14 09:00 <span class="text-[#00f0ff] font-bold">..</span></div>
+                            <div>drwxr-xr-x 2 ammar ammar 4096 Oct 14 10:00 <span class="text-[#00f0ff] font-bold">projects/</span></div>
+                            <div>drwxr-xr-x 2 ammar ammar 4096 Oct 14 10:00 <span class="text-violet-400 font-bold">experience/</span></div>
+                            <div>drwxr-xr-x 2 ammar ammar 4096 Oct 14 10:00 <span class="text-[#00f0ff] font-bold">skills/</span></div>
+                            <div>-rw-r--r-- 1 ammar ammar 1024 Oct 14 10:00 <span class="text-slate-200">about.txt</span></div>
+                            <div>-rw-r--r-- 1 ammar ammar 1280 Oct 14 10:00 <span class="text-slate-200">education.txt</span></div>
+                            <div>-rwxr-xr-x 1 ammar ammar  512 Oct 14 10:00 <span class="text-emerald-400 font-bold">contact.sh*</span></div>
+                            <div>-rw-r--r-- 1 ammar ammar 5287 Oct 14 10:00 <span class="text-amber-300 font-bold">resume.pdf</span></div>
+                        </div>
+                        <div class="text-slate-400 text-[10px] pt-1.5">// Type <span class="text-white font-bold">cat &lt;file&gt;</span> to inspect, <span class="text-white font-bold">tree</span> for directory hierarchy.</div>
+                    `;
+                } else {
+                    response = `
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs py-1">
+                            <span class="text-[#00f0ff] font-bold"><i class="fa-regular fa-folder mr-1"></i>projects/</span>
+                            <span class="text-violet-400 font-bold"><i class="fa-regular fa-folder mr-1"></i>experience/</span>
+                            <span class="text-[#00f0ff] font-bold"><i class="fa-regular fa-folder mr-1"></i>skills/</span>
+                            <span class="text-slate-200"><i class="fa-regular fa-file-lines mr-1 text-slate-400"></i>about.txt</span>
+                            <span class="text-slate-200"><i class="fa-regular fa-file-lines mr-1 text-slate-400"></i>education.txt</span>
+                            <span class="text-emerald-400 font-bold"><i class="fa-solid fa-terminal mr-1"></i>contact.sh*</span>
+                            <span class="text-amber-300 font-bold"><i class="fa-regular fa-file-pdf mr-1"></i>resume.pdf</span>
+                        </div>
+                        <div class="text-slate-400 text-[10px] pt-1">// Type <span class="text-white font-bold">cat &lt;file&gt;</span>, <span class="text-white font-bold">dir &lt;folder&gt;</span>, or <span class="text-white font-bold">tree</span> to explore.</div>
+                    `;
+                }
+            }
+
+            // 6. CAT / VIEW / OPEN / LESS / MORE
+            else if (main === 'cat' || main === 'view' || main === 'open' || main === 'less' || main === 'more') {
+                const target = arg || '';
+
+                if (target === 'about.txt' || target === 'about') {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-[#00f0ff] font-bold">==> about.txt &lt;==</div>
+                            <p class="text-slate-300">Software Developer Intern at <strong class="text-white">Infer Labs</strong> (Hyderabad, India).</p>
+                            <p class="text-slate-300">Engineering internal tools and web architecture for the <strong class="text-white">iNexus</strong> enterprise application platform across full-stack modules.</p>
+                            <p class="text-slate-300">Skilled in Python, FastAPI, React, JavaScript, PostgreSQL, SQLAlchemy, AWS, Prometheus, Grafana, Claude Code, and Antigravity.</p>
+                        </div>
+                    `;
+                } else if (target === 'education.txt' || target === 'education' || target === 'edu') {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-emerald-400 font-bold">==> education.txt &lt;==</div>
+                            <div><strong class="text-white">Degree:</strong> Bachelor of Technology (B.Tech) &ndash; Civil Engineering</div>
+                            <div><strong class="text-white">Institution:</strong> Srinivasa Ramanujan Institute of Technology (SRIT)</div>
+                            <div><strong class="text-white">Graduation:</strong> 2023</div>
+                            <div class="pt-1 text-slate-300 text-[11px]"><strong class="text-white">Professional Interests:</strong></div>
+                            <ul class="list-disc list-inside text-slate-300 text-[11px] space-y-0.5">
+                                <li>AI & Workflow Automation: Automating repetitive tasks, custom agentic workflows.</li>
+                                <li>AI-Assisted Development: Claude Code & Antigravity acceleration for complex codebases.</li>
+                                <li>Continuous Learning: Scalable backend engineering, cloud DevOps, and observability.</li>
+                            </ul>
+                        </div>
+                    `;
+                } else if (target === 'experience' || target.includes('infer') || target.includes('experience/')) {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-violet-400 font-bold">==> experience/infer-labs.md &lt;==</div>
+                            <div><strong class="text-white">Role:</strong> Software Developer Intern &bull; <span class="text-[#00f0ff] font-bold">Infer Labs</span></div>
+                            <div><strong class="text-white">Period:</strong> May 8, 2026 – Present | Hyderabad, India</div>
+                            <div><strong class="text-white">Platform:</strong> iNexus Enterprise Suite &mdash; iPersonnel & iPayroll</div>
+                            <div class="pt-1 text-slate-300 text-[11px]">
+                                <ul class="list-disc list-inside space-y-0.5">
+                                    <li>Develop & maintain UI components using <strong class="text-white">React & JavaScript</strong>.</li>
+                                    <li>Build & troubleshoot REST APIs and payroll computation with <strong class="text-white">Python & FastAPI</strong>.</li>
+                                    <li>Manage <strong class="text-white">PostgreSQL</strong> relational schemas and <strong class="text-white">SQLAlchemy</strong> models.</li>
+                                    <li>Leverage <strong class="text-white">Claude Code & Antigravity</strong> for code comprehension & fast feature velocity.</li>
+                                    <li>API testing via <strong class="text-white">Swagger</strong>; system telemetry with <strong class="text-white">Prometheus & Grafana</strong>.</li>
+                                    <li>AWS cloud infrastructure (EC2, VPC, S3) and Linux server operations.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                } else if (target === 'projects' || target.includes('inexus') || target.includes('projects/')) {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-[#00f0ff] font-bold">==> projects/inexus-platform.md &lt;==</div>
+                            <div><strong class="text-white">Platform:</strong> iNexus &ndash; Enterprise Application Platform</div>
+                            <div><strong class="text-white">Tech Stack:</strong> React, JavaScript, Python, FastAPI, PostgreSQL, SQLAlchemy, Git</div>
+                            <div class="pt-1 text-slate-300 text-[11px]">
+                                <ul class="list-disc list-inside space-y-0.5">
+                                    <li><strong class="text-white">iPersonnel Module:</strong> Workforce directory, attendance tracking, role access control.</li>
+                                    <li><strong class="text-white">iPayroll Module:</strong> High-precision payroll engines, tax deductions, automated payslips.</li>
+                                    <li>Engineered seamless frontend-to-backend REST API integrations and relational DB queries.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                } else if (target === 'skills' || target === 'skills.json' || target.includes('skills/')) {
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-[#00f0ff] font-bold">==> skills.json &lt;==</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-300 pt-1">
+                                <div>&bull; <strong class="text-white">Programming:</strong> Python, JavaScript, SQL, Bash</div>
+                                <div>&bull; <strong class="text-white">Cloud:</strong> AWS (EC2, VPC, S3, Load Balancers)</div>
+                                <div>&bull; <strong class="text-white">Frontend:</strong> React, Vite, HTML5, CSS3</div>
+                                <div>&bull; <strong class="text-white">OS:</strong> Linux, CLI Operations, Shell Scripting</div>
+                                <div>&bull; <strong class="text-white">Backend:</strong> FastAPI, REST APIs</div>
+                                <div>&bull; <strong class="text-white">Monitoring:</strong> Prometheus, Grafana</div>
+                                <div>&bull; <strong class="text-white">Database:</strong> PostgreSQL, SQLAlchemy</div>
+                                <div>&bull; <strong class="text-white">Testing:</strong> Manual Testing, Swagger API</div>
+                                <div>&bull; <strong class="text-white">AI Dev Tools:</strong> Claude Code, Antigravity</div>
+                                <div>&bull; <strong class="text-white">Version Control:</strong> Git, GitHub</div>
+                            </div>
+                        </div>
+                    `;
+                } else if (target === 'resume.pdf' || target === 'resume' || target === 'cv') {
+                    openModal('resume-modal');
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-amber-300 font-bold">==> resume.pdf &lt;==</div>
+                            <div>Opening Tactical Dossier... File: <span class="text-white font-bold">Ammar_resume.pdf</span> (5.2 KB, Vector PDF)</div>
+                            <div class="pt-1 flex flex-wrap gap-2">
+                                <a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" class="px-2.5 py-1 bg-emerald-500 text-black font-bold text-[11px] hover:bg-emerald-400 transition inline-flex items-center">
+                                    <i class="fa-solid fa-download mr-1"></i> Download PDF
+                                </a>
+                                <a href="./Ammar_resume.pdf" target="_blank" class="px-2.5 py-1 bg-[#00f0ff] text-black font-bold text-[11px] hover:bg-[#00f0ff]/90 transition inline-flex items-center">
+                                    <i class="fa-solid fa-eye mr-1"></i> Open in Tab
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                } else if (target === 'contact.sh' || target === 'contact') {
+                    openModal('comms-modal');
+                    response = `
+                        <div class="space-y-1 font-mono text-xs">
+                            <div class="text-emerald-400 font-bold">==> contact.sh &lt;==</div>
+                            <div>&bull; <strong class="text-white">Email:</strong> <span class="text-slate-200">shaikammar011@gmail.com</span></div>
+                            <div>&bull; <strong class="text-white">Phone:</strong> <span class="text-slate-200">+91 7893175137</span></div>
+                            <div>&bull; <strong class="text-white">GitHub:</strong> <a href="https://github.com/ammanpro" target="_blank" class="text-[#00f0ff] underline">github.com/ammanpro</a></div>
+                            <div>&bull; <strong class="text-white">LinkedIn:</strong> <a href="https://linkedin.com/in/shaik-abdul-ammar" target="_blank" class="text-violet-300 underline">linkedin.com/in/shaik-abdul-ammar</a></div>
+                            <div class="text-slate-400 text-[10px] pt-1">// Direct Comms modal opened.</div>
+                        </div>
+                    `;
+                } else {
+                    response = `cat: ${safeInput.replace(/^cat\s*/, '')}: No such file or directory. Run <span class="text-white font-bold">ls</span> or <span class="text-white font-bold">tree</span> to view files.`;
+                    isError = true;
+                }
+            }
+
+            // 7. EXECUTING SCRIPTS (./contact.sh, bash contact.sh, sh contact.sh)
+            else if (lower === './contact.sh' || lower === 'bash contact.sh' || lower === 'sh contact.sh' || lower === 'contact.sh') {
+                openModal('comms-modal');
+                response = `
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-emerald-400 font-bold">Executing ./contact.sh...</div>
+                        <p class="text-slate-200">&bull; Email: <span class="text-white font-bold">shaikammar011@gmail.com</span></p>
+                        <p class="text-slate-200">&bull; Voice: <span class="text-white font-bold">+91 7893175137</span></p>
+                        <p class="text-slate-200">&bull; GitHub: <a href="https://github.com/ammanpro" target="_blank" class="text-[#00f0ff] underline">github.com/ammanpro</a></p>
+                        <p class="text-slate-200">&bull; LinkedIn: <a href="https://linkedin.com/in/shaik-abdul-ammar" target="_blank" class="text-violet-300 underline">linkedin.com/in/shaik-abdul-ammar</a></p>
+                        <p class="text-emerald-400 text-[11px] pt-1">[SUCCESS] Direct Comms transmission modal activated.</p>
+                    </div>
+                `;
+            }
+
+            // 8. CD
+            else if (main === 'cd') {
+                if (!arg || arg === '~' || arg === '..' || arg === '/') {
+                    response = '<span class="text-slate-300">Working directory: <strong class="text-white">/home/ammar/portfolio</strong></span>';
+                } else if (arg === 'projects' || arg === 'experience' || arg === 'skills') {
+                    response = `<span class="text-slate-300">Entered <strong class="text-[#00f0ff]">/home/ammar/portfolio/${arg}</strong>. Run <span class="text-white font-bold">ls</span> or <span class="text-white font-bold">cat &lt;file&gt;</span>.</span>`;
+                } else {
+                    response = `cd: ${escapeHTML(arg)}: No such file or directory`;
+                    isError = true;
+                }
+            }
+
+            // 9. ECHO
+            else if (main === 'echo') {
+                response = `<span class="text-slate-200 font-mono">${escapeHTML(parts.slice(1).join(' '))}</span>`;
+            }
+
+            // 10. DATE / TIME
+            else if (main === 'date' || main === 'time') {
+                const now = new Date();
+                response = `<span class="text-white font-mono">${now.toUTCString()} (Local: ${now.toLocaleTimeString()})</span>`;
+            }
+
+            // 11. UPTIME
+            else if (main === 'uptime') {
+                const now = new Date();
+                response = `<span class="text-white font-mono">${now.toLocaleTimeString()} up 142 days, 2 users, load average: 0.04, 0.02, 0.00 (AMMAN_OS Kernel 6.8.0)</span>`;
+            }
+
+            // 12. PS / TOP
+            else if (main === 'ps' || main === 'top') {
+                response = `
+                    <div class="font-mono text-[11px] space-y-0.5 text-slate-300">
+                        <div class="text-white font-bold">PID  TTY      STAT  TIME  COMMAND</div>
+                        <div>  1  ?        Ss    0:02  /sbin/init [amman-os]</div>
+                        <div>101  ?        S     0:01  fastapi-worker: iNexus-backend</div>
+                        <div>102  ?        S     0:01  postgresql-engine: 5432</div>
+                        <div>205  ?        Sl    0:04  vite-react-bundle: portfolio-ui</div>
+                        <div>312  pts/0    Ss    0:00  /bin/bash -i</div>
+                        <div>340  pts/0    R+    0:00  ps aux</div>
+                    </div>
+                `;
+            }
+
+            // 13. GIT
+            else if (main === 'git') {
+                response = `
+                    <div class="font-mono text-xs space-y-1">
+                        <div class="text-emerald-400 font-bold">On branch main &bull; Tracking origin/main</div>
+                        <div class="text-slate-300 text-[11px]">Repository: <a href="https://github.com/ammanpro/portfolio" target="_blank" rel="noopener noreferrer" class="text-[#00f0ff] underline font-bold">https://github.com/ammanpro/portfolio</a></div>
+                        <div class="text-slate-400 text-[11px]">Latest commit: feat(kernel): integrated Linux CLI subsystem and styled A4 vector resume</div>
+                    </div>
+                `;
+            }
+
+            // 14. HISTORY
+            else if (main === 'history') {
+                if (cmdHistory.length === 0) {
+                    response = '<span class="text-slate-400">// Command history empty.</span>';
+                } else {
+                    response = '<div class="space-y-0.5 font-mono text-[11px]">' + 
+                        cmdHistory.map((c, i) => `<div><span class="text-slate-500 mr-2">${i + 1}</span><span class="text-white">${escapeHTML(c)}</span></div>`).join('') + 
+                        '</div>';
+                }
+            }
+
+            // 15. SUDO
+            else if (main === 'sudo') {
+                response = '<span class="text-red-400 font-bold">[sudo] password for ammar: ammar is not in the sudoers file. This incident will be reported to Infer Labs security kernel.</span>';
+                isError = true;
+            }
+
+            // 16. CLEAR / CLS
+            else if (main === 'clear' || main === 'cls') {
+                output.innerHTML = '<p class="text-slate-400">// Terminal cleared. AMMAN_OS Linux shell ready.</p>';
                 playSciFiSound('execute');
                 return;
+            }
+
+            // 17. HELP / MAN
+            else if (main === 'help' || main === 'man') {
+                response = `
+                    <div class="font-mono text-xs space-y-1.5 text-slate-300">
+                        <div class="text-[#00f0ff] font-bold">AMMAN_OS Linux Terminal &mdash; Manual & Directives</div>
+                        <div class="text-slate-400 text-[11px]">Standard GNU/Linux CLI environment for exploring Shaik Abdul Ammar's portfolio filesystem.</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 pt-1 text-[11px]">
+                            <div><strong class="text-white">whoami</strong> &mdash; Print user identity & role</div>
+                            <div><strong class="text-white">pwd</strong> &mdash; Print working directory path</div>
+                            <div><strong class="text-white">ls, dir [-la]</strong> &mdash; List directory files & folders</div>
+                            <div><strong class="text-white">tree</strong> &mdash; Display visual ASCII filesystem tree</div>
+                            <div><strong class="text-white">cat &lt;file&gt;</strong> &mdash; Print file contents (e.g. about.txt, education.txt)</div>
+                            <div><strong class="text-white">cat resume.pdf</strong> &mdash; Open and download A4 vector resume</div>
+                            <div><strong class="text-white">./contact.sh</strong> &mdash; Execute comms dispatch transmission</div>
+                            <div><strong class="text-white">uname -a</strong> &mdash; Print Linux kernel architecture</div>
+                            <div><strong class="text-white">date / uptime</strong> &mdash; System clock and uptime telemetry</div>
+                            <div><strong class="text-white">ps / top</strong> &mdash; Process status and system telemetry</div>
+                            <div><strong class="text-white">history</strong> &mdash; View command execution log</div>
+                            <div><strong class="text-white">clear / cls</strong> &mdash; Clear the terminal window</div>
+                        </div>
+                        <div class="text-slate-400 text-[10px] pt-1">// Pro-tip: Type <span class="text-white font-bold">tree</span> or tap quick chips below to navigate.</div>
+                    </div>
+                `;
+            }
+
+            // 18. CONVENIENCE ALIASES (Single-word fallbacks)
+            else if (main === 'about' || main === 'status') {
+                response = `
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-[#00f0ff] font-bold">// Alias: cat about.txt</div>
+                        <p class="text-slate-300">Shaik Abdul Ammar &bull; Software Developer Intern @ <strong class="text-white">Infer Labs</strong> (Hyderabad, India).</p>
+                        <p class="text-slate-300">Specializing in Python, FastAPI, React, PostgreSQL & AI engineering workflows on <strong class="text-white">iNexus</strong>.</p>
+                    </div>
+                `;
+            } else if (main === 'projects' || main === 'project') {
+                response = `
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-[#00f0ff] font-bold">// Alias: cat projects/inexus-platform.md</div>
+                        <p class="text-slate-300">Featured Architecture: <strong class="text-white">iNexus Enterprise Platform</strong> &bull; Contributing to <strong class="text-white">iPersonnel</strong> & <strong class="text-white">iPayroll</strong> modules using React, FastAPI, SQLAlchemy, PostgreSQL, and Prometheus telemetry.</p>
+                    </div>
+                `;
+            } else if (main === 'experience' || main === 'history' || main === 'infer') {
+                response = `
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-violet-400 font-bold">// Alias: cat experience/infer-labs.md</div>
+                        <p class="text-slate-300">Work History: <strong class="text-white">Infer Labs</strong> (May 8, 2026 – Present) &bull; Software Developer Intern developing microservices and full-stack enterprise tools on AWS cloud infrastructure.</p>
+                    </div>
+                `;
+            } else if (main === 'education' || main === 'edu') {
+                response = `
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-emerald-400 font-bold">// Alias: cat education.txt</div>
+                        <div><strong class="text-white">Degree:</strong> Bachelor of Technology (B.Tech) &ndash; Civil Engineering</div>
+                        <div><strong class="text-white">Institution:</strong> Srinivasa Ramanujan Institute of Technology (SRIT)</div>
+                        <div><strong class="text-white">Graduation:</strong> 2023</div>
+                    </div>
+                `;
+            } else if (main === 'skills') {
+                response = `
+                    <div class="space-y-1 font-mono text-xs">
+                        <div class="text-[#00f0ff] font-bold">// Alias: cat skills.json</div>
+                        <p class="text-slate-300">Python &bull; FastAPI &bull; React &bull; JavaScript &bull; PostgreSQL &bull; SQLAlchemy &bull; AWS (EC2/S3) &bull; Swagger &bull; Prometheus &bull; Grafana &bull; Claude Code &bull; Antigravity</p>
+                    </div>
+                `;
+            } else if (main === 'resume' || main === 'cv' || main === 'dossier') {
+                openModal('resume-modal');
+                response = 'Tactical dossier loaded. Opening Resume dossier module... [<a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" class="text-emerald-400 underline font-bold">Download Ammar_resume.pdf</a>]';
+            } else if (main === 'contact') {
+                openModal('comms-modal');
+                response = 'Direct Comms: Email: shaikammar011@gmail.com | Phone: +91 7893175137 | GitHub: github.com/ammanpro | Opening comms dispatch...';
+            } else if (main === 'github' || main === 'repo') {
+                response = 'GitHub Repository Profile: <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" class="text-[#00f0ff] underline font-bold">https://github.com/ammanpro</a>';
+            } else if (main === 'linkedin') {
+                response = 'LinkedIn Profile: <a href="https://linkedin.com/in/shaik-abdul-ammar" target="_blank" rel="noopener noreferrer" class="text-violet-300 underline font-bold">https://linkedin.com/in/shaik-abdul-ammar</a>';
+            } else if (main.startsWith('audio') || main.startsWith('sound')) {
+                toggleAudio();
+                response = `Audio synthesizer is now <span class="text-white font-bold">${soundEnabled ? 'ONLINE' : 'MUTED'}</span>.`;
+            } else if (main === 'matrix') {
+                response = '<span class="text-emerald-400 font-bold">01010111 01000001 01010010 01010000 // QUANTUM CORE ENGAGED: AMMAN_OS OPERATING AT 100% COHERENCE.</span>';
+            } else if (main === 'fullscreen' || main === 'full') {
+                toggleTerminalFullscreen();
+                response = `<span class="text-emerald-400 font-bold">// Terminal switched to ${isTerminalFullscreen ? 'FULLSCREEN' : 'STANDARD'} mode.</span>`;
+            } else if (main === 'exit' || main === 'quit') {
+                if (isTerminalFullscreen) {
+                    toggleTerminalFullscreen();
+                    response = '<span class="text-slate-400">// Exited fullscreen mode.</span>';
+                } else {
+                    response = '<span class="text-slate-400">// AMMAN_OS session active. Click [FULLSCREEN] or type <span class="text-white font-bold">fullscreen</span> to maximize.</span>';
+                }
             } else {
-                response = `Command not recognized: "${cmd}". Type <span class="text-white font-bold">help</span> for valid commands.`;
+                response = `bash: ${safeInput}: command not found. Type <span class="text-white font-bold">help</span>, <span class="text-white font-bold">whoami</span>, <span class="text-white font-bold">ls -la</span>, or <span class="text-white font-bold">tree</span>.`;
                 isError = true;
             }
 
             playSciFiSound(isError ? 'error' : 'execute');
 
-            output.innerHTML += `<p class="text-emerald-400">${response}</p>`;
+            output.innerHTML += `<div class="${isError ? 'text-red-400' : 'text-slate-200'}">${response}</div>`;
             output.scrollTop = output.scrollHeight;
         }
 
@@ -867,10 +1826,57 @@ git push -u origin main</div>
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Close modal on Escape key
+        // Scroll-to-Top Button Visibility & Smooth Scroll
+        const scrollBtn = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (!scrollBtn) return;
+            if (window.scrollY > 350) {
+                scrollBtn.classList.remove('hidden');
+            } else {
+                scrollBtn.classList.add('hidden');
+            }
+        }, { passive: true });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Active Section Scrollspy Navigation
+        const sections = document.querySelectorAll('main > section[id]');
+        const navLinks = document.querySelectorAll('#desktop-nav a.nav-link, #mobile-menu a.mobile-nav-link');
+
+        function updateScrollspy() {
+            const scrollY = window.pageYOffset;
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 120;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('data-target') === sectionId) {
+                            link.classList.add('text-[#00f0ff]', 'border-[#00f0ff]');
+                            link.classList.remove('border-transparent');
+                        } else {
+                            link.classList.remove('text-[#00f0ff]', 'border-[#00f0ff]');
+                            link.classList.add('border-transparent');
+                        }
+                    });
+                }
+            });
+        }
+        window.addEventListener('scroll', updateScrollspy, { passive: true });
+        updateScrollspy();
+
+        // Close modal or exit terminal fullscreen on Escape key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeModal('deploy-modal');
+                if (isTerminalFullscreen) {
+                    toggleTerminalFullscreen();
+                    return;
+                }
+                closeModal('resume-modal');
+                closeModal('comms-modal');
                 closeMobileMenu();
                 playSciFiSound('modal-close');
             }
