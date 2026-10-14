@@ -8,4 +8,5 @@ npm-debug.log*
 # Source documents & generator scripts
 *.docx
 generate_pdf.py
-resume_template.html
+resume_template.html
+temp_check.js

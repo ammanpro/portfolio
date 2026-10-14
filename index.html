@@ -56,10 +56,10 @@
     <link href="./output.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Orbitron & Inter -->
+    <!-- Google Fonts: Outfit, Plus Jakarta Sans, Space Grotesk, JetBrains Mono, Orbitron & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -101,14 +101,66 @@
         }
         .hud-btn {
             clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, border-color 0.15s ease;
+            will-change: transform;
+            transform: translateY(0);
         }
         .hud-btn:hover {
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
         .hud-btn:active {
             transform: translateY(1px);
+        }
+
+        /* Fluid Hover Animation for Nav Links, Cards & Badges */
+        .nav-link {
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.15s ease, border-color 0.15s ease;
+            will-change: transform;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+        div[role="button"].hud-panel,
+        div[data-sfx="click"].hud-panel,
+        div[role="button"].hud-panel-violet,
+        div[data-sfx="click"].hud-panel-violet,
+        div[role="button"].bg-obsidian\/85,
+        div[data-sfx="click"].bg-obsidian\/85 {
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        div[role="button"].hud-panel:hover,
+        div[data-sfx="click"].hud-panel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.35);
+            border-color: rgba(0, 240, 255, 0.8) !important;
+        }
+        div[role="button"].hud-panel-violet:hover,
+        div[data-sfx="click"].hud-panel-violet:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.4);
+            border-color: rgba(168, 85, 247, 0.9) !important;
+        }
+        div[role="button"].bg-obsidian\/85:hover,
+        div[data-sfx="click"].bg-obsidian\/85:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.3);
+            border-color: rgba(0, 240, 255, 0.7) !important;
+        }
+        span.bg-obsidian {
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.15s ease, box-shadow 0.2s ease;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        span.bg-obsidian:hover {
+            transform: translateY(-2px);
+            border-color: #00f0ff !important;
+            box-shadow: 0 4px 12px rgba(0, 240, 255, 0.35);
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -138,6 +190,7 @@
         /* Fixed & Fullscreen Terminal Styles */
         .terminal-container {
             height: 520px;
+            scroll-margin-top: 5rem;
         }
         @media (min-width: 640px) {
             .terminal-container {
@@ -158,20 +211,620 @@
             display: flex !important;
             flex-direction: column !important;
             background: #050508 !important;
-            padding: 1rem 1.25rem !important;
+            padding: 0 !important;
             border: 2px solid #00f0ff !important;
             box-shadow: 0 0 50px rgba(0, 240, 255, 0.5), inset 0 0 30px rgba(0, 240, 255, 0.08) !important;
         }
-        @media (min-width: 640px) {
-            #terminal.terminal-fullscreen {
-                padding: 1.5rem 2rem !important;
-            }
-        }
-        #terminal.terminal-fullscreen #terminal-output {
+        #terminal.terminal-fullscreen #terminal-screen {
             flex: 1 1 0% !important;
             height: auto !important;
             max-height: none !important;
             min-height: 0 !important;
+        }
+
+        /* Authentic Linux Terminal Console & Monospace Typography */
+        #terminal-screen, #terminal-screen * {
+            font-family: Consolas, 'Fira Code', 'Roboto Mono', 'Courier New', monospace !important;
+        }
+        #terminal-screen {
+            background-color: #050508 !important;
+        }
+        #terminal-prompt-row {
+            display: flex !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+        #terminal-input {
+            background: transparent !important;
+            background-color: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            color: #ffffff !important;
+            font-family: Consolas, 'Fira Code', 'Roboto Mono', 'Courier New', monospace !important;
+            font-size: 12px !important;
+            line-height: 1.25 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            flex: 1 1 0% !important;
+            width: 100% !important;
+            caret-color: #00f0ff !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+        }
+        #terminal-input:focus {
+            outline: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        #terminal-input::placeholder {
+            color: rgba(148, 163, 184, 0.4) !important;
+        }
+
+        /* ========================================================
+           BATMAN & MARVEL SUPERHERO COMIC UNIVERSE THEME
+           Authentic Comic Paper Canvas, Storyboard Panels, Ink Outlines,
+           Batman Gold & Marvel Red Accents, Butter-Smooth Animations
+           ======================================================== */
+        body.theme-comic {
+            background-color: #f3efe6 !important;
+            background-image: 
+                radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(226, 54, 54, 0.05) 1.5px, #f3efe6 1.5px) !important;
+            background-size: 20px 20px, 20px 20px !important;
+            background-position: 0 0, 10px 10px !important;
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+            color: #111827 !important;
+        }
+
+        body.theme-comic.cyber-grid {
+            background-image: 
+                radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(226, 54, 54, 0.05) 1.5px, #f3efe6 1.5px) !important;
+        }
+
+        /* Typography: Heroic, Clean Geometric Comic Headline Fonts */
+        body.theme-comic .font-hud {
+            font-family: 'Outfit', 'Space Grotesk', sans-serif !important;
+            letter-spacing: 0.5px !important;
+            font-weight: 800 !important;
+        }
+        body.theme-comic .font-mono {
+            font-family: 'JetBrains Mono', Consolas, monospace !important;
+            font-weight: 600 !important;
+        }
+        body.theme-comic .font-sans {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+
+        /* Comic Book Header Banner */
+        body.theme-comic header {
+            background-color: #ffffff !important;
+            border-bottom: 3.5px solid #000000 !important;
+            box-shadow: 0 4px 0px #000000, 0 6px 0px #e23636 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        body.theme-comic header * {
+            color: #111827 !important;
+        }
+        body.theme-comic header .border-\[\#00f0ff\]\/30,
+        body.theme-comic header .border-\[\#00f0ff\]\/40,
+        body.theme-comic header .border-\[\#00f0ff\]\/20,
+        body.theme-comic header .border-violet-500\/40 {
+            border-color: #000000 !important;
+        }
+        body.theme-comic .nav-link {
+            font-family: 'Outfit', sans-serif !important;
+            letter-spacing: 0.5px !important;
+            font-size: 13.5px !important;
+            font-weight: 800 !important;
+            color: #111827 !important;
+            border-bottom: 3px solid transparent !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.15s ease, border-color 0.15s ease !important;
+            display: inline-block !important;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        body.theme-comic .nav-link:hover {
+            color: #e23636 !important;
+            transform: translateY(-2px) !important;
+            border-color: #e23636 !important;
+        }
+        body.theme-comic .nav-link.active-nav,
+        body.theme-comic .nav-link.text-\[\#00f0ff\] {
+            color: #e23636 !important;
+            border-color: #e23636 !important;
+        }
+
+        /* Storyboard Comic Panels: Crisp White Panels with 3.5px Ink Borders & Tactile 6px Shadows */
+        body.theme-comic .hud-panel {
+            background: #ffffff !important;
+            border: 3.5px solid #000000 !important;
+            box-shadow: 6px 6px 0px #000000 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            clip-path: none !important;
+            border-radius: 8px !important;
+            color: #111827 !important;
+        }
+
+        body.theme-comic .hud-panel-violet {
+            background: #ffffff !important;
+            border: 3.5px solid #000000 !important;
+            box-shadow: 6px 6px 0px #000000, 8px 8px 0px #e23636 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            clip-path: none !important;
+            border-radius: 8px !important;
+            color: #111827 !important;
+        }
+
+        body.theme-comic .hud-clip {
+            clip-path: none !important;
+            border-radius: 8px !important;
+        }
+
+        /* Inner Cards & Insets */
+        body.theme-comic .bg-obsidian,
+        body.theme-comic .bg-obsidian\/85,
+        body.theme-comic .bg-obsidian\/70,
+        body.theme-comic .bg-panel,
+        body.theme-comic .bg-panel\/60 {
+            background-color: #f8fafc !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 3px 3px 0px #000000 !important;
+            clip-path: none !important;
+            border-radius: 6px !important;
+            color: #111827 !important;
+        }
+
+        /* Section Borders */
+        body.theme-comic .border-\[\#00f0ff\]\/20,
+        body.theme-comic .border-\[\#00f0ff\]\/30,
+        body.theme-comic .border-\[\#00f0ff\]\/40,
+        body.theme-comic .border-violet-500\/20,
+        body.theme-comic .border-violet-500\/30,
+        body.theme-comic .border-violet-500\/40,
+        body.theme-comic .border-emerald-500\/20,
+        body.theme-comic .border-emerald-500\/30,
+        body.theme-comic .border-slate-700\/60,
+        body.theme-comic .border-slate-800 {
+            border-color: #000000 !important;
+        }
+
+        /* Headings: Batman Gold & Marvel Red Comic Book Typography */
+        body.theme-comic h1 {
+            font-family: 'Outfit', sans-serif !important;
+            color: #000000 !important;
+            font-weight: 900 !important;
+            font-size: clamp(2.4rem, 5vw, 4rem) !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.5px !important;
+            text-shadow: 3px 3px 0px #f59e0b, 5px 5px 0px #e23636 !important;
+        }
+        body.theme-comic h2 {
+            font-family: 'Outfit', sans-serif !important;
+            color: #000000 !important;
+            letter-spacing: 0.3px !important;
+            text-shadow: 2px 2px 0px #f59e0b !important;
+            font-size: 2rem !important;
+            font-weight: 900 !important;
+            line-height: 1.2 !important;
+        }
+        body.theme-comic h3 {
+            font-family: 'Outfit', sans-serif !important;
+            color: #000000 !important;
+            letter-spacing: 0.2px !important;
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            line-height: 1.3 !important;
+        }
+        body.theme-comic h4 {
+            font-family: 'Outfit', sans-serif !important;
+            color: #b91c1c !important;
+            letter-spacing: 0.2px !important;
+            font-weight: 800 !important;
+            font-size: 1.15rem !important;
+        }
+
+        /* Body Text: High-Contrast Ink On Comic Paper */
+        body.theme-comic p,
+        body.theme-comic li {
+            color: #1e293b !important;
+            line-height: 1.65 !important;
+            font-size: 15px !important;
+            font-weight: 400 !important;
+        }
+        body.theme-comic .text-slate-100,
+        body.theme-comic .text-slate-200,
+        body.theme-comic .text-slate-300 {
+            color: #1e293b !important;
+        }
+        body.theme-comic span.text-white,
+        body.theme-comic div.text-white,
+        body.theme-comic p.text-white {
+            color: #0f172a !important;
+        }
+        body.theme-comic .text-slate-400,
+        body.theme-comic .text-slate-500 {
+            color: #475569 !important;
+        }
+        body.theme-comic strong,
+        body.theme-comic b {
+            color: #b91c1c !important;
+            font-weight: 800 !important;
+        }
+
+        /* Comic Accent Callouts */
+        body.theme-comic .text-\[\#00f0ff\],
+        body.theme-comic [class*="text-[#00f0ff]"] {
+            color: #dc2626 !important;
+            font-weight: 800 !important;
+        }
+        body.theme-comic .text-violet-300,
+        body.theme-comic .text-violet-400 {
+            color: #7c3aed !important;
+            font-weight: 800 !important;
+        }
+        body.theme-comic .text-emerald-400 {
+            color: #059669 !important;
+            font-weight: 800 !important;
+        }
+
+        /* Batman Yellow Callout Badges */
+        body.theme-comic div[class*="bg-[#00f0ff]/10"] {
+            background-color: #fef08a !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 2px 2px 0px #000000 !important;
+            border-radius: 4px !important;
+            font-weight: 800 !important;
+        }
+        body.theme-comic div[class*="bg-[#00f0ff]/10"] * {
+            color: #000000 !important;
+        }
+
+        /* Tech Tags & Pills: Crisp, Tactile Superhero Badges */
+        body.theme-comic span.bg-obsidian {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 2px 2px 0px #000000 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.2px !important;
+            border-radius: 4px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease !important;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        body.theme-comic span.bg-obsidian:hover {
+            transform: translateY(-2px) !important;
+            background-color: #fef08a !important;
+            box-shadow: 3px 4px 0px #000000 !important;
+            color: #000000 !important;
+        }
+
+        /* Hero Avatar Badge: Batman Gotham Oval */
+        body.theme-comic [title="Agent Profile Badge"] {
+            background: #fef08a !important;
+            border: 3.5px solid #000000 !important;
+            box-shadow: 6px 6px 0px #000000 !important;
+            border-radius: 12px !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        body.theme-comic [title="Agent Profile Badge"]:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 8px 8px 0px #e23636, 12px 12px 0px #000000 !important;
+        }
+        body.theme-comic [title="Agent Profile Badge"] * {
+            color: #000000 !important;
+        }
+        body.theme-comic [title="Agent Profile Badge"] .text-4xl,
+        body.theme-comic [title="Agent Profile Badge"] .text-5xl {
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 900 !important;
+            font-size: 3rem !important;
+            line-height: 1 !important;
+            color: #000000 !important;
+            letter-spacing: 1px !important;
+            text-shadow: 2px 2px 0px #e23636 !important;
+        }
+
+        /* Interactive Card Hover Animation across all cards */
+        body.theme-comic .hud-panel[role="button"],
+        body.theme-comic .hud-panel[data-sfx],
+        body.theme-comic .hud-panel-violet[role="button"],
+        body.theme-comic .hud-panel-violet[data-sfx],
+        body.theme-comic .bg-obsidian\/85[role="button"],
+        body.theme-comic .bg-obsidian\/85[data-sfx],
+        body.theme-comic div[data-sfx="click"] {
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease !important;
+            will-change: transform, box-shadow;
+            transform: translateY(0);
+        }
+        body.theme-comic .hud-panel[role="button"]:hover,
+        body.theme-comic .hud-panel[data-sfx]:hover,
+        body.theme-comic .hud-panel-violet[role="button"]:hover,
+        body.theme-comic .hud-panel-violet[data-sfx]:hover,
+        body.theme-comic .bg-obsidian\/85[role="button"]:hover,
+        body.theme-comic .bg-obsidian\/85[data-sfx]:hover,
+        body.theme-comic div[data-sfx="click"]:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 8px 10px 0px #000000 !important;
+            border-color: #e23636 !important;
+        }
+
+        /* Buttons: Batman & Marvel Superhero Aesthetic */
+        body.theme-comic .hud-btn {
+            font-family: 'Outfit', sans-serif !important;
+            letter-spacing: 0.5px !important;
+            font-size: 13.5px !important;
+            font-weight: 800 !important;
+            border: 2.5px solid #000000 !important;
+            box-shadow: 4px 4px 0px #000000 !important;
+            clip-path: none !important;
+            border-radius: 6px !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, border-color 0.15s ease !important;
+            will-change: transform, box-shadow;
+            transform: translateY(0);
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        body.theme-comic .hud-btn:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 7px 0px #000000, 2px 7px 0px #e23636 !important;
+        }
+        body.theme-comic .hud-btn:active {
+            transform: translateY(1px) !important;
+            box-shadow: 0 2px 0px #000000 !important;
+        }
+
+        /* Batman Gold & Marvel Red Button variants */
+        body.theme-comic a.hud-btn[href*="history"] {
+            background-color: #f59e0b !important;
+            color: #000000 !important;
+            border-color: #000000 !important;
+        }
+        body.theme-comic button.hud-btn[onclick*="openModal('comms-modal')"] {
+            background-color: #e23636 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+        }
+        body.theme-comic button.hud-btn[onclick*="openModal('resume-modal')"] {
+            background-color: #1d4ed8 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+        }
+        body.theme-comic a.hud-btn[href*="github"],
+        body.theme-comic a.hud-btn[download] {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+            box-shadow: 4px 4px 0px #e23636 !important;
+        }
+        body.theme-comic a.hud-btn[href*="mailto"] {
+            background-color: #f59e0b !important;
+            color: #000000 !important;
+            border-color: #000000 !important;
+        }
+        body.theme-comic button#theme-btn {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 3px 3px 0px #000000 !important;
+        }
+        body.theme-comic button#theme-btn * {
+            color: #000000 !important;
+        }
+        body.theme-comic button#audio-toggle {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 3px 3px 0px #000000 !important;
+        }
+        body.theme-comic button#audio-toggle * {
+            color: #000000 !important;
+        }
+
+        /* Comic Terminal: Batcave / Gotham Lab Console */
+        body.theme-comic #terminal {
+            background-color: #ffffff !important;
+            border: 3.5px solid #000000 !important;
+            box-shadow: 6px 6px 0px #000000 !important;
+            border-radius: 8px !important;
+        }
+        body.theme-comic #terminal > div:first-child {
+            background-color: #111827 !important;
+            border-bottom: 2px solid #000000 !important;
+            color: #f8fafc !important;
+        }
+        body.theme-comic #terminal > div:first-child * {
+            color: #f8fafc !important;
+        }
+        body.theme-comic #terminal > div:first-child button {
+            background-color: #f59e0b !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 2px 2px 0px #000000 !important;
+            border-radius: 4px !important;
+            transition: transform 0.15s ease, background-color 0.15s ease !important;
+        }
+        body.theme-comic #terminal > div:first-child button * {
+            color: #000000 !important;
+        }
+        body.theme-comic #terminal > div:first-child button:hover {
+            background-color: #e23636 !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+        }
+        body.theme-comic #terminal > div:first-child button:hover * {
+            color: #ffffff !important;
+        }
+        body.theme-comic #terminal-screen {
+            background-color: #0a0b10 !important;
+            color: #f8fafc !important;
+            border-left: 2px solid #000 !important;
+            border-right: 2px solid #000 !important;
+        }
+        body.theme-comic #terminal-screen,
+        body.theme-comic #terminal-screen * {
+            font-family: 'JetBrains Mono', Consolas, 'Fira Code', monospace !important;
+        }
+        body.theme-comic #terminal-screen .text-slate-400,
+        body.theme-comic #terminal-screen .text-slate-500,
+        body.theme-comic #terminal-screen .text-slate-300 {
+            color: #cbd5e1 !important;
+        }
+        body.theme-comic #terminal-screen .text-white {
+            color: #ffffff !important;
+        }
+        body.theme-comic #terminal-screen .text-\[\#00f0ff\] {
+            color: #38bdf8 !important;
+        }
+        body.theme-comic #terminal-screen .text-emerald-400 {
+            color: #4ade80 !important;
+        }
+        body.theme-comic #terminal-input {
+            color: #facc15 !important;
+            font-family: 'JetBrains Mono', Consolas, monospace !important;
+            font-weight: 700 !important;
+        }
+        body.theme-comic #terminal > div:last-child {
+            background-color: #111827 !important;
+            border-top: 2px solid #000000 !important;
+            color: #cbd5e1 !important;
+        }
+        body.theme-comic #terminal > div:last-child * {
+            color: #cbd5e1 !important;
+        }
+        body.theme-comic #terminal > div:last-child .text-emerald-400 {
+            color: #4ade80 !important;
+        }
+        body.theme-comic #terminal > div:last-child .text-\[\#00f0ff\] {
+            color: #facc15 !important;
+        }
+
+        /* Comic Modals */
+        body.theme-comic .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.75) !important;
+        }
+        body.theme-comic .modal-backdrop .hud-panel {
+            background-color: #ffffff !important;
+            border: 3.5px solid #000000 !important;
+            box-shadow: 8px 8px 0px #000000 !important;
+            color: #111827 !important;
+        }
+        body.theme-comic .modal-backdrop .hud-panel h3 {
+            color: #000000 !important;
+        }
+        body.theme-comic .modal-backdrop .hud-panel p {
+            color: #334155 !important;
+        }
+        body.theme-comic .modal-backdrop button[aria-label="Close modal"] {
+            background-color: #e23636 !important;
+            color: #ffffff !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 2px 2px 0px #000000 !important;
+            border-radius: 4px !important;
+            padding: 4px 8px !important;
+        }
+
+        /* High-Contrast Theme Modal Cards in Comic Mode */
+        body.theme-comic #theme-card-cyber {
+            background: #090a16 !important;
+            border: 2px solid #00f0ff !important;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25) !important;
+            border-radius: 8px !important;
+        }
+        body.theme-comic #theme-card-cyber h4 {
+            color: #ffffff !important;
+            text-shadow: none !important;
+        }
+        body.theme-comic #theme-card-cyber p,
+        body.theme-comic #theme-card-cyber li,
+        body.theme-comic #theme-card-cyber span {
+            color: #cbd5e1 !important;
+        }
+        body.theme-comic #theme-card-cyber .text-\[\#00f0ff\],
+        body.theme-comic #theme-card-cyber i.fa-circle-check,
+        body.theme-comic #theme-card-cyber i.fa-microchip {
+            color: #00f0ff !important;
+        }
+        body.theme-comic #theme-card-cyber #badge-cyber {
+            background: #10b981 !important;
+            color: #000000 !important;
+        }
+        body.theme-comic #theme-card-cyber button {
+            background: rgba(0, 240, 255, 0.15) !important;
+            border: 1.5px solid #00f0ff !important;
+            color: #00f0ff !important;
+        }
+
+        body.theme-comic #theme-card-comic {
+            background-color: #ffffff !important;
+            border: 3.5px solid #000000 !important;
+            box-shadow: 6px 6px 0px #000000 !important;
+            border-radius: 8px !important;
+        }
+        body.theme-comic #theme-card-comic h4 {
+            color: #000000 !important;
+            text-shadow: 2px 2px 0px #f59e0b, 3px 3px 0px #e23636 !important;
+        }
+        body.theme-comic #theme-card-comic p,
+        body.theme-comic #theme-card-comic li {
+            color: #1e293b !important;
+        }
+        body.theme-comic #theme-card-comic i.fa-circle-check {
+            color: #f59e0b !important;
+        }
+        body.theme-comic #theme-card-comic button {
+            background-color: #f59e0b !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            box-shadow: 3px 3px 0px #000000 !important;
+        }
+
+        /* Comic Footer */
+        body.theme-comic footer {
+            background-color: #ffffff !important;
+            border-top: 3.5px solid #000000 !important;
+            box-shadow: 0 -4px 0px #000000 !important;
+            color: #1e293b !important;
+        }
+        body.theme-comic footer * {
+            color: #1e293b !important;
+        }
+        body.theme-comic footer .font-hud {
+            color: #e23636 !important;
+        }
+        body.theme-comic footer a:hover {
+            color: #e23636 !important;
+        }
+
+        /* Comic Scroll-to-Top Button */
+        body.theme-comic #scroll-to-top {
+            background-color: #f59e0b !important;
+            color: #000000 !important;
+            border: 2.5px solid #000000 !important;
+            box-shadow: 3px 3px 0px #000000 !important;
+        }
+
+        /* Mobile Menu in Comic Mode */
+        body.theme-comic #mobile-menu {
+            background-color: #ffffff !important;
+            border-top: 3px solid #000000 !important;
+        }
+        body.theme-comic #mobile-menu * {
+            color: #111827 !important;
         }
     </style>
 </head>
@@ -203,6 +856,12 @@
 
             <!-- Action Utilities & Mobile Toggle -->
             <div class="flex items-center space-x-2 sm:space-x-3">
+                <!-- Theme Switcher Button (Opens Theme Cards Modal) -->
+                <button onclick="openModal('theme-modal')" id="theme-btn" data-sfx="modal-open" title="Choose Visual Universe Theme" aria-label="Choose Profile Theme" class="hud-btn px-2.5 sm:px-3 py-1.5 sm:py-2 bg-panel border border-amber-400/50 text-amber-300 text-[11px] sm:text-xs font-hud hover:bg-amber-400 hover:text-black transition flex items-center gap-1.5 font-bold">
+                    <i class="fa-solid fa-palette text-amber-400"></i>
+                    <span class="hidden xs:inline" id="theme-btn-text">THEME</span>
+                </button>
+
                 <!-- SFX Toggle with Equalizer Wave -->
                 <button onclick="toggleAudio()" id="audio-toggle" data-sfx="none" title="Toggle Sound Effects" aria-label="Toggle Sound Effects" class="hud-btn px-2.5 sm:px-3 py-1.5 sm:py-2 bg-panel border border-violet-500/40 text-violet-400 text-[11px] sm:text-xs font-hud hover:bg-violet-950/40 transition flex items-center">
                     <i id="audio-icon" class="fa-solid fa-volume-high"></i>
@@ -249,6 +908,9 @@
                 <span class="text-[#00f0ff] mr-2">// 05</span> COMMAND TERMINAL
             </a>
             <div class="pt-2 flex flex-col gap-2">
+                <button onclick="closeMobileMenu(); openModal('theme-modal')" data-sfx="modal-open" class="hud-btn w-full py-2.5 bg-amber-400 text-black font-bold text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-palette"></i> CHOOSE VISUAL THEME
+                </button>
                 <a href="https://github.com/ammanpro" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" data-sfx="click" class="hud-btn w-full py-2.5 bg-emerald-500 text-black font-bold text-center flex items-center justify-center">
                     <i class="fab fa-github mr-2"></i> GITHUB PROFILE
                 </a>
@@ -537,60 +1199,93 @@
         </section>
 
         <!-- INTERACTIVE CLI TERMINAL -->
-        <section id="terminal" class="hud-panel hud-clip p-4 xs:p-5 sm:p-7 space-y-3.5 terminal-container flex flex-col justify-between transition-all" onclick="focusTerminalInput(event)">
-            <!-- Terminal Header with Fullscreen & Controls -->
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#00f0ff]/20 pb-3 shrink-0">
-                <div class="flex items-center space-x-2 font-hud text-xs text-[#00f0ff]">
-                    <i class="fa-solid fa-terminal"></i>
-                    <span>COMMAND_CONSOLE // AMMAN_OS v4.2 (GNU/Linux)</span>
+        <section id="terminal" class="hud-panel p-0 terminal-container flex flex-col transition-all overflow-hidden border border-[#00f0ff]/30 shadow-2xl relative" style="scroll-margin-top: 5rem;" onclick="focusTerminalInput(event)">
+            <!-- Terminal Header / Titlebar -->
+            <div class="bg-[#0b0c16] border-b border-[#00f0ff]/20 px-3.5 sm:px-5 py-2.5 flex items-center justify-between shrink-0 select-none">
+                <!-- Window Controls (Red, Yellow, Green traffic lights) & Host Path -->
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-1.5" aria-hidden="true">
+                        <span class="w-3 h-3 rounded-full bg-[#ff5f56] inline-block hover:opacity-80 transition cursor-pointer" onclick="runQuickCmd('clear')" title="Clear Screen"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block hover:opacity-80 transition cursor-pointer" onclick="toggleTerminalFullscreen()" title="Minimize / Restore"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#27c93f] inline-block hover:opacity-80 transition cursor-pointer" onclick="toggleTerminalFullscreen()" title="Maximize / Fullscreen"></span>
+                    </div>
+                    <div class="font-mono text-xs text-slate-300 font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-terminal text-[#00f0ff] text-[11px]"></i>
+                        <span class="text-white">ammar@amman-os</span><span class="text-slate-500">:</span><span class="text-[#00f0ff]">~/portfolio</span>
+                        <span class="text-slate-500 text-[11px] hidden sm:inline">&mdash; bash</span>
+                    </div>
                 </div>
+
+                <!-- Right Window Actions (Fullscreen & Clear) -->
                 <div class="flex items-center space-x-2">
-                    <span class="hidden sm:inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-1 border border-emerald-500/30">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        BASH 5.2 ONLINE
-                    </span>
-                    <!-- Fullscreen Toggle Button -->
-                    <button onclick="toggleTerminalFullscreen()" id="terminal-fullscreen-btn" data-sfx="execute" title="Toggle Fullscreen Terminal (Esc to exit)" class="hud-btn px-2.5 py-1 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition flex items-center gap-1.5 text-xs font-hud font-bold">
+                    <button onclick="toggleTerminalFullscreen()" id="terminal-fullscreen-btn" data-sfx="execute" title="Toggle Fullscreen Terminal (Esc to exit)" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/40 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition flex items-center gap-1.5 text-xs font-hud font-bold">
                         <i id="terminal-fullscreen-icon" class="fa-solid fa-expand"></i>
                         <span id="terminal-fullscreen-text" class="hidden xs:inline">FULLSCREEN</span>
                     </button>
-                    <!-- Quick Clear Button -->
-                    <button onclick="runQuickCmd('clear')" data-sfx="execute" title="Clear Terminal Output" class="hud-btn p-1.5 px-2 bg-panel border border-slate-700 text-slate-300 hover:text-white hover:border-slate-500 transition text-xs">
+                    <button onclick="runQuickCmd('clear')" data-sfx="execute" title="Clear Screen (Ctrl+L)" class="p-1 px-2 bg-panel border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition text-xs">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Terminal Output Window (Fixed size, auto-scrollable) -->
-            <div id="terminal-output" class="bg-obsidian p-3.5 sm:p-4 border border-[#00f0ff]/20 font-mono text-xs text-[#00f0ff] flex-1 min-h-0 overflow-y-auto space-y-2 shadow-inner cursor-text" role="log" aria-live="polite" aria-atomic="false">
-                <p class="text-slate-400">// AMMAN_OS Linux 6.8.0-generic (x86_64) &bull; Bash shell environment initialized.</p>
-                <p class="text-slate-400">// Type <span class="text-white font-bold">help</span>, <span class="text-white font-bold">whoami</span>, <span class="text-white font-bold">ls -la</span>, or <span class="text-white font-bold">tree</span> to explore filesystem.</p>
-                <p class="text-emerald-400">> System Ready. Logged in as: <strong class="text-white">ammar@amman-os:~/portfolio$</strong></p>
+            <!-- Terminal Screen: Scrollable Screen Buffer containing Output & Prompt Inside -->
+            <div id="terminal-screen" class="bg-[#050508] p-3.5 sm:p-5 flex-1 min-h-0 overflow-y-auto font-mono text-xs text-[#00f0ff] space-y-2 cursor-text" role="log" aria-live="polite" onclick="focusTerminalInput(event)">
+                <!-- Terminal Output Buffer -->
+                <div id="terminal-output" class="space-y-2">
+                    <div class="space-y-1.5 pb-2 text-xs font-mono">
+                        <div class="text-slate-200">
+                            <span class="text-[#00f0ff] font-bold">Linux amman-os 6.8.0-generic</span> (x86_64) &mdash; GNU bash, version 5.2.21(1)-release
+                        </div>
+                        <div class="text-slate-400 text-[11px]">
+                            * Host: <span class="text-white font-bold">ammar@amman-os</span> &bull; Shaik Abdul Ammar (Software Developer Intern @ Infer Labs)
+                        </div>
+                        <div class="text-slate-400 text-[11px]">
+                            * Operational Base: Hyderabad, India &bull; Stack: Python, FastAPI, React, PostgreSQL, AWS
+                        </div>
+                        <div class="pt-2 text-slate-300 text-xs">
+                            <div class="text-emerald-400 font-bold mb-1">Available commands:</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1 text-[11px] font-mono">
+                                <div><span onclick="runQuickCmd('whoami')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">whoami</span> <span class="text-slate-500">- print user & role</span></div>
+                                <div><span onclick="runQuickCmd('ls -la')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">ls -la</span> <span class="text-slate-500">- list directory files</span></div>
+                                <div><span onclick="runQuickCmd('tree')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">tree</span> <span class="text-slate-500">- visual directory tree</span></div>
+                                <div><span onclick="runQuickCmd('vim about.txt')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">vim &lt;file&gt;</span> <span class="text-slate-500">- inspect in Vim editor (:q)</span></div>
+                                <div><span onclick="runQuickCmd('cat about.txt')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">cat about.txt</span> <span class="text-slate-500">- developer bio</span></div>
+                                <div><span onclick="runQuickCmd('cat experience')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">cat experience</span> <span class="text-slate-500">- Infer Labs work history</span></div>
+                                <div><span onclick="runQuickCmd('cat projects')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">cat projects</span> <span class="text-slate-500">- iNexus enterprise suite</span></div>
+                                <div><span onclick="runQuickCmd('cat education.txt')" class="text-[#00f0ff] font-bold hover:underline cursor-pointer">cat education.txt</span> <span class="text-slate-500">- education & interests</span></div>
+                                <div><span onclick="runQuickCmd('cat resume.pdf')" class="text-amber-300 font-bold hover:underline cursor-pointer">cat resume.pdf</span> <span class="text-slate-500">- view / download resume</span></div>
+                                <div><span onclick="runQuickCmd('./contact.sh')" class="text-emerald-400 font-bold hover:underline cursor-pointer">./contact.sh</span> <span class="text-slate-500">- execute comms script</span></div>
+                                <div><span onclick="runQuickCmd('help')" class="text-cyan-300 font-bold hover:underline cursor-pointer">help</span> <span class="text-slate-500">- list all commands</span></div>
+                                <div><span onclick="runQuickCmd('clear')" class="text-slate-400 font-bold hover:underline cursor-pointer">clear</span> <span class="text-slate-500">- clear terminal window</span></div>
+                            </div>
+                        </div>
+                        <div class="text-[11px] text-slate-500 pt-1.5">
+                            Type any command above or use [Tab] for autocomplete.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Bash Prompt Line INSIDE the terminal screen buffer -->
+                <div id="terminal-prompt-row" class="flex items-center font-mono text-xs text-white pt-1">
+                    <span class="text-emerald-400 font-bold select-none shrink-0 mr-1.5">ammar@amman-os:~/portfolio$</span>
+                    <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" autocomplete="off" spellcheck="false" class="flex-1 text-white font-mono text-xs caret-[#00f0ff]" placeholder="" aria-label="Terminal Bash Command Input">
+                </div>
             </div>
 
-            <!-- Quick Command Chips for Touch/Mobile Devices -->
-            <div class="flex flex-wrap items-center gap-1.5 pt-0.5 text-[11px] font-mono shrink-0">
-                <span class="text-slate-400 mr-1 hidden xs:inline text-xs">LINUX_CHIPS:</span>
-                <button onclick="runQuickCmd('whoami')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">whoami</button>
-                <button onclick="runQuickCmd('ls -la')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-[#00f0ff]/30 text-[#00f0ff] hover:bg-[#00f0ff]/20 transition rounded-none hud-clip">ls -la</button>
-                <button onclick="runQuickCmd('tree')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40 transition rounded-none hud-clip">tree</button>
-                <button onclick="runQuickCmd('cat about.txt')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-violet-500/40 text-violet-300 hover:bg-violet-950/40 transition rounded-none hud-clip">cat about.txt</button>
-                <button onclick="runQuickCmd('cat experience')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-violet-500/40 text-violet-300 hover:bg-violet-950/40 transition rounded-none hud-clip">cat experience</button>
-                <button onclick="runQuickCmd('cat projects')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40 transition rounded-none hud-clip">cat projects</button>
-                <button onclick="runQuickCmd('cat education.txt')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition rounded-none hud-clip">cat education.txt</button>
-                <button onclick="runQuickCmd('cat resume.pdf')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-amber-500/40 text-amber-300 hover:bg-amber-950/40 transition rounded-none hud-clip">cat resume.pdf</button>
-                <button onclick="runQuickCmd('./contact.sh')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition rounded-none hud-clip">./contact.sh</button>
-                <button onclick="runQuickCmd('clear')" data-sfx="execute" class="px-2.5 py-1 bg-panel border border-slate-700 text-slate-400 hover:text-white transition rounded-none hud-clip">clear</button>
-            </div>
-
-            <!-- Input Row -->
-            <div class="flex gap-2 items-center shrink-0 pt-0.5">
-                <span class="text-emerald-400 font-mono text-xs pl-1 font-bold shrink-0 hidden xs:inline">ammar@amman-os:~$</span>
-                <span class="text-[#00f0ff] font-mono text-sm pl-1 xs:hidden font-bold shrink-0">></span>
-                <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" placeholder="Type Linux command (whoami, ls -la, tree, cat about.txt, cat resume.pdf)..." aria-label="Terminal Linux Command Input" autocomplete="off" spellcheck="false" class="flex-1 bg-obsidian border border-[#00f0ff]/30 px-3 sm:px-4 py-2.5 font-mono text-xs text-white focus:outline-none focus:border-[#00f0ff] hud-clip">
-                <button onclick="executeCommandBtn()" data-sfx="execute" aria-label="Execute command" class="hud-btn px-4 sm:px-6 py-2.5 bg-[#00f0ff] text-black font-hud text-xs font-bold hover:bg-[#00f0ff]/90 transition shrink-0 min-h-[40px]">
-                    EXECUTE
-                </button>
+            <!-- Authentic Terminal Bottom Bar -->
+            <div class="bg-[#090a14] border-t border-[#00f0ff]/15 px-3.5 sm:px-5 py-1.5 flex items-center justify-between text-[11px] font-mono text-slate-400 shrink-0 select-none">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <span class="flex items-center gap-1.5 text-emerald-400 font-bold">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        ONLINE
+                    </span>
+                    <span class="text-slate-600 hidden xs:inline">|</span>
+                    <span class="text-slate-400 hidden xs:inline">bash 5.2</span>
+                </div>
+                <div class="flex items-center gap-3 text-slate-400">
+                    <span class="hidden sm:inline text-slate-500">[Tab] autocomplete &bull; [&uarr;&darr;] history</span>
+                    <span class="text-[#00f0ff]">UTF-8</span>
+                </div>
             </div>
         </section>
 
@@ -644,6 +1339,134 @@
     <button id="scroll-to-top" onclick="scrollToTop()" data-sfx="nav" aria-label="Return to top" class="hidden fixed bottom-6 right-6 z-40 hud-btn px-3 py-2.5 bg-panel border border-[#00f0ff]/50 text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition shadow-2xl font-hud text-xs flex items-center gap-1.5">
         <i class="fa-solid fa-chevron-up text-xs"></i> <span class="hidden xs:inline">TOP</span>
     </button>
+
+    <!-- THEME SELECTION MODAL (CARDS OVERLAY) -->
+    <div id="theme-modal" class="modal-backdrop hidden fixed inset-0 bg-[#050508]/90 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="theme-modal-title" onclick="handleBackdropClick(event, 'theme-modal')">
+        <div class="hud-panel hud-clip max-w-4xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-6 border-[#00f0ff]/50 shadow-2xl relative">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-3">
+                <div class="flex items-center space-x-2.5">
+                    <span class="w-3 h-3 bg-amber-400 rounded-full animate-ping"></span>
+                    <h3 id="theme-modal-title" class="font-hud text-base sm:text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-palette text-amber-400"></i> VISUAL UNIVERSE // SELECT THEME
+                    </h3>
+                </div>
+                <button onclick="closeModal('theme-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-2 -mr-2 text-slate-400 hover:text-white transition">
+                    <i class="fas fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Subtitle -->
+            <p class="text-xs text-slate-300 font-mono">
+                Select an aesthetic universe for the portfolio. All data, experience, projects, and Linux terminal features stay 100% intact &mdash; while the complete visual styling, typography, and sound effects transform instantly!
+            </p>
+
+            <!-- THEME CARDS GRID (NOT a dropdown, but interactive cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                
+                <!-- CARD 1: CYBER HUD (Sci-Fi Gaming) -->
+                <div id="theme-card-cyber" onclick="setTheme('cyber')" class="theme-card relative p-6 rounded-lg cursor-pointer transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between group" style="background: #090a16; border: 2px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);">
+                    <div class="space-y-4">
+                        <!-- Card Header & Badge -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono px-2.5 py-1 rounded font-bold uppercase tracking-wider" style="background: rgba(0, 240, 255, 0.12); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4);">
+                                // 01. ORIGINAL SCI-FI
+                            </span>
+                            <span id="badge-cyber" class="theme-active-badge text-[11px] font-hud px-2.5 py-0.5 rounded font-bold flex items-center gap-1.5" style="background: #10b981; color: #000;">
+                                <i class="fa-solid fa-check"></i> ACTIVE
+                            </span>
+                        </div>
+
+                        <!-- Theme Title -->
+                        <div>
+                            <h4 class="font-hud text-xl font-bold text-white group-hover:text-[#00f0ff] transition flex items-center gap-2">
+                                <i class="fa-solid fa-microchip text-[#00f0ff]"></i> CYBER HUD
+                            </h4>
+                            <p class="text-xs text-slate-300 font-sans mt-0.5">AAA Gaming & Sci-Fi Control Deck</p>
+                        </div>
+
+                        <!-- Visual Card Preview Simulation -->
+                        <div class="p-3.5 rounded space-y-2 font-mono text-[11px] cyber-grid relative overflow-hidden" style="background: #04050a; border: 1px solid rgba(0, 240, 255, 0.4);">
+                            <div class="flex items-center justify-between text-[#00f0ff] font-hud text-[11px]">
+                                <span>AGENT_ID: AMMAR</span>
+                                <span class="text-emerald-400">LVL_20</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full w-3/4" style="background: linear-gradient(90deg, #00f0ff, #8b5cf6);"></div>
+                            </div>
+                            <div class="text-[10px] text-slate-300 font-sans flex items-center justify-between pt-0.5">
+                                <span class="text-slate-200">Orbitron Font</span>
+                                <span class="text-violet-300 font-mono">Laser SFX</span>
+                            </div>
+                        </div>
+
+                        <!-- Feature List -->
+                        <ul class="text-[11px] text-slate-300 space-y-1.5 font-mono">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[#00f0ff] text-[11px]"></i> Neon cyan holographic HUD & aerospace styling</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[#00f0ff] text-[11px]"></i> Orbitron futuristic aerospace typography</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[#00f0ff] text-[11px]"></i> Synthesizer laser & telemetry sound FX</li>
+                        </ul>
+                    </div>
+
+                    <!-- Activate Button -->
+                    <button type="button" class="mt-5 w-full py-2.5 font-hud font-bold text-xs rounded transition uppercase tracking-wider flex items-center justify-center gap-2" style="background: rgba(0, 240, 255, 0.15); border: 1px solid #00f0ff; color: #00f0ff;">
+                        <i class="fa-solid fa-terminal text-[11px]"></i> ENGAGE CYBER HUD
+                    </button>
+                </div>
+
+                <!-- CARD 2: COMIC UNIVERSE (Dark Graphic Novel / Comic Noir) -->
+                <div id="theme-card-comic" onclick="setTheme('comic')" class="theme-card relative p-6 rounded-lg cursor-pointer transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between group" style="background: #141624; border: 2px solid rgba(100, 116, 139, 0.4); box-shadow: 4px 4px 0px #000;">
+                    <div class="space-y-4">
+                        <!-- Card Header & Badge -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono px-2.5 py-1 rounded font-bold uppercase tracking-wider" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">
+                                // 02. NEW UNIVERSE
+                            </span>
+                            <span id="badge-comic" class="theme-active-badge hidden text-[11px] font-hud px-2.5 py-0.5 rounded font-bold flex items-center gap-1.5" style="background: #fbbf24; color: #000;">
+                                <i class="fa-solid fa-check"></i> ACTIVE
+                            </span>
+                        </div>
+
+                        <!-- Theme Title -->
+                        <div>
+                            <h4 class="font-hud text-xl font-bold text-white group-hover:text-amber-300 transition flex items-center gap-2">
+                                <i class="fa-solid fa-mask" style="color: #f59e0b;"></i> BATMAN & MARVEL COMIC
+                            </h4>
+                            <p class="text-xs text-slate-300 font-sans mt-0.5">Classic Superhero Comic Book & Action Edition</p>
+                        </div>
+
+                        <!-- Visual Card Preview Simulation -->
+                        <div class="p-3.5 rounded space-y-2 font-mono text-[11px] relative overflow-hidden" style="background: #f3efe6; border: 2.5px solid #000; box-shadow: 4px 4px 0px #000;">
+                            <div class="flex items-center justify-between font-bold text-[14px]" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.5px; color: #111827; text-shadow: 1px 1px 0px #f59e0b;">
+                                <span>AMMAR: HERO // INFER LABS</span>
+                                <span class="text-white px-2 py-0.5 text-[10px] font-bold" style="background: #e23636; border: 1.5px solid #000; border-radius: 3px;">ACTION!</span>
+                            </div>
+                            <div class="h-2 w-full bg-black border overflow-hidden" style="border-color: #000;">
+                                <div class="h-full w-4/5" style="background: linear-gradient(90deg, #f59e0b, #e23636);"></div>
+                            </div>
+                            <div class="text-[11px] font-sans flex items-center justify-between pt-0.5" style="color: #111827;">
+                                <span class="font-bold" style="font-family: 'Outfit', sans-serif;">Outfit & Jakarta Sans</span>
+                                <span style="color: #e23636; font-weight: bold;">Cartoon Pop SFX</span>
+                            </div>
+                        </div>
+
+                        <!-- Feature List -->
+                        <ul class="text-[11px] text-slate-300 space-y-1.5 font-mono">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[11px]" style="color: #f59e0b;"></i> Authentic comic book paper canvas & halftone printing dots</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[11px]" style="color: #f59e0b;"></i> White storyboard panels with bold black ink outlines & 3D drop-shadows</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[11px]" style="color: #f59e0b;"></i> Batman Gold & Marvel Red hero accents, Batcave terminal console</li>
+                        </ul>
+                    </div>
+
+                    <!-- Activate Button -->
+                    <button type="button" class="mt-5 w-full py-2.5 font-bold text-xs rounded transition uppercase tracking-wider flex items-center justify-center gap-2" style="background: #f59e0b; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0px #000; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px; font-size: 13px;">
+                        <i class="fa-solid fa-bolt text-[12px]"></i> UNLEASH COMIC THEME
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- RESUME / TACTICAL DOSSIER MODAL -->
     <div id="resume-modal" class="modal-backdrop hidden fixed inset-0 bg-[#050508]/85 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" onclick="handleBackdropClick(event, 'resume-modal')">
@@ -934,6 +1757,199 @@
             }
         } catch(e) {}
 
+        // Visual Universe Theme Manager
+        let currentTheme = 'cyber';
+        try {
+            const savedTheme = localStorage.getItem('portfolio_theme');
+            if (savedTheme === 'comic' || savedTheme === 'cyber') {
+                currentTheme = savedTheme;
+            }
+        } catch(e) {}
+
+        function setTheme(theme, playAudio = true) {
+            currentTheme = (theme === 'comic') ? 'comic' : 'cyber';
+            try {
+                localStorage.setItem('portfolio_theme', currentTheme);
+            } catch(e) {}
+
+            const body = document.body;
+            const badgeCyber = document.getElementById('badge-cyber');
+            const badgeComic = document.getElementById('badge-comic');
+            const cardCyber = document.getElementById('theme-card-cyber');
+            const cardComic = document.getElementById('theme-card-comic');
+            const themeBtnText = document.getElementById('theme-btn-text');
+
+            if (currentTheme === 'comic') {
+                body.classList.add('theme-comic');
+                if (badgeCyber) badgeCyber.classList.add('hidden');
+                if (badgeComic) badgeComic.classList.remove('hidden');
+                if (cardCyber) {
+                    cardCyber.style.borderColor = '';
+                    cardCyber.style.boxShadow = '';
+                }
+                if (cardComic) {
+                    cardComic.style.borderColor = '';
+                    cardComic.style.boxShadow = '';
+                }
+                if (themeBtnText) themeBtnText.innerText = 'COMIC';
+                if (playAudio) playComicSound('modal-open');
+            } else {
+                body.classList.remove('theme-comic');
+                if (badgeCyber) badgeCyber.classList.remove('hidden');
+                if (badgeComic) badgeComic.classList.add('hidden');
+                if (cardCyber) {
+                    cardCyber.style.borderColor = '#00f0ff';
+                    cardCyber.style.boxShadow = '0 0 25px rgba(0, 240, 255, 0.25)';
+                }
+                if (cardComic) {
+                    cardComic.style.borderColor = 'rgba(100, 116, 139, 0.4)';
+                    cardComic.style.boxShadow = '4px 4px 0px #000';
+                }
+                if (themeBtnText) themeBtnText.innerText = 'CYBER';
+                if (playAudio) playSciFiSound('modal-open');
+            }
+        }
+
+        // Comic Universe Sound Synthesizer Engine
+        function playComicSound(type = 'click') {
+            if (!soundEnabled && type !== 'power-off') return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+
+                const nowMs = performance.now();
+                if (lastSound.type === type && (nowMs - lastSound.time) < 40) return;
+                lastSound = { type, time: nowMs };
+
+                triggerEqualizerVisual();
+                const now = ctx.currentTime;
+
+                if (type === 'click') {
+                    // Cartoon "POP!" / bubble chirp
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(460, now);
+                    osc.frequency.exponentialRampToValueAtTime(1400, now + 0.05);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                    osc.start(now);
+                    osc.stop(now + 0.06);
+                } else if (type === 'nav') {
+                    // Comic spring "BOING!"
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(320, now);
+                    osc.frequency.exponentialRampToValueAtTime(760, now + 0.06);
+                    osc.frequency.exponentialRampToValueAtTime(420, now + 0.12);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.13);
+                    osc.start(now);
+                    osc.stop(now + 0.13);
+                } else if (type === 'execute') {
+                    // Comic superhero punch "POW!" (impact thump + sharp frequency plunge)
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(260, now);
+                    osc.frequency.exponentialRampToValueAtTime(40, now + 0.14);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.15);
+                    osc.start(now);
+                    osc.stop(now + 0.15);
+                } else if (type === 'modal-open') {
+                    // Superhero comic fanfare chord (C5 - E5 - G5)
+                    [523.25, 659.25, 783.99].forEach((freq, idx) => {
+                        const noteOsc = ctx.createOscillator();
+                        const noteGain = ctx.createGain();
+                        noteOsc.connect(noteGain);
+                        noteGain.connect(ctx.destination);
+                        noteOsc.type = 'triangle';
+                        noteOsc.frequency.setValueAtTime(freq, now + idx * 0.05);
+                        noteGain.gain.setValueAtTime(0.09, now + idx * 0.05);
+                        noteGain.gain.linearRampToValueAtTime(0.001, now + idx * 0.05 + 0.08);
+                        noteOsc.start(now + idx * 0.05);
+                        noteOsc.stop(now + idx * 0.05 + 0.08);
+                    });
+                } else if (type === 'modal-close') {
+                    // Cartoon whoosh slide down
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(950, now);
+                    osc.frequency.exponentialRampToValueAtTime(220, now + 0.09);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.09);
+                    osc.start(now);
+                    osc.stop(now + 0.09);
+                } else if (type === 'power-on') {
+                    // Comic superhero zap
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(320, now);
+                    osc.frequency.exponentialRampToValueAtTime(960, now + 0.1);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                } else if (type === 'power-off') {
+                    // Cartoon deflation slide
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(680, now);
+                    osc.frequency.exponentialRampToValueAtTime(140, now + 0.13);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.13);
+                    osc.start(now);
+                    osc.stop(now + 0.13);
+                } else if (type === 'error') {
+                    // Cartoon double honk
+                    [180, 140].forEach((freq, idx) => {
+                        const noteOsc = ctx.createOscillator();
+                        const noteGain = ctx.createGain();
+                        noteOsc.connect(noteGain);
+                        noteGain.connect(ctx.destination);
+                        noteOsc.type = 'square';
+                        noteOsc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                        noteGain.gain.setValueAtTime(0.08, now + idx * 0.08);
+                        noteGain.gain.linearRampToValueAtTime(0.001, now + idx * 0.08 + 0.07);
+                        noteOsc.start(now + idx * 0.08);
+                        noteOsc.stop(now + idx * 0.08 + 0.07);
+                    });
+                } else if (type === 'hover') {
+                    // Playful comic bubble tick
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(1400, now);
+                    gain.gain.setValueAtTime(0.02, now);
+                    gain.gain.linearRampToValueAtTime(0.0001, now + 0.025);
+                    osc.start(now);
+                    osc.stop(now + 0.025);
+                }
+            } catch (e) {}
+        }
+
+        // Apply saved or default theme without audio fanfare on initial load
+        setTheme(currentTheme, false);
+
         function getAudioContext() {
             if (!audioCtxInstance) {
                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -968,6 +1984,10 @@
 
         // Sci-Fi Sound Synthesizer Engine
         function playSciFiSound(type = 'click') {
+            if (currentTheme === 'comic') {
+                playComicSound(type);
+                return;
+            }
             if (!soundEnabled && type !== 'power-off') return;
             try {
                 const ctx = getAudioContext();
@@ -1253,8 +2273,9 @@
                 playSciFiSound('power-off');
             }
 
-            if (output) {
-                output.scrollTop = output.scrollHeight;
+            const screen = document.getElementById('terminal-screen');
+            if (screen) {
+                setTimeout(() => { screen.scrollTop = screen.scrollHeight; }, 30);
             }
             if (input) {
                 setTimeout(() => input.focus(), 50);
@@ -1265,6 +2286,10 @@
             'whoami', 'pwd', 'uname', 'uname -a', 'ls', 'dir', 'll', 'ls -la', 'ls -l', 
             'tree', 'cat', 'cat about.txt', 'cat education.txt', 'cat resume.pdf', 
             'cat experience', 'cat projects', 'cat skills', './contact.sh', 'contact.sh',
+            'vim', 'vim about.txt', 'vim education.txt', 'vim resume.pdf', 'vim experience', 'vim projects', 'vim skills', 'vim contact.sh',
+            'vi', 'vi about.txt', 'vi education.txt', 'vi resume.pdf', 'vi experience', 'vi projects', 'vi skills', 'vi contact.sh',
+            'nano', 'nano about.txt', 'nano education.txt',
+            ':q', ':q!', ':wq', ':w', ':help', 'ZZ',
             'about.txt', 'education.txt', 'resume.pdf',
             'cd', 'echo', 'date', 'uptime', 'ps', 'top', 'history', 'sudo', 'git', 
             'fullscreen', 'exit', 'quit', 'clear', 'cls', 'help', 'man'
@@ -1279,12 +2304,14 @@
         }
 
         function focusTerminalInput(event) {
-            // Don't hijack if user is clicking a button or already focused
-            if (event.target.tagName !== 'BUTTON' && event.target.tagName !== 'A') {
-                const input = document.getElementById('terminal-input');
-                if (input && document.activeElement !== input) {
-                    input.focus();
-                }
+            // Don't hijack if user is selecting text or clicking an interactive element
+            if (window.getSelection && window.getSelection().toString().length > 0) return;
+            if (event && event.target && (event.target.closest('button, a, input, [role="button"]') || event.target.tagName === 'BUTTON' || event.target.tagName === 'A')) {
+                return;
+            }
+            const input = document.getElementById('terminal-input');
+            if (input && document.activeElement !== input) {
+                input.focus();
             }
         }
 
@@ -1298,8 +2325,11 @@
                 if (!currentVal) return;
 
                 const fileCandidates = [
+                    'vim about.txt', 'vim education.txt', 'vim resume.pdf', 'vim experience', 'vim projects', 'vim skills', 'vim contact.sh',
+                    'vi about.txt', 'vi education.txt', 'vi resume.pdf', 'vi experience', 'vi projects', 'vi skills', 'vi contact.sh',
                     'cat about.txt', 'cat education.txt', 'cat resume.pdf', 
                     'cat experience', 'cat projects', 'cat skills', './contact.sh',
+                    'nano about.txt', 'nano education.txt',
                     'dir projects', 'dir experience', 'dir education', 'dir skills',
                     'ls -la', 'ls projects', 'ls experience', 'ls skills'
                 ];
@@ -1347,10 +2377,182 @@
             executeCommand();
         }
 
+        function renderVimView(target, editor) {
+            const isNano = editor === 'nano';
+
+            if (!target) {
+                if (isNano) {
+                    return `
+                        <div class="font-mono text-xs space-y-1 text-slate-300">
+                            <div class="bg-slate-800 text-white px-2 py-0.5 flex justify-between text-[11px]">
+                                <span>GNU nano 7.2</span>
+                                <span>[New Buffer]</span>
+                                <span>Read-only</span>
+                            </div>
+                            <div class="py-2 text-slate-400 text-center">
+                                <div>Welcome to GNU nano. Specify a file to open (e.g. <strong class="text-white">nano about.txt</strong>).</div>
+                                <div class="text-[11px] pt-1 text-slate-500">Available: about.txt, education.txt, experience, projects, skills, contact.sh</div>
+                            </div>
+                            <div class="bg-slate-800 text-white px-2 py-0.5 flex justify-between text-[11px]">
+                                <span>^G Get Help</span>
+                                <span>^O WriteOut</span>
+                                <span>^X Exit</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="font-mono text-xs text-slate-300 space-y-0.5 py-1 select-text">
+                        <div class="text-[#00f0ff]"><span class="font-bold">~</span></div>
+                        <div class="text-center space-y-1 py-1">
+                            <div class="text-white font-bold text-sm">VIM &mdash; Vi IMproved</div>
+                            <div class="text-slate-400 text-[11px]">version 9.1.0 (x86_64-pc-linux-gnu)</div>
+                            <div class="text-slate-400 text-[11px]">by Bram Moolenaar et al.</div>
+                            <div class="text-[#00f0ff] text-[11px]">Modified for AMMAN_OS Shell Environment</div>
+                            <div class="text-slate-500 text-[11px] pt-1 leading-relaxed">
+                                type <strong class="text-white">:q&lt;Enter&gt;</strong>               to exit<br/>
+                                type <strong class="text-white">vim about.txt&lt;Enter&gt;</strong>   to inspect portfolio dossier<br/>
+                                type <strong class="text-white">:help&lt;Enter&gt;</strong>            for online help
+                            </div>
+                        </div>
+                        <div class="text-[#00f0ff]"><span class="font-bold">~</span></div>
+                        <div class="text-[#00f0ff]"><span class="font-bold">~</span></div>
+                        <div class="bg-slate-900 border-t border-slate-700 px-2 py-0.5 text-[11px] text-white flex justify-between">
+                            <span>[No Name]</span>
+                            <span>0,0-1          All</span>
+                        </div>
+                        <div class="text-[11px] text-slate-400 pt-0.5">
+                            Type <span class="text-white font-bold">:q</span> or <span class="text-white font-bold">:q!</span> to return to bash shell.
+                        </div>
+                    </div>
+                `;
+            }
+
+            const t = target.toLowerCase();
+            let filename = '';
+            let lines = [];
+            let byteSize = 0;
+
+            if (t === 'about.txt' || t === 'about') {
+                filename = 'about.txt';
+                lines = [
+                    'Software Developer Intern at Infer Labs (Hyderabad, India).',
+                    '',
+                    'Engineering internal tools and web architecture for the iNexus',
+                    'enterprise application platform across full-stack modules.',
+                    '',
+                    'Core Stack:',
+                    '- Python, FastAPI, React, JavaScript, PostgreSQL, SQLAlchemy',
+                    '- AWS (EC2, VPC, S3), Prometheus, Grafana, Claude Code, Antigravity'
+                ];
+                byteSize = 342;
+            } else if (t === 'education.txt' || t === 'education' || t === 'edu') {
+                filename = 'education.txt';
+                lines = [
+                    'Degree: Bachelor of Technology (B.Tech) - Civil Engineering',
+                    'Institution: Srinivasa Ramanujan Institute of Technology (SRIT)',
+                    'Graduation: 2023',
+                    '',
+                    'Professional Interests:',
+                    '- AI & Workflow Automation: Automating repetitive tasks, agentic workflows',
+                    '- AI-Assisted Development: Claude Code & Antigravity acceleration for complex codebases',
+                    '- Continuous Learning: Scalable backend engineering, cloud DevOps, observability'
+                ];
+                byteSize = 485;
+            } else if (t === 'experience' || t.includes('infer') || t.includes('experience/')) {
+                filename = 'experience/infer-labs.md';
+                lines = [
+                    '# Infer Labs — Software Developer Intern',
+                    'Duration: May 8, 2026 – Present | Hyderabad, India',
+                    'Platform: iNexus Enterprise Suite — iPersonnel & iPayroll',
+                    '',
+                    '* Develop & maintain interactive UI components using React and JavaScript.',
+                    '* Build & troubleshoot robust REST API endpoints with Python and FastAPI.',
+                    '* Manage relational schemas with PostgreSQL and SQLAlchemy ORM models.',
+                    '* Optimize codebase comprehension with Claude Code and Antigravity.',
+                    '* System telemetry via Prometheus & Grafana; manual API testing with Swagger.',
+                    '* AWS cloud infrastructure deployment (EC2, VPC, S3) and Linux CLI operations.'
+                ];
+                byteSize = 812;
+            } else if (t === 'projects' || t.includes('inexus') || t.includes('projects/')) {
+                filename = 'projects/inexus-platform.md';
+                lines = [
+                    '# iNexus — Enterprise Application Platform',
+                    'Tech Stack: React, JavaScript, Python, FastAPI, PostgreSQL, SQLAlchemy, AWS',
+                    '',
+                    '* iPersonnel Module: Workforce directory, attendance tracking, role access control.',
+                    '* iPayroll Module: High-precision payroll engines, tax computation, payslip workflows.',
+                    '* Seamless REST API integrations between React frontend and FastAPI services.'
+                ];
+                byteSize = 560;
+            } else if (t === 'skills' || t === 'skills.json' || t.includes('skills/')) {
+                filename = 'skills.json';
+                lines = [
+                    '{',
+                    '  "languages": ["Python", "JavaScript", "SQL", "Bash"],',
+                    '  "backend": ["FastAPI", "REST APIs", "SQLAlchemy", "Pydantic"],',
+                    '  "frontend": ["React", "HTML5", "CSS3", "Vite"],',
+                    '  "database": ["PostgreSQL", "Relational Schema Modeling"],',
+                    '  "cloud_devops": ["AWS (EC2, S3, VPC)", "Prometheus", "Grafana", "Git"],',
+                    '  "ai_acceleration": ["Claude Code", "Google Antigravity"]',
+                    '}'
+                ];
+                byteSize = 430;
+            } else if (t === 'contact.sh' || t === 'contact') {
+                openModal('comms-modal');
+                filename = 'contact.sh';
+                lines = [
+                    '#!/usr/bin/env bash',
+                    '# Shaik Abdul Ammar Contact Transmission Protocol',
+                    'EMAIL="shaikammar011@gmail.com"',
+                    'PHONE="+91 7893175137"',
+                    'GITHUB="https://github.com/ammanpro"',
+                    'LINKEDIN="https://linkedin.com/in/shaik-abdul-ammar"',
+                    'echo "[SUCCESS] Direct comms channel engaged."'
+                ];
+                byteSize = 295;
+            } else if (t === 'resume.pdf' || t === 'resume' || t === 'cv') {
+                openModal('resume-modal');
+                filename = 'resume.pdf';
+                lines = [
+                    '%PDF-1.4 [Binary Stream: Shaik Abdul Ammar Dossier]',
+                    'Vector PDF 1-Page A4 Resume loaded into dossier modal.',
+                    '[Download link: ./Ammar_resume.pdf] (Ctrl+Click to download)',
+                    '[Open in Browser: ./Ammar_resume.pdf]'
+                ];
+                byteSize = 5287;
+            } else {
+                return `<span class="text-red-400 font-mono">${escapeHTML(editor)}: ${escapeHTML(target)}: No such file or directory. Run <strong class="text-white">ls</strong> to see available files.</span>`;
+            }
+
+            const lineRows = lines.map((line, idx) => {
+                const num = String(idx + 1).padStart(3, ' ');
+                return `<div><span class="text-slate-600 mr-2 select-none">${num}</span><span class="text-slate-200">${escapeHTML(line)}</span></div>`;
+            }).join('');
+
+            return `
+                <div class="font-mono text-xs text-slate-300 space-y-0.5 py-1 select-text">
+                    <div class="text-[#00f0ff] select-none"><span class="font-bold">~</span></div>
+                    <div class="space-y-0.5">${lineRows}</div>
+                    <div class="text-[#00f0ff] select-none"><span class="font-bold">~</span></div>
+                    <div class="text-[#00f0ff] select-none"><span class="font-bold">~</span></div>
+                    <div class="bg-slate-900 border-t border-slate-700 px-2 py-0.5 text-[11px] text-white flex justify-between">
+                        <span>"${filename}" [readonly] ${lines.length}L, ${byteSize}B</span>
+                        <span>1,1           All</span>
+                    </div>
+                    <div class="text-[11px] text-slate-400 pt-0.5">
+                        -- NORMAL -- (Read-only buffer. Type <span class="text-white font-bold">:q</span> or <span class="text-white font-bold">:q!</span> to return to bash shell)
+                    </div>
+                </div>
+            `;
+        }
+
         function runQuickCmd(cmd) {
             const input = document.getElementById('terminal-input');
-            input.value = cmd;
-            executeCommand();
+            if (input) {
+                input.value = cmd;
+                executeCommand();
+            }
         }
 
         function executeCommand() {
@@ -1593,12 +2795,12 @@
                         <div class="space-y-1 font-mono text-xs">
                             <div class="text-amber-300 font-bold">==> resume.pdf &lt;==</div>
                             <div>Opening Tactical Dossier... File: <span class="text-white font-bold">Ammar_resume.pdf</span> (5.2 KB, Vector PDF)</div>
-                            <div class="pt-1 flex flex-wrap gap-2">
-                                <a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" class="px-2.5 py-1 bg-emerald-500 text-black font-bold text-[11px] hover:bg-emerald-400 transition inline-flex items-center">
-                                    <i class="fa-solid fa-download mr-1"></i> Download PDF
+                            <div class="pt-1 flex flex-wrap gap-4 text-xs font-mono">
+                                <a href="./Ammar_resume.pdf" download="Ammar_resume.pdf" target="_blank" class="text-emerald-400 font-bold underline hover:text-emerald-300">
+                                    [Download Ammar_resume.pdf]
                                 </a>
-                                <a href="./Ammar_resume.pdf" target="_blank" class="px-2.5 py-1 bg-[#00f0ff] text-black font-bold text-[11px] hover:bg-[#00f0ff]/90 transition inline-flex items-center">
-                                    <i class="fa-solid fa-eye mr-1"></i> Open in Tab
+                                <a href="./Ammar_resume.pdf" target="_blank" class="text-[#00f0ff] font-bold underline hover:text-cyan-300">
+                                    [Open PDF in browser]
                                 </a>
                             </div>
                         </div>
@@ -1621,7 +2823,24 @@
                 }
             }
 
-            // 7. EXECUTING SCRIPTS (./contact.sh, bash contact.sh, sh contact.sh)
+            // 7. VIM / VI / NANO (Interactive Terminal Editor & File Inspection)
+            else if (main === 'vim' || main === 'vi' || main === 'nano') {
+                const target = arg || '';
+                response = renderVimView(target, main);
+            }
+
+            // 8. VIM COMMAND-LINE DIRECTIVES (:q, :q!, :wq, :w, :help, ZZ)
+            else if (main === ':q' || main === ':q!' || main === ':wq' || main === ':x' || main === 'zz' || (main === 'q' && !arg)) {
+                response = '<span class="text-slate-300 font-mono">[Vim session closed. Returned to bash shell: ammar@amman-os:~/portfolio$]</span>';
+            }
+            else if (main === ':w') {
+                response = '<span class="text-amber-400 font-mono">"portfolio" [readonly] W10: Warning: Changing a readonly file</span>';
+            }
+            else if (main === ':help') {
+                response = '<span class="text-slate-300 font-mono">Vim Help: Use <strong class="text-white">vim &lt;file&gt;</strong> (e.g. <strong class="text-white">vim about.txt</strong>, <strong class="text-white">vim education.txt</strong>, <strong class="text-white">vim experience</strong>). Type <strong class="text-white">:q</strong> to exit.</span>';
+            }
+
+            // 9. EXECUTING SCRIPTS (./contact.sh, bash contact.sh, sh contact.sh)
             else if (lower === './contact.sh' || lower === 'bash contact.sh' || lower === 'sh contact.sh' || lower === 'contact.sh') {
                 openModal('comms-modal');
                 response = `
@@ -1711,6 +2930,8 @@
             // 16. CLEAR / CLS
             else if (main === 'clear' || main === 'cls') {
                 output.innerHTML = '<p class="text-slate-400">// Terminal cleared. AMMAN_OS Linux shell ready.</p>';
+                const screen = document.getElementById('terminal-screen');
+                if (screen) screen.scrollTop = 0;
                 playSciFiSound('execute');
                 return;
             }
@@ -1726,16 +2947,18 @@
                             <div><strong class="text-white">pwd</strong> &mdash; Print working directory path</div>
                             <div><strong class="text-white">ls, dir [-la]</strong> &mdash; List directory files & folders</div>
                             <div><strong class="text-white">tree</strong> &mdash; Display visual ASCII filesystem tree</div>
-                            <div><strong class="text-white">cat &lt;file&gt;</strong> &mdash; Print file contents (e.g. about.txt, education.txt)</div>
+                            <div><strong class="text-white">vim, vi &lt;file&gt;</strong> &mdash; Open file in Vim (:q to quit)</div>
+                            <div><strong class="text-white">cat &lt;file&gt;</strong> &mdash; Print file contents (e.g. about.txt)</div>
                             <div><strong class="text-white">cat resume.pdf</strong> &mdash; Open and download A4 vector resume</div>
                             <div><strong class="text-white">./contact.sh</strong> &mdash; Execute comms dispatch transmission</div>
                             <div><strong class="text-white">uname -a</strong> &mdash; Print Linux kernel architecture</div>
                             <div><strong class="text-white">date / uptime</strong> &mdash; System clock and uptime telemetry</div>
                             <div><strong class="text-white">ps / top</strong> &mdash; Process status and system telemetry</div>
                             <div><strong class="text-white">history</strong> &mdash; View command execution log</div>
+                            <div><strong class="text-white">theme [comic|cyber]</strong> &mdash; Switch universe theme & sound</div>
                             <div><strong class="text-white">clear / cls</strong> &mdash; Clear the terminal window</div>
                         </div>
-                        <div class="text-slate-400 text-[10px] pt-1">// Pro-tip: Type <span class="text-white font-bold">tree</span> or tap quick chips below to navigate.</div>
+                        <div class="text-slate-400 text-[10px] pt-1">// Pro-tip: Type <span class="text-white font-bold">vim about.txt</span> or <span class="text-white font-bold">tree</span> to explore.</div>
                     </div>
                 `;
             }
@@ -1794,6 +3017,17 @@
                 response = `Audio synthesizer is now <span class="text-white font-bold">${soundEnabled ? 'ONLINE' : 'MUTED'}</span>.`;
             } else if (main === 'matrix') {
                 response = '<span class="text-emerald-400 font-bold">01010111 01000001 01010010 01010000 // QUANTUM CORE ENGAGED: AMMAN_OS OPERATING AT 100% COHERENCE.</span>';
+            } else if (main === 'theme') {
+                if (args[0] === 'comic') {
+                    setTheme('comic');
+                    response = '<span class="text-amber-400 font-bold">// Visual Universe switched to COMIC UNIVERSE!</span>';
+                } else if (args[0] === 'cyber') {
+                    setTheme('cyber');
+                    response = '<span class="text-[#00f0ff] font-bold">// Visual Universe switched to CYBER HUD!</span>';
+                } else {
+                    openModal('theme-modal');
+                    response = 'Current visual theme: <strong class="text-white">' + currentTheme.toUpperCase() + '</strong>. Opening Theme selection cards...';
+                }
             } else if (main === 'fullscreen' || main === 'full') {
                 toggleTerminalFullscreen();
                 response = `<span class="text-emerald-400 font-bold">// Terminal switched to ${isTerminalFullscreen ? 'FULLSCREEN' : 'STANDARD'} mode.</span>`;
@@ -1812,7 +3046,10 @@
             playSciFiSound(isError ? 'error' : 'execute');
 
             output.innerHTML += `<div class="${isError ? 'text-red-400' : 'text-slate-200'}">${response}</div>`;
-            output.scrollTop = output.scrollHeight;
+            const screen = document.getElementById('terminal-screen');
+            if (screen) {
+                setTimeout(() => { screen.scrollTop = screen.scrollHeight; }, 10);
+            }
         }
 
         // Live Clock Ticker
@@ -1877,6 +3114,7 @@
                 }
                 closeModal('resume-modal');
                 closeModal('comms-modal');
+                closeModal('theme-modal');
                 closeMobileMenu();
                 playSciFiSound('modal-close');
             }
