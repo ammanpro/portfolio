@@ -47,7 +47,7 @@ jobs:
 
       - name: 5. Install ReportLab & Generate Vector Resume PDF
         run: |
-          pip install reportlab
+          pip install -r requirements.txt
           python generate_pdf.py
 
       - name: 6. Verify Production Artifacts
