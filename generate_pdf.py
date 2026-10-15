@@ -1,4 +1,4 @@
-okimport sys
+import sys
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib import colors
 from reportlab.lib.units import inch
