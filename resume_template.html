@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Ammar - Resume</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 12mm 14mm 12mm 14mm;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e293b;
+            background: #ffffff;
+            font-size: 9.5pt;
+            line-height: 1.45;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        a {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        .header {
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .name {
+            font-size: 20pt;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #0f172a;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-size: 11pt;
+            font-weight: 600;
+            color: #0284c7;
+            margin-top: 2px;
+            letter-spacing: 0.2px;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            margin-top: 6px;
+            font-size: 8.5pt;
+            color: #475569;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contact-item span.bullet {
+            margin: 0 4px;
+            color: #94a3b8;
+        }
+
+        .section {
+            margin-bottom: 11px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 9.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #0f172a;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 3px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 11px;
+            background: #0284c7;
+            margin-right: 6px;
+            border-radius: 1px;
+        }
+
+        .summary-text {
+            font-size: 9pt;
+            color: #334155;
+            line-height: 1.45;
+            text-align: justify;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 14px;
+            font-size: 8.5pt;
+        }
+
+        .skill-item {
+            line-height: 1.35;
+        }
+
+        .skill-cat {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .skill-val {
+            color: #334155;
+        }
+
+        /* Experience & Projects */
+        .entry {
+            margin-bottom: 8px;
+            page-break-inside: avoid;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .entry-role {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .entry-company {
+            font-size: 9.5pt;
+            font-weight: 600;
+            color: #0284c7;
+        }
+
+        .entry-date {
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: #64748b;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        .entry-desc {
+            font-size: 8.5pt;
+            color: #475569;
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        ul.bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.bullets li {
+            position: relative;
+            padding-left: 14px;
+            font-size: 8.5pt;
+            color: #334155;
+            line-height: 1.4;
+            margin-bottom: 2.5px;
+        }
+
+        ul.bullets li::before {
+            content: "•";
+            position: absolute;
+            left: 3px;
+            color: #0284c7;
+            font-weight: bold;
+            font-size: 9pt;
+        }
+
+        /* Two columns for Education and Interests */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 9pt;
+            color: #0f172a;
+        }
+
+        .edu-school {
+            font-size: 8.5pt;
+            color: #475569;
+        }
+
+        .edu-date {
+            font-size: 8pt;
+            color: #64748b;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-weight: 600;
+        }
+
+        .interest-item {
+            font-size: 8.5pt;
+            margin-bottom: 3px;
+            line-height: 1.35;
+        }
+
+        .interest-label {
+            font-weight: 700;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 class="name">Abdul Ammar</h1>
+        <div class="title">Software Developer Intern</div>
+        <div class="contact-bar">
+            <span class="contact-item"><strong>Location:</strong>&nbsp;Hyderabad, India</span>
+            <span class="contact-item"><strong>Phone:</strong>&nbsp;<a href="tel:+917893175137">+91 7893175137</a></span>
+            <span class="contact-item"><strong>Email:</strong>&nbsp;<a href="mailto:shaikammar011@gmail.com">shaikammar011@gmail.com</a></span>
+            <span class="contact-item"><strong>GitHub:</strong>&nbsp;<a href="https://github.com/ammanpro">github.com/ammanpro</a></span>
+            <span class="contact-item"><strong>Portfolio:</strong>&nbsp;<a href="https://ammanpro.github.io/portfolio/">ammanpro.github.io/portfolio</a></span>
+        </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="summary-text">
+            Software Developer Intern at <strong>Infer Labs</strong>, contributing directly to the <strong>iNexus</strong> enterprise application platform. Familiar with React, JavaScript, Python, FastAPI, PostgreSQL, and Git. Actively utilize AI-assisted engineering tools including <strong>Claude Code</strong> and <strong>Antigravity</strong> to navigate complex codebases, troubleshoot issues, and assist in accelerating feature implementation. Possess working knowledge of AWS cloud services, Linux operating systems and command-line environments, and system observability tools such as Prometheus and Grafana. Experienced in manual testing and REST API validation using Swagger. Passionate about exploring emerging AI ecosystems to automate repetitive tasks, optimize workflows, and engineer scalable production systems.
+        </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <span class="skill-cat">Programming:</span>
+                <span class="skill-val">Python, JavaScript, SQL, Bash</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Frontend:</span>
+                <span class="skill-val">React, Vite, HTML5, CSS3</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Backend & APIs:</span>
+                <span class="skill-val">FastAPI, RESTful Web Services</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Databases & ORM:</span>
+                <span class="skill-val">PostgreSQL, SQLAlchemy</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">AI Development Tools:</span>
+                <span class="skill-val">Claude Code, Antigravity</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Cloud Computing:</span>
+                <span class="skill-val">AWS (EC2, VPC, S3, Load Balancing)</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Operating Systems:</span>
+                <span class="skill-val">Linux, CLI Operations, Shell Scripting</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Monitoring & Observability:</span>
+                <span class="skill-val">Prometheus, Grafana</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Version Control:</span>
+                <span class="skill-val">Git, GitHub</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-cat">Software Testing:</span>
+                <span class="skill-val">Manual Testing, Swagger API Testing, Debugging</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="section">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="entry">
+            <div class="entry-header">
+                <div>
+                    <span class="entry-role">Software Developer Intern</span>
+                    <span style="color: #64748b;">|</span>
+                    <span class="entry-company">Infer Labs</span>
+                </div>
+                <span class="entry-date">May 8, 2026 – Present</span>
+            </div>
+            <div class="entry-desc">iNexus Enterprise Platform — iPersonnel & iPayroll Modules</div>
+            <ul class="bullets">
+                <li>Work on the enterprise iNexus application, specifically contributing to the workforce iPersonnel and payroll calculation iPayroll modules.</li>
+                <li>Explore and understand existing frontend and backend architecture to support development, bug fixing, and task implementation.</li>
+                <li>Develop and maintain frontend UI components with <strong>React and JavaScript</strong> to ensure intuitive, responsive workflows.</li>
+                <li>Use <strong>Python and FastAPI</strong> to analyze backend business logic, develop REST endpoints, and ensure reliable request handling.</li>
+                <li>Explore <strong>PostgreSQL</strong> database models, query structures, and <strong>SQLAlchemy</strong> ORM relationships.</li>
+                <li>Leverage <strong>Claude Code</strong> and <strong>Antigravity</strong> AI environments to dissect codebases, troubleshoot defects, and accelerate delivery.</li>
+                <li>Manage source code, branch workflows, and team collaboration utilizing <strong>Git and GitHub</strong>.</li>
+                <li>Perform manual testing across application workflows to identify regressions, edge cases, and unexpected behaviors.</li>
+                <li>Conduct API testing and validation with <strong>Swagger</strong> to inspect request/response payloads and verify endpoint contracts.</li>
+                <li>Gain hands-on exposure to <strong>AWS cloud infrastructure</strong> (EC2, VPC, S3) and Linux server operations.</li>
+                <li>Build familiarity with operational monitoring and telemetry visualization using <strong>Prometheus and Grafana</strong> dashboards.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Project Experience -->
+    <section class="section">
+        <h2 class="section-title">Project Experience</h2>
+        <div class="entry">
+            <div class="entry-header">
+                <div>
+                    <span class="entry-role">iNexus – Enterprise Application Platform</span>
+                </div>
+                <span class="entry-date">Full-Stack Enterprise</span>
+            </div>
+            <div class="entry-desc">Technologies: React, JavaScript, Python, FastAPI, PostgreSQL, SQLAlchemy, Git</div>
+            <ul class="bullets">
+                <li>Engineered core features for the iPersonnel and iPayroll modules facilitating employee record management and automated compensation processing.</li>
+                <li>Mapped data flows connecting React UI dashboards to FastAPI backend endpoints and relational PostgreSQL storage.</li>
+                <li>Analyzed complex payroll workflows and their interdependent relationships with employee attendance, tax calculations, and personnel state.</li>
+                <li>Utilized AI-assisted engineering pipelines to accelerate code navigation, reduce debugging overhead, and ensure robust error handling.</li>
+                <li>Performed end-to-end integration testing, inspecting API contract fidelity and frontend-backend synchronization.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Education & Interests Grid -->
+    <div class="two-col">
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="edu-degree">B.Tech – Civil Engineering</span>
+                    <span class="edu-date">Graduated 2023</span>
+                </div>
+                <div class="edu-school">Srinivasa Ramanujan Institute of Technology (SRIT)</div>
+                <div style="font-size: 8pt; color: #64748b; margin-top: 2px;">Anantapur, Andhra Pradesh, India</div>
+            </div>
+        </section>
+
+        <!-- Professional Interests -->
+        <section class="section">
+            <h2 class="section-title">Professional Interests</h2>
+            <div class="interest-item">
+                <span class="interest-label">AI & Workflow Automation:</span>
+                <span style="color: #475569;">Building automated workflows and leveraging AI tools to eliminate repetitive manual processes.</span>
+            </div>
+            <div class="interest-item">
+                <span class="interest-label">AI-Assisted Development:</span>
+                <span style="color: #475569;">Using Claude Code & Antigravity to navigate large codebases and accelerate feature turnaround.</span>
+            </div>
+            <div class="interest-item">
+                <span class="interest-label">Continuous Learning:</span>
+                <span style="color: #475569;">Deepening hands-on mastery in backend engineering, cloud computing, and DevOps practices.</span>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
