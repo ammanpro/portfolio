@@ -56,10 +56,10 @@
     <link href="./output.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Outfit, Plus Jakarta Sans, Space Grotesk, JetBrains Mono, Orbitron & Inter -->
+    <!-- Google Fonts: Barlow Condensed, Outfit, Plus Jakarta Sans, Space Grotesk, JetBrains Mono, Orbitron & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -263,568 +263,1016 @@
         }
 
         /* ========================================================
-           BATMAN & MARVEL SUPERHERO COMIC UNIVERSE THEME
-           Authentic Comic Paper Canvas, Storyboard Panels, Ink Outlines,
-           Batman Gold & Marvel Red Accents, Butter-Smooth Animations
+           BATMAN // THE DARK KNIGHT THEME DESIGN SYSTEM
+           Gotham After Dark, Batcave Forensic Systems, Batcomputer UI,
+           Obsidian Black, Batcave Charcoal, Dark Steel, Moonlight Silver,
+           Batman Signal Yellow & Detective Blue Accents
            ======================================================== */
+        body.theme-batman,
+        body.theme-darkknight,
         body.theme-comic {
-            background-color: #f3efe6 !important;
+            background-color: #080A0F !important;
             background-image: 
-                radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(226, 54, 54, 0.05) 1.5px, #f3efe6 1.5px) !important;
-            background-size: 20px 20px, 20px 20px !important;
-            background-position: 0 0, 10px 10px !important;
-            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
-            color: #111827 !important;
+                linear-gradient(to right, rgba(48, 57, 70, 0.18) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(48, 57, 70, 0.18) 1px, transparent 1px),
+                radial-gradient(ellipse at 50% 0%, rgba(108, 166, 217, 0.08) 0%, rgba(8, 10, 15, 0.98) 75%) !important;
+            background-size: 36px 36px, 36px 36px, 100% 100% !important;
+            background-position: 0 0, 0 0, center top !important;
+            font-family: 'Inter', sans-serif !important;
+            color: #C9D1DC !important;
         }
 
+        body.theme-batman.cyber-grid,
+        body.theme-darkknight.cyber-grid,
         body.theme-comic.cyber-grid {
             background-image: 
-                radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(226, 54, 54, 0.05) 1.5px, #f3efe6 1.5px) !important;
+                linear-gradient(to right, rgba(48, 57, 70, 0.18) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(48, 57, 70, 0.18) 1px, transparent 1px),
+                radial-gradient(ellipse at 50% 0%, rgba(108, 166, 217, 0.08) 0%, rgba(8, 10, 15, 0.98) 75%) !important;
         }
 
-        /* Typography: Heroic, Clean Geometric Comic Headline Fonts */
+        /* Gotham Scrollbar */
+        body.theme-batman ::-webkit-scrollbar-track,
+        body.theme-darkknight ::-webkit-scrollbar-track,
+        body.theme-comic ::-webkit-scrollbar-track {
+            background: #080A0F !important;
+        }
+        body.theme-batman ::-webkit-scrollbar-thumb,
+        body.theme-darkknight ::-webkit-scrollbar-thumb,
+        body.theme-comic ::-webkit-scrollbar-thumb {
+            background: #303946 !important;
+            border-radius: 2px !important;
+        }
+        body.theme-batman ::-webkit-scrollbar-thumb:hover,
+        body.theme-darkknight ::-webkit-scrollbar-thumb:hover,
+        body.theme-comic ::-webkit-scrollbar-thumb:hover {
+            background: #F5C542 !important;
+        }
+
+        /* Typography: Cinematic, Architectural, Tactical */
+        body.theme-batman .font-hud,
+        body.theme-darkknight .font-hud,
         body.theme-comic .font-hud {
-            font-family: 'Outfit', 'Space Grotesk', sans-serif !important;
-            letter-spacing: 0.5px !important;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
             font-weight: 800 !important;
         }
+        body.theme-batman .font-mono,
+        body.theme-darkknight .font-mono,
         body.theme-comic .font-mono {
             font-family: 'JetBrains Mono', Consolas, monospace !important;
-            font-weight: 600 !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.3px !important;
         }
+        body.theme-batman .font-sans,
+        body.theme-darkknight .font-sans,
         body.theme-comic .font-sans {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-family: 'Inter', sans-serif !important;
         }
 
-        /* Comic Book Header Banner */
+        /* Batcave Batcomputer Header */
+        body.theme-batman header,
+        body.theme-darkknight header,
         body.theme-comic header {
-            background-color: #ffffff !important;
-            border-bottom: 3.5px solid #000000 !important;
-            box-shadow: 0 4px 0px #000000, 0 6px 0px #e23636 !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            background-color: rgba(8, 10, 15, 0.94) !important;
+            border-bottom: 1px solid #303946 !important;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), inset 0 -1px 0 rgba(245, 197, 66, 0.15) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
         }
+        body.theme-batman header *,
+        body.theme-darkknight header *,
         body.theme-comic header * {
-            color: #111827 !important;
+            color: #C9D1DC;
         }
+        body.theme-batman header .border-\[\#00f0ff\]\/30,
+        body.theme-darkknight header .border-\[\#00f0ff\]\/30,
         body.theme-comic header .border-\[\#00f0ff\]\/30,
+        body.theme-batman header .border-\[\#00f0ff\]\/40,
+        body.theme-darkknight header .border-\[\#00f0ff\]\/40,
         body.theme-comic header .border-\[\#00f0ff\]\/40,
+        body.theme-batman header .border-\[\#00f0ff\]\/20,
+        body.theme-darkknight header .border-\[\#00f0ff\]\/20,
         body.theme-comic header .border-\[\#00f0ff\]\/20,
+        body.theme-batman header .border-violet-500\/40,
+        body.theme-darkknight header .border-violet-500\/40,
         body.theme-comic header .border-violet-500\/40 {
-            border-color: #000000 !important;
+            border-color: #303946 !important;
         }
+        body.theme-batman .nav-link,
+        body.theme-darkknight .nav-link,
         body.theme-comic .nav-link {
-            font-family: 'Outfit', sans-serif !important;
-            letter-spacing: 0.5px !important;
-            font-size: 13.5px !important;
-            font-weight: 800 !important;
-            color: #111827 !important;
-            border-bottom: 3px solid transparent !important;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.15s ease, border-color 0.15s ease !important;
-            display: inline-block !important;
-            will-change: transform;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            letter-spacing: 1.5px !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            color: #C9D1DC !important;
+            border-bottom: 2px solid transparent !important;
+            transition: color 0.2s ease, border-color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease !important;
             transform: translateY(0);
         }
+        body.theme-batman .nav-link:hover,
+        body.theme-darkknight .nav-link:hover,
         body.theme-comic .nav-link:hover {
-            color: #e23636 !important;
-            transform: translateY(-2px) !important;
-            border-color: #e23636 !important;
+            color: #F5C542 !important;
+            transform: translateY(-1px) !important;
+            text-shadow: 0 0 12px rgba(245, 197, 66, 0.4) !important;
         }
+        body.theme-batman .nav-link.active-nav,
+        body.theme-darkknight .nav-link.active-nav,
         body.theme-comic .nav-link.active-nav,
+        body.theme-batman .nav-link.text-\[\#00f0ff\],
+        body.theme-darkknight .nav-link.text-\[\#00f0ff\],
         body.theme-comic .nav-link.text-\[\#00f0ff\] {
-            color: #e23636 !important;
-            border-color: #e23636 !important;
+            color: #F5C542 !important;
+            border-color: #F5C542 !important;
+            text-shadow: 0 0 10px rgba(245, 197, 66, 0.35) !important;
         }
 
-        /* Storyboard Comic Panels: Crisp White Panels with 3.5px Ink Borders & Tactile 6px Shadows */
+        /* Batcomputer Panels & Tactical Containment */
+        body.theme-batman .hud-panel,
+        body.theme-darkknight .hud-panel,
         body.theme-comic .hud-panel {
-            background: #ffffff !important;
-            border: 3.5px solid #000000 !important;
-            box-shadow: 6px 6px 0px #000000 !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            clip-path: none !important;
-            border-radius: 8px !important;
-            color: #111827 !important;
-        }
-
-        body.theme-comic .hud-panel-violet {
-            background: #ffffff !important;
-            border: 3.5px solid #000000 !important;
-            box-shadow: 6px 6px 0px #000000, 8px 8px 0px #e23636 !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            clip-path: none !important;
-            border-radius: 8px !important;
-            color: #111827 !important;
-        }
-
-        body.theme-comic .hud-clip {
-            clip-path: none !important;
-            border-radius: 8px !important;
-        }
-
-        /* Inner Cards & Insets */
-        body.theme-comic .bg-obsidian,
-        body.theme-comic .bg-obsidian\/85,
-        body.theme-comic .bg-obsidian\/70,
-        body.theme-comic .bg-panel,
-        body.theme-comic .bg-panel\/60 {
-            background-color: #f8fafc !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 3px 3px 0px #000000 !important;
+            background: linear-gradient(150deg, #11151D 0%, #090B10 100%) !important;
+            border: 1px solid #303946 !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(201, 209, 220, 0.08) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
             clip-path: none !important;
             border-radius: 6px !important;
-            color: #111827 !important;
+            color: #C9D1DC !important;
+        }
+
+        body.theme-batman .hud-panel-violet,
+        body.theme-darkknight .hud-panel-violet,
+        body.theme-comic .hud-panel-violet {
+            background: linear-gradient(150deg, #141923 0%, #0A0D13 100%) !important;
+            border: 1px solid rgba(108, 166, 217, 0.35) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(108, 166, 217, 0.12) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            clip-path: none !important;
+            border-radius: 6px !important;
+            color: #C9D1DC !important;
+        }
+
+        body.theme-batman .hud-clip,
+        body.theme-darkknight .hud-clip,
+        body.theme-comic .hud-clip {
+            clip-path: none !important;
+            border-radius: 6px !important;
+        }
+
+        /* Inner Cards, Forensic Modules, & Insets */
+        body.theme-batman .bg-obsidian,
+        body.theme-darkknight .bg-obsidian,
+        body.theme-comic .bg-obsidian,
+        body.theme-batman .bg-obsidian\/85,
+        body.theme-darkknight .bg-obsidian\/85,
+        body.theme-comic .bg-obsidian\/85,
+        body.theme-batman .bg-obsidian\/70,
+        body.theme-darkknight .bg-obsidian\/70,
+        body.theme-comic .bg-obsidian\/70,
+        body.theme-batman .bg-panel,
+        body.theme-darkknight .bg-panel,
+        body.theme-comic .bg-panel,
+        body.theme-batman .bg-panel\/60,
+        body.theme-darkknight .bg-panel\/60,
+        body.theme-comic .bg-panel\/60 {
+            background: #1C222D !important;
+            border: 1px solid #303946 !important;
+            box-shadow: inset 0 1px 0 rgba(201, 209, 220, 0.05), 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+            clip-path: none !important;
+            border-radius: 4px !important;
+            color: #C9D1DC !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        body.theme-batman .bg-obsidian\/85:hover,
+        body.theme-darkknight .bg-obsidian\/85:hover,
+        body.theme-comic .bg-obsidian\/85:hover,
+        body.theme-batman .bg-panel\/60:hover,
+        body.theme-darkknight .bg-panel\/60:hover,
+        body.theme-comic .bg-panel\/60:hover {
+            transform: translateY(-2px) !important;
+            border-color: #6CA6D9 !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(108, 166, 217, 0.25) !important;
         }
 
         /* Section Borders */
+        body.theme-batman .border-\[\#00f0ff\]\/20,
+        body.theme-darkknight .border-\[\#00f0ff\]\/20,
         body.theme-comic .border-\[\#00f0ff\]\/20,
+        body.theme-batman .border-\[\#00f0ff\]\/30,
+        body.theme-darkknight .border-\[\#00f0ff\]\/30,
         body.theme-comic .border-\[\#00f0ff\]\/30,
+        body.theme-batman .border-\[\#00f0ff\]\/40,
+        body.theme-darkknight .border-\[\#00f0ff\]\/40,
         body.theme-comic .border-\[\#00f0ff\]\/40,
+        body.theme-batman .border-violet-500\/20,
+        body.theme-darkknight .border-violet-500\/20,
         body.theme-comic .border-violet-500\/20,
+        body.theme-batman .border-violet-500\/30,
+        body.theme-darkknight .border-violet-500\/30,
         body.theme-comic .border-violet-500\/30,
+        body.theme-batman .border-violet-500\/40,
+        body.theme-darkknight .border-violet-500\/40,
         body.theme-comic .border-violet-500\/40,
+        body.theme-batman .border-emerald-500\/20,
+        body.theme-darkknight .border-emerald-500\/20,
         body.theme-comic .border-emerald-500\/20,
+        body.theme-batman .border-emerald-500\/30,
+        body.theme-darkknight .border-emerald-500\/30,
         body.theme-comic .border-emerald-500\/30,
+        body.theme-batman .border-slate-700\/60,
+        body.theme-darkknight .border-slate-700\/60,
         body.theme-comic .border-slate-700\/60,
+        body.theme-batman .border-slate-800,
+        body.theme-darkknight .border-slate-800,
         body.theme-comic .border-slate-800 {
-            border-color: #000000 !important;
+            border-color: #303946 !important;
         }
 
-        /* Headings: Batman Gold & Marvel Red Comic Book Typography */
+        /* Headings: Cinematic Gotham & Batcomputer Typography */
+        body.theme-batman h1,
+        body.theme-darkknight h1,
         body.theme-comic h1 {
-            font-family: 'Outfit', sans-serif !important;
-            color: #000000 !important;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            color: #F2F4F8 !important;
             font-weight: 900 !important;
-            font-size: clamp(2.4rem, 5vw, 4rem) !important;
-            line-height: 1.1 !important;
-            letter-spacing: -0.5px !important;
-            text-shadow: 3px 3px 0px #f59e0b, 5px 5px 0px #e23636 !important;
+            font-size: clamp(2.6rem, 6vw, 4.6rem) !important;
+            line-height: 1.05 !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            text-shadow: 0 0 35px rgba(245, 197, 66, 0.25), 0 2px 6px rgba(0, 0, 0, 0.95) !important;
         }
+        body.theme-batman h2,
+        body.theme-darkknight h2,
         body.theme-comic h2 {
-            font-family: 'Outfit', sans-serif !important;
-            color: #000000 !important;
-            letter-spacing: 0.3px !important;
-            text-shadow: 2px 2px 0px #f59e0b !important;
-            font-size: 2rem !important;
-            font-weight: 900 !important;
-            line-height: 1.2 !important;
-        }
-        body.theme-comic h3 {
-            font-family: 'Outfit', sans-serif !important;
-            color: #000000 !important;
-            letter-spacing: 0.2px !important;
-            font-size: 1.35rem !important;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            color: #F2F4F8 !important;
+            letter-spacing: 1.2px !important;
+            font-size: 2.2rem !important;
             font-weight: 800 !important;
-            line-height: 1.3 !important;
+            line-height: 1.15 !important;
+            text-transform: uppercase !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
         }
+        body.theme-batman h3,
+        body.theme-darkknight h3,
+        body.theme-comic h3 {
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            color: #F2F4F8 !important;
+            letter-spacing: 1px !important;
+            font-size: 1.45rem !important;
+            font-weight: 800 !important;
+            line-height: 1.25 !important;
+            text-transform: uppercase !important;
+        }
+        body.theme-batman h4,
+        body.theme-darkknight h4,
         body.theme-comic h4 {
-            font-family: 'Outfit', sans-serif !important;
-            color: #b91c1c !important;
-            letter-spacing: 0.2px !important;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            color: #6CA6D9 !important;
+            letter-spacing: 1px !important;
             font-weight: 800 !important;
             font-size: 1.15rem !important;
+            text-transform: uppercase !important;
         }
 
-        /* Body Text: High-Contrast Ink On Comic Paper */
+        /* Body Text: Moonlight Silver with Pristine Legibility */
+        body.theme-batman p,
+        body.theme-darkknight p,
         body.theme-comic p,
+        body.theme-batman li,
+        body.theme-darkknight li,
         body.theme-comic li {
-            color: #1e293b !important;
+            color: #C9D1DC !important;
             line-height: 1.65 !important;
             font-size: 15px !important;
             font-weight: 400 !important;
         }
+        body.theme-batman .text-slate-100,
+        body.theme-darkknight .text-slate-100,
         body.theme-comic .text-slate-100,
+        body.theme-batman .text-slate-200,
+        body.theme-darkknight .text-slate-200,
         body.theme-comic .text-slate-200,
+        body.theme-batman .text-slate-300,
+        body.theme-darkknight .text-slate-300,
         body.theme-comic .text-slate-300 {
-            color: #1e293b !important;
+            color: #C9D1DC !important;
         }
+        body.theme-batman span.text-white,
+        body.theme-darkknight span.text-white,
         body.theme-comic span.text-white,
+        body.theme-batman div.text-white,
+        body.theme-darkknight div.text-white,
         body.theme-comic div.text-white,
+        body.theme-batman p.text-white,
+        body.theme-darkknight p.text-white,
         body.theme-comic p.text-white {
-            color: #0f172a !important;
+            color: #F2F4F8 !important;
         }
+        body.theme-batman .text-slate-400,
+        body.theme-darkknight .text-slate-400,
         body.theme-comic .text-slate-400,
+        body.theme-batman .text-slate-500,
+        body.theme-darkknight .text-slate-500,
         body.theme-comic .text-slate-500 {
-            color: #475569 !important;
+            color: #8E9AA8 !important;
         }
+        body.theme-batman strong,
+        body.theme-darkknight strong,
         body.theme-comic strong,
+        body.theme-batman b,
+        body.theme-darkknight b,
         body.theme-comic b {
-            color: #b91c1c !important;
-            font-weight: 800 !important;
-        }
-
-        /* Comic Accent Callouts */
-        body.theme-comic .text-\[\#00f0ff\],
-        body.theme-comic [class*="text-[#00f0ff]"] {
-            color: #dc2626 !important;
-            font-weight: 800 !important;
-        }
-        body.theme-comic .text-violet-300,
-        body.theme-comic .text-violet-400 {
-            color: #7c3aed !important;
-            font-weight: 800 !important;
-        }
-        body.theme-comic .text-emerald-400 {
-            color: #059669 !important;
-            font-weight: 800 !important;
-        }
-
-        /* Batman Yellow Callout Badges */
-        body.theme-comic div[class*="bg-[#00f0ff]/10"] {
-            background-color: #fef08a !important;
-            color: #000000 !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 2px 2px 0px #000000 !important;
-            border-radius: 4px !important;
-            font-weight: 800 !important;
-        }
-        body.theme-comic div[class*="bg-[#00f0ff]/10"] * {
-            color: #000000 !important;
-        }
-
-        /* Tech Tags & Pills: Crisp, Tactile Superhero Badges */
-        body.theme-comic span.bg-obsidian {
-            background-color: #ffffff !important;
-            color: #0f172a !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 2px 2px 0px #000000 !important;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            font-size: 12px !important;
+            color: #F2F4F8 !important;
             font-weight: 700 !important;
-            letter-spacing: 0.2px !important;
+        }
+
+        /* Detective Blue & Signal Yellow Accents */
+        body.theme-batman .text-\[\#00f0ff\],
+        body.theme-darkknight .text-\[\#00f0ff\],
+        body.theme-comic .text-\[\#00f0ff\],
+        body.theme-batman [class*="text-[#00f0ff]"],
+        body.theme-darkknight [class*="text-[#00f0ff]"],
+        body.theme-comic [class*="text-[#00f0ff]"] {
+            color: #6CA6D9 !important;
+            font-weight: 700 !important;
+        }
+        body.theme-batman .text-violet-300,
+        body.theme-darkknight .text-violet-300,
+        body.theme-comic .text-violet-300,
+        body.theme-batman .text-violet-400,
+        body.theme-darkknight .text-violet-400,
+        body.theme-comic .text-violet-400 {
+            color: #F5C542 !important;
+            font-weight: 700 !important;
+        }
+        body.theme-batman .text-emerald-400,
+        body.theme-darkknight .text-emerald-400,
+        body.theme-comic .text-emerald-400 {
+            color: #6CA6D9 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Batcave Tactical Callout Badges */
+        body.theme-batman div[class*="bg-[#00f0ff]/10"],
+        body.theme-darkknight div[class*="bg-[#00f0ff]/10"],
+        body.theme-comic div[class*="bg-[#00f0ff]/10"] {
+            background-color: rgba(108, 166, 217, 0.12) !important;
+            color: #6CA6D9 !important;
+            border: 1px solid rgba(108, 166, 217, 0.35) !important;
+            box-shadow: 0 0 15px rgba(108, 166, 217, 0.15) !important;
             border-radius: 4px !important;
+            font-weight: 700 !important;
+        }
+        body.theme-batman div[class*="bg-[#00f0ff]/10"] *,
+        body.theme-darkknight div[class*="bg-[#00f0ff]/10"] *,
+        body.theme-comic div[class*="bg-[#00f0ff]/10"] * {
+            color: #6CA6D9 !important;
+        }
+
+        /* Tech Tags & Forensic Chips */
+        body.theme-batman span.bg-obsidian,
+        body.theme-darkknight span.bg-obsidian,
+        body.theme-comic span.bg-obsidian {
+            background-color: #161B24 !important;
+            color: #C9D1DC !important;
+            border: 1px solid #303946 !important;
+            box-shadow: inset 0 1px 0 rgba(201, 209, 220, 0.05), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+            font-family: 'JetBrains Mono', Consolas, monospace !important;
+            font-size: 11.5px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.3px !important;
+            border-radius: 3px !important;
             display: inline-flex !important;
             align-items: center !important;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease, color 0.15s ease !important;
             will-change: transform;
             transform: translateY(0);
         }
+        body.theme-batman span.bg-obsidian:hover,
+        body.theme-darkknight span.bg-obsidian:hover,
         body.theme-comic span.bg-obsidian:hover {
             transform: translateY(-2px) !important;
-            background-color: #fef08a !important;
-            box-shadow: 3px 4px 0px #000000 !important;
-            color: #000000 !important;
+            background-color: #1C222D !important;
+            border-color: #F5C542 !important;
+            box-shadow: 0 0 15px rgba(245, 197, 66, 0.3) !important;
+            color: #F5C542 !important;
         }
 
-        /* Hero Avatar Badge: Batman Gotham Oval */
+        /* Hero Avatar Badge: WayneTech Biometric Dossier Badge */
+        body.theme-batman [title="Agent Profile Badge"],
+        body.theme-darkknight [title="Agent Profile Badge"],
         body.theme-comic [title="Agent Profile Badge"] {
-            background: #fef08a !important;
-            border: 3.5px solid #000000 !important;
-            box-shadow: 6px 6px 0px #000000 !important;
-            border-radius: 12px !important;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+            background: linear-gradient(150deg, #161B24 0%, #0A0D13 100%) !important;
+            border: 2px solid #303946 !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(201, 209, 220, 0.1) !important;
+            border-radius: 8px !important;
+            clip-path: none !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease !important;
             will-change: transform;
             transform: translateY(0);
         }
+        body.theme-batman [title="Agent Profile Badge"]:hover,
+        body.theme-darkknight [title="Agent Profile Badge"]:hover,
         body.theme-comic [title="Agent Profile Badge"]:hover {
-            transform: translateY(-4px) !important;
-            box-shadow: 8px 8px 0px #e23636, 12px 12px 0px #000000 !important;
+            transform: translateY(-3px) !important;
+            border-color: #F5C542 !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(245, 197, 66, 0.25) !important;
         }
+        body.theme-batman [title="Agent Profile Badge"] *,
+        body.theme-darkknight [title="Agent Profile Badge"] *,
         body.theme-comic [title="Agent Profile Badge"] * {
-            color: #000000 !important;
+            color: #C9D1DC !important;
         }
+        body.theme-batman [title="Agent Profile Badge"] .text-4xl,
+        body.theme-darkknight [title="Agent Profile Badge"] .text-4xl,
         body.theme-comic [title="Agent Profile Badge"] .text-4xl,
+        body.theme-batman [title="Agent Profile Badge"] .text-5xl,
+        body.theme-darkknight [title="Agent Profile Badge"] .text-5xl,
         body.theme-comic [title="Agent Profile Badge"] .text-5xl {
-            font-family: 'Outfit', sans-serif !important;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
             font-weight: 900 !important;
-            font-size: 3rem !important;
+            font-size: 3.2rem !important;
             line-height: 1 !important;
-            color: #000000 !important;
-            letter-spacing: 1px !important;
-            text-shadow: 2px 2px 0px #e23636 !important;
+            color: #F2F4F8 !important;
+            letter-spacing: 2px !important;
+            text-shadow: 0 0 20px rgba(245, 197, 66, 0.35) !important;
         }
 
         /* Interactive Card Hover Animation across all cards */
+        body.theme-batman .hud-panel[role="button"],
+        body.theme-darkknight .hud-panel[role="button"],
         body.theme-comic .hud-panel[role="button"],
+        body.theme-batman .hud-panel[data-sfx],
+        body.theme-darkknight .hud-panel[data-sfx],
         body.theme-comic .hud-panel[data-sfx],
+        body.theme-batman .hud-panel-violet[role="button"],
+        body.theme-darkknight .hud-panel-violet[role="button"],
         body.theme-comic .hud-panel-violet[role="button"],
+        body.theme-batman .hud-panel-violet[data-sfx],
+        body.theme-darkknight .hud-panel-violet[data-sfx],
         body.theme-comic .hud-panel-violet[data-sfx],
-        body.theme-comic .bg-obsidian\/85[role="button"],
-        body.theme-comic .bg-obsidian\/85[data-sfx],
-        body.theme-comic div[data-sfx="click"] {
+        body.theme-batman div[data-sfx="click"],
+        body.theme-darkknight div[data-sfx="click"] {
             transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease !important;
             will-change: transform, box-shadow;
             transform: translateY(0);
         }
+        body.theme-batman .hud-panel[role="button"]:hover,
+        body.theme-darkknight .hud-panel[role="button"]:hover,
         body.theme-comic .hud-panel[role="button"]:hover,
+        body.theme-batman .hud-panel[data-sfx]:hover,
+        body.theme-darkknight .hud-panel[data-sfx]:hover,
         body.theme-comic .hud-panel[data-sfx]:hover,
+        body.theme-batman .hud-panel-violet[role="button"]:hover,
+        body.theme-darkknight .hud-panel-violet[role="button"]:hover,
         body.theme-comic .hud-panel-violet[role="button"]:hover,
-        body.theme-comic .hud-panel-violet[data-sfx]:hover,
-        body.theme-comic .bg-obsidian\/85[role="button"]:hover,
-        body.theme-comic .bg-obsidian\/85[data-sfx]:hover,
-        body.theme-comic div[data-sfx="click"]:hover {
-            transform: translateY(-4px) !important;
-            box-shadow: 8px 10px 0px #000000 !important;
-            border-color: #e23636 !important;
+        body.theme-batman .hud-panel-violet[data-sfx]:hover,
+        body.theme-darkknight .hud-panel-violet[data-sfx]:hover,
+        body.theme-comic .hud-panel-violet[data-sfx]:hover {
+            transform: translateY(-3px) !important;
+            border-color: #6CA6D9 !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(108, 166, 217, 0.25) !important;
         }
 
-        /* Buttons: Batman & Marvel Superhero Aesthetic */
+        /* Tactical Dark Knight Buttons */
+        body.theme-batman .hud-btn,
+        body.theme-darkknight .hud-btn,
         body.theme-comic .hud-btn {
-            font-family: 'Outfit', sans-serif !important;
-            letter-spacing: 0.5px !important;
+            font-family: 'Barlow Condensed', 'Outfit', sans-serif !important;
+            letter-spacing: 1.2px !important;
             font-size: 13.5px !important;
             font-weight: 800 !important;
-            border: 2.5px solid #000000 !important;
-            box-shadow: 4px 4px 0px #000000 !important;
             clip-path: none !important;
-            border-radius: 6px !important;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, border-color 0.15s ease !important;
+            border-radius: 4px !important;
+            text-transform: uppercase !important;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
             will-change: transform, box-shadow;
             transform: translateY(0);
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
         }
+        body.theme-batman .hud-btn:hover,
+        body.theme-darkknight .hud-btn:hover,
         body.theme-comic .hud-btn:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 7px 0px #000000, 2px 7px 0px #e23636 !important;
+            transform: translateY(-2px) !important;
         }
+        body.theme-batman .hud-btn:active,
+        body.theme-darkknight .hud-btn:active,
         body.theme-comic .hud-btn:active {
             transform: translateY(1px) !important;
-            box-shadow: 0 2px 0px #000000 !important;
         }
 
-        /* Batman Gold & Marvel Red Button variants */
+        /* Primary CTA: Batman Signal Yellow */
+        body.theme-batman a.hud-btn[href*="history"],
+        body.theme-darkknight a.hud-btn[href*="history"],
         body.theme-comic a.hud-btn[href*="history"] {
-            background-color: #f59e0b !important;
-            color: #000000 !important;
-            border-color: #000000 !important;
+            background-color: #F5C542 !important;
+            color: #080A0F !important;
+            border: 1px solid #F5C542 !important;
+            box-shadow: 0 4px 15px rgba(245, 197, 66, 0.3) !important;
         }
-        body.theme-comic button.hud-btn[onclick*="openModal('comms-modal')"] {
-            background-color: #e23636 !important;
-            color: #ffffff !important;
-            border-color: #000000 !important;
-        }
-        body.theme-comic button.hud-btn[onclick*="openModal('resume-modal')"] {
-            background-color: #1d4ed8 !important;
-            color: #ffffff !important;
-            border-color: #000000 !important;
-        }
-        body.theme-comic a.hud-btn[href*="github"],
-        body.theme-comic a.hud-btn[download] {
-            background-color: #000000 !important;
-            color: #ffffff !important;
-            border-color: #000000 !important;
-            box-shadow: 4px 4px 0px #e23636 !important;
-        }
-        body.theme-comic a.hud-btn[href*="mailto"] {
-            background-color: #f59e0b !important;
-            color: #000000 !important;
-            border-color: #000000 !important;
-        }
-        body.theme-comic button#theme-btn {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 3px 3px 0px #000000 !important;
-        }
-        body.theme-comic button#theme-btn * {
-            color: #000000 !important;
-        }
-        body.theme-comic button#audio-toggle {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 3px 3px 0px #000000 !important;
-        }
-        body.theme-comic button#audio-toggle * {
-            color: #000000 !important;
+        body.theme-batman a.hud-btn[href*="history"]:hover,
+        body.theme-darkknight a.hud-btn[href*="history"]:hover,
+        body.theme-comic a.hud-btn[href*="history"]:hover {
+            background-color: #FFE082 !important;
+            box-shadow: 0 0 25px rgba(245, 197, 66, 0.55) !important;
         }
 
-        /* Comic Terminal: Batcave / Gotham Lab Console */
+        /* Secondary CTA: Direct Comms (Detective Blue) */
+        body.theme-batman button.hud-btn[onclick*="openModal('comms-modal')"],
+        body.theme-darkknight button.hud-btn[onclick*="openModal('comms-modal')"],
+        body.theme-comic button.hud-btn[onclick*="openModal('comms-modal')"] {
+            background-color: #11151D !important;
+            color: #6CA6D9 !important;
+            border: 1px solid #303946 !important;
+        }
+        body.theme-batman button.hud-btn[onclick*="openModal('comms-modal')"]:hover,
+        body.theme-darkknight button.hud-btn[onclick*="openModal('comms-modal')"]:hover,
+        body.theme-comic button.hud-btn[onclick*="openModal('comms-modal')"]:hover {
+            background-color: rgba(108, 166, 217, 0.15) !important;
+            border-color: #6CA6D9 !important;
+            color: #F2F4F8 !important;
+            box-shadow: 0 0 20px rgba(108, 166, 217, 0.35) !important;
+        }
+
+        /* Tertiary CTA: Tactical Dossier / CV */
+        body.theme-batman button.hud-btn[onclick*="openModal('resume-modal')"],
+        body.theme-darkknight button.hud-btn[onclick*="openModal('resume-modal')"],
+        body.theme-comic button.hud-btn[onclick*="openModal('resume-modal')"] {
+            background-color: #11151D !important;
+            color: #C9D1DC !important;
+            border: 1px solid #303946 !important;
+        }
+        body.theme-batman button.hud-btn[onclick*="openModal('resume-modal')"]:hover,
+        body.theme-darkknight button.hud-btn[onclick*="openModal('resume-modal')"]:hover,
+        body.theme-comic button.hud-btn[onclick*="openModal('resume-modal')"]:hover {
+            background-color: #1C222D !important;
+            border-color: #C9D1DC !important;
+            color: #F2F4F8 !important;
+            box-shadow: 0 0 15px rgba(201, 209, 220, 0.25) !important;
+        }
+
+        /* Header Utility Buttons */
+        body.theme-batman button#theme-btn,
+        body.theme-darkknight button#theme-btn,
+        body.theme-comic button#theme-btn {
+            background-color: #11151D !important;
+            color: #F5C542 !important;
+            border: 1px solid #F5C542 !important;
+            box-shadow: 0 0 15px rgba(245, 197, 66, 0.2) !important;
+        }
+        body.theme-batman button#theme-btn *,
+        body.theme-darkknight button#theme-btn *,
+        body.theme-comic button#theme-btn * {
+            color: #F5C542 !important;
+        }
+        body.theme-batman button#theme-btn:hover,
+        body.theme-darkknight button#theme-btn:hover,
+        body.theme-comic button#theme-btn:hover {
+            background-color: #F5C542 !important;
+            color: #080A0F !important;
+        }
+        body.theme-batman button#theme-btn:hover *,
+        body.theme-darkknight button#theme-btn:hover *,
+        body.theme-comic button#theme-btn:hover * {
+            color: #080A0F !important;
+        }
+
+        body.theme-batman button#audio-toggle,
+        body.theme-darkknight button#audio-toggle,
+        body.theme-comic button#audio-toggle {
+            background-color: #11151D !important;
+            color: #C9D1DC !important;
+            border: 1px solid #303946 !important;
+        }
+        body.theme-batman button#audio-toggle:hover,
+        body.theme-darkknight button#audio-toggle:hover,
+        body.theme-comic button#audio-toggle:hover {
+            border-color: #F5C542 !important;
+            color: #F5C542 !important;
+        }
+        body.theme-batman button#audio-toggle .eq-bar-1,
+        body.theme-darkknight button#audio-toggle .eq-bar-1,
+        body.theme-comic button#audio-toggle .eq-bar-1,
+        body.theme-batman button#audio-toggle .eq-bar-2,
+        body.theme-darkknight button#audio-toggle .eq-bar-2,
+        body.theme-comic button#audio-toggle .eq-bar-2,
+        body.theme-batman button#audio-toggle .eq-bar-3,
+        body.theme-darkknight button#audio-toggle .eq-bar-3,
+        body.theme-comic button#audio-toggle .eq-bar-3 {
+            background-color: #F5C542 !important;
+        }
+
+        body.theme-batman a.hud-btn[href*="github"],
+        body.theme-darkknight a.hud-btn[href*="github"],
+        body.theme-comic a.hud-btn[href*="github"] {
+            background-color: #11151D !important;
+            color: #F5C542 !important;
+            border: 1px solid #F5C542 !important;
+            box-shadow: 0 0 15px rgba(245, 197, 66, 0.2) !important;
+        }
+        body.theme-batman a.hud-btn[href*="github"]:hover,
+        body.theme-darkknight a.hud-btn[href*="github"]:hover,
+        body.theme-comic a.hud-btn[href*="github"]:hover {
+            background-color: #F5C542 !important;
+            color: #080A0F !important;
+        }
+
+        body.theme-batman a.hud-btn[href*="mailto"],
+        body.theme-darkknight a.hud-btn[href*="mailto"],
+        body.theme-comic a.hud-btn[href*="mailto"] {
+            background-color: #F5C542 !important;
+            color: #080A0F !important;
+            border: 1px solid #F5C542 !important;
+        }
+
+        /* Batcave / WayneTech Forensic Interactive Terminal */
+        body.theme-batman #terminal,
+        body.theme-darkknight #terminal,
         body.theme-comic #terminal {
-            background-color: #ffffff !important;
-            border: 3.5px solid #000000 !important;
-            box-shadow: 6px 6px 0px #000000 !important;
-            border-radius: 8px !important;
+            background-color: #080A0F !important;
+            border: 1px solid #303946 !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7) !important;
+            border-radius: 6px !important;
         }
+        body.theme-batman #terminal > div:first-child,
+        body.theme-darkknight #terminal > div:first-child,
         body.theme-comic #terminal > div:first-child {
-            background-color: #111827 !important;
-            border-bottom: 2px solid #000000 !important;
-            color: #f8fafc !important;
+            background-color: #11151D !important;
+            border-bottom: 1px solid #303946 !important;
+            color: #F2F4F8 !important;
         }
+        body.theme-batman #terminal > div:first-child *,
+        body.theme-darkknight #terminal > div:first-child *,
         body.theme-comic #terminal > div:first-child * {
-            color: #f8fafc !important;
+            color: #C9D1DC !important;
         }
+        body.theme-batman #terminal > div:first-child button,
+        body.theme-darkknight #terminal > div:first-child button,
         body.theme-comic #terminal > div:first-child button {
-            background-color: #f59e0b !important;
-            color: #000000 !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 2px 2px 0px #000000 !important;
+            background-color: rgba(245, 197, 66, 0.15) !important;
+            color: #F5C542 !important;
+            border: 1px solid rgba(245, 197, 66, 0.4) !important;
+            box-shadow: 0 0 10px rgba(245, 197, 66, 0.15) !important;
             border-radius: 4px !important;
             transition: transform 0.15s ease, background-color 0.15s ease !important;
         }
+        body.theme-batman #terminal > div:first-child button *,
+        body.theme-darkknight #terminal > div:first-child button *,
         body.theme-comic #terminal > div:first-child button * {
-            color: #000000 !important;
+            color: #F5C542 !important;
         }
+        body.theme-batman #terminal > div:first-child button:hover,
+        body.theme-darkknight #terminal > div:first-child button:hover,
         body.theme-comic #terminal > div:first-child button:hover {
-            background-color: #e23636 !important;
-            color: #ffffff !important;
+            background-color: #F5C542 !important;
+            color: #080A0F !important;
             transform: translateY(-1px) !important;
         }
+        body.theme-batman #terminal > div:first-child button:hover *,
+        body.theme-darkknight #terminal > div:first-child button:hover *,
         body.theme-comic #terminal > div:first-child button:hover * {
-            color: #ffffff !important;
+            color: #080A0F !important;
         }
+        body.theme-batman #terminal-screen,
+        body.theme-darkknight #terminal-screen,
         body.theme-comic #terminal-screen {
-            background-color: #0a0b10 !important;
-            color: #f8fafc !important;
-            border-left: 2px solid #000 !important;
-            border-right: 2px solid #000 !important;
+            background-color: #07080D !important;
+            color: #F2F4F8 !important;
+            border-left: 1px solid #1C222D !important;
+            border-right: 1px solid #1C222D !important;
         }
+        body.theme-batman #terminal-screen,
+        body.theme-darkknight #terminal-screen,
         body.theme-comic #terminal-screen,
+        body.theme-batman #terminal-screen *,
+        body.theme-darkknight #terminal-screen *,
         body.theme-comic #terminal-screen * {
             font-family: 'JetBrains Mono', Consolas, 'Fira Code', monospace !important;
         }
+        body.theme-batman #terminal-screen .text-slate-400,
+        body.theme-darkknight #terminal-screen .text-slate-400,
         body.theme-comic #terminal-screen .text-slate-400,
+        body.theme-batman #terminal-screen .text-slate-500,
+        body.theme-darkknight #terminal-screen .text-slate-500,
         body.theme-comic #terminal-screen .text-slate-500,
+        body.theme-batman #terminal-screen .text-slate-300,
+        body.theme-darkknight #terminal-screen .text-slate-300,
         body.theme-comic #terminal-screen .text-slate-300 {
-            color: #cbd5e1 !important;
+            color: #8E9AA8 !important;
         }
+        body.theme-batman #terminal-screen .text-white,
+        body.theme-darkknight #terminal-screen .text-white,
         body.theme-comic #terminal-screen .text-white {
-            color: #ffffff !important;
+            color: #F2F4F8 !important;
         }
+        body.theme-batman #terminal-screen .text-\[\#00f0ff\],
+        body.theme-darkknight #terminal-screen .text-\[\#00f0ff\],
         body.theme-comic #terminal-screen .text-\[\#00f0ff\] {
-            color: #38bdf8 !important;
+            color: #6CA6D9 !important;
         }
+        body.theme-batman #terminal-screen .text-emerald-400,
+        body.theme-darkknight #terminal-screen .text-emerald-400,
         body.theme-comic #terminal-screen .text-emerald-400 {
-            color: #4ade80 !important;
+            color: #F5C542 !important;
         }
+        body.theme-batman #terminal-input,
+        body.theme-darkknight #terminal-input,
         body.theme-comic #terminal-input {
-            color: #facc15 !important;
+            color: #F5C542 !important;
             font-family: 'JetBrains Mono', Consolas, monospace !important;
             font-weight: 700 !important;
+            caret-color: #F5C542 !important;
         }
+        body.theme-batman #terminal > div:last-child,
+        body.theme-darkknight #terminal > div:last-child,
         body.theme-comic #terminal > div:last-child {
-            background-color: #111827 !important;
-            border-top: 2px solid #000000 !important;
-            color: #cbd5e1 !important;
+            background-color: #11151D !important;
+            border-top: 1px solid #303946 !important;
+            color: #8E9AA8 !important;
         }
+        body.theme-batman #terminal > div:last-child *,
+        body.theme-darkknight #terminal > div:last-child *,
         body.theme-comic #terminal > div:last-child * {
-            color: #cbd5e1 !important;
+            color: #8E9AA8 !important;
         }
+        body.theme-batman #terminal > div:last-child .text-emerald-400,
+        body.theme-darkknight #terminal > div:last-child .text-emerald-400,
         body.theme-comic #terminal > div:last-child .text-emerald-400 {
-            color: #4ade80 !important;
+            color: #6CA6D9 !important;
         }
+        body.theme-batman #terminal > div:last-child .text-\[\#00f0ff\],
+        body.theme-darkknight #terminal > div:last-child .text-\[\#00f0ff\],
         body.theme-comic #terminal > div:last-child .text-\[\#00f0ff\] {
-            color: #facc15 !important;
+            color: #F5C542 !important;
         }
 
-        /* Comic Modals */
+        /* Batcave Modals */
+        body.theme-batman .modal-backdrop,
+        body.theme-darkknight .modal-backdrop,
         body.theme-comic .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.75) !important;
+            background-color: rgba(4, 5, 8, 0.9) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
         }
+        body.theme-batman .modal-backdrop .hud-panel,
+        body.theme-darkknight .modal-backdrop .hud-panel,
         body.theme-comic .modal-backdrop .hud-panel {
-            background-color: #ffffff !important;
-            border: 3.5px solid #000000 !important;
-            box-shadow: 8px 8px 0px #000000 !important;
-            color: #111827 !important;
+            background: linear-gradient(150deg, #11151D 0%, #080A0F 100%) !important;
+            border: 1px solid #303946 !important;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 0, 0, 0.8) !important;
+            color: #C9D1DC !important;
         }
+        body.theme-batman .modal-backdrop .hud-panel h3,
+        body.theme-darkknight .modal-backdrop .hud-panel h3,
         body.theme-comic .modal-backdrop .hud-panel h3 {
-            color: #000000 !important;
+            color: #F2F4F8 !important;
         }
+        body.theme-batman .modal-backdrop .hud-panel p,
+        body.theme-darkknight .modal-backdrop .hud-panel p,
         body.theme-comic .modal-backdrop .hud-panel p {
-            color: #334155 !important;
+            color: #C9D1DC !important;
         }
+        body.theme-batman .modal-backdrop button[aria-label="Close modal"],
+        body.theme-darkknight .modal-backdrop button[aria-label="Close modal"],
         body.theme-comic .modal-backdrop button[aria-label="Close modal"] {
-            background-color: #e23636 !important;
-            color: #ffffff !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 2px 2px 0px #000000 !important;
+            background-color: #161B24 !important;
+            color: #C9D1DC !important;
+            border: 1px solid #303946 !important;
             border-radius: 4px !important;
             padding: 4px 8px !important;
         }
+        body.theme-batman .modal-backdrop button[aria-label="Close modal"]:hover,
+        body.theme-darkknight .modal-backdrop button[aria-label="Close modal"]:hover,
+        body.theme-comic .modal-backdrop button[aria-label="Close modal"]:hover {
+            border-color: #F5C542 !important;
+            color: #F5C542 !important;
+        }
 
-        /* High-Contrast Theme Modal Cards in Comic Mode */
+        /* Theme Selector Modal - Small, Compact & Decent */
+        #theme-modal .theme-modal-container {
+            width: 100% !important;
+            max-width: 460px !important;
+            padding: 18px 20px !important;
+            border-radius: 10px !important;
+            margin: 0 auto !important;
+        }
+        #theme-modal .theme-cards-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 12px !important;
+        }
+        @media (max-width: 480px) {
+            #theme-modal .theme-cards-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        #theme-modal .theme-card {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+            cursor: pointer !important;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+            user-select: none !important;
+            min-height: 140px !important;
+        }
+        #theme-modal .theme-card:hover {
+            transform: translateY(-2px) !important;
+        }
+        #theme-modal .theme-swatch {
+            height: 42px !important;
+            border-radius: 6px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin-bottom: 8px !important;
+            overflow: hidden !important;
+        }
+
+        /* Theme Modal in Dark Knight Mode */
+        body.theme-batman #theme-modal .theme-modal-container,
+        body.theme-darkknight #theme-modal .theme-modal-container,
+        body.theme-comic #theme-modal .theme-modal-container {
+            background: #0B0E14 !important;
+            border: 1px solid #1E2633 !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.05) !important;
+        }
+        body.theme-batman #theme-modal h3,
+        body.theme-darkknight #theme-modal h3,
+        body.theme-comic #theme-modal h3 {
+            color: #F2F4F8 !important;
+        }
+        body.theme-batman #theme-modal p,
+        body.theme-darkknight #theme-modal p,
+        body.theme-comic #theme-modal p {
+            color: #8E9AA8 !important;
+        }
+        body.theme-batman #theme-card-cyber,
+        body.theme-darkknight #theme-card-cyber,
         body.theme-comic #theme-card-cyber {
             background: #090a16 !important;
-            border: 2px solid #00f0ff !important;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25) !important;
-            border-radius: 8px !important;
         }
-        body.theme-comic #theme-card-cyber h4 {
-            color: #ffffff !important;
-            text-shadow: none !important;
-        }
-        body.theme-comic #theme-card-cyber p,
-        body.theme-comic #theme-card-cyber li,
-        body.theme-comic #theme-card-cyber span {
-            color: #cbd5e1 !important;
-        }
-        body.theme-comic #theme-card-cyber .text-\[\#00f0ff\],
-        body.theme-comic #theme-card-cyber i.fa-circle-check,
-        body.theme-comic #theme-card-cyber i.fa-microchip {
-            color: #00f0ff !important;
-        }
-        body.theme-comic #theme-card-cyber #badge-cyber {
-            background: #10b981 !important;
-            color: #000000 !important;
-        }
-        body.theme-comic #theme-card-cyber button {
-            background: rgba(0, 240, 255, 0.15) !important;
-            border: 1.5px solid #00f0ff !important;
-            color: #00f0ff !important;
-        }
-
+        body.theme-batman #theme-card-comic,
+        body.theme-darkknight #theme-card-comic,
         body.theme-comic #theme-card-comic {
-            background-color: #ffffff !important;
-            border: 3.5px solid #000000 !important;
-            box-shadow: 6px 6px 0px #000000 !important;
-            border-radius: 8px !important;
-        }
-        body.theme-comic #theme-card-comic h4 {
-            color: #000000 !important;
-            text-shadow: 2px 2px 0px #f59e0b, 3px 3px 0px #e23636 !important;
-        }
-        body.theme-comic #theme-card-comic p,
-        body.theme-comic #theme-card-comic li {
-            color: #1e293b !important;
-        }
-        body.theme-comic #theme-card-comic i.fa-circle-check {
-            color: #f59e0b !important;
-        }
-        body.theme-comic #theme-card-comic button {
-            background-color: #f59e0b !important;
-            color: #000000 !important;
-            border: 2px solid #000000 !important;
-            box-shadow: 3px 3px 0px #000000 !important;
+            background: linear-gradient(150deg, #11151D 0%, #080A0F 100%) !important;
         }
 
-        /* Comic Footer */
+        /* Dark Knight Footer */
+        body.theme-batman footer,
+        body.theme-darkknight footer,
         body.theme-comic footer {
-            background-color: #ffffff !important;
-            border-top: 3.5px solid #000000 !important;
-            box-shadow: 0 -4px 0px #000000 !important;
-            color: #1e293b !important;
+            background-color: #080A0F !important;
+            border-top: 1px solid #303946 !important;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8) !important;
+            color: #8E9AA8 !important;
         }
+        body.theme-batman footer *,
+        body.theme-darkknight footer *,
         body.theme-comic footer * {
-            color: #1e293b !important;
+            color: #8E9AA8 !important;
         }
+        body.theme-batman footer .font-hud,
+        body.theme-darkknight footer .font-hud,
         body.theme-comic footer .font-hud {
-            color: #e23636 !important;
+            color: #F2F4F8 !important;
         }
+        body.theme-batman footer a:hover,
+        body.theme-darkknight footer a:hover,
         body.theme-comic footer a:hover {
-            color: #e23636 !important;
+            color: #F5C542 !important;
         }
 
-        /* Comic Scroll-to-Top Button */
+        /* Scroll-to-Top Button */
+        body.theme-batman #scroll-to-top,
+        body.theme-darkknight #scroll-to-top,
         body.theme-comic #scroll-to-top {
-            background-color: #f59e0b !important;
-            color: #000000 !important;
-            border: 2.5px solid #000000 !important;
-            box-shadow: 3px 3px 0px #000000 !important;
+            background-color: #11151D !important;
+            color: #F5C542 !important;
+            border: 1px solid #303946 !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7) !important;
+        }
+        body.theme-batman #scroll-to-top:hover,
+        body.theme-darkknight #scroll-to-top:hover,
+        body.theme-comic #scroll-to-top:hover {
+            border-color: #F5C542 !important;
+            box-shadow: 0 0 20px rgba(245, 197, 66, 0.4) !important;
         }
 
-        /* Mobile Menu in Comic Mode */
+        /* Mobile Menu in Dark Knight Mode */
+        body.theme-batman #mobile-menu,
+        body.theme-darkknight #mobile-menu,
         body.theme-comic #mobile-menu {
-            background-color: #ffffff !important;
-            border-top: 3px solid #000000 !important;
+            background-color: #080A0F !important;
+            border-top: 1px solid #303946 !important;
         }
+        body.theme-batman #mobile-menu *,
+        body.theme-darkknight #mobile-menu *,
         body.theme-comic #mobile-menu * {
-            color: #111827 !important;
+            color: #C9D1DC !important;
+        }
+        body.theme-batman #mobile-menu a:hover,
+        body.theme-darkknight #mobile-menu a:hover,
+        body.theme-comic #mobile-menu a:hover {
+            color: #F5C542 !important;
+            border-color: #F5C542 !important;
+        }
+
+        /* Atmospheric Gotham Skyline & Bat-Signal Searchlight */
+        .gotham-skyline-bg {
+            display: none;
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.85;
+            transition: opacity 0.5s ease;
+        }
+        body.theme-batman .gotham-skyline-bg,
+        body.theme-darkknight .gotham-skyline-bg,
+        body.theme-comic .gotham-skyline-bg {
+            display: block !important;
+        }
+        .gotham-searchlight {
+            position: absolute;
+            bottom: -20px;
+            right: 22%;
+            width: 440px;
+            height: 540px;
+            pointer-events: none;
+            opacity: 0.45;
+            transform-origin: bottom center;
+            transform: rotate(-10deg);
+            background: linear-gradient(to top, rgba(245, 197, 66, 0.4) 0%, rgba(245, 197, 66, 0.18) 40%, rgba(245, 197, 66, 0.04) 80%, transparent 100%);
+            clip-path: polygon(46% 100%, 54% 100%, 100% 0%, 0% 0%);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            filter: blur(8px);
+            z-index: 2;
+        }
+        .batsignal-active .gotham-searchlight {
+            opacity: 1;
+            filter: blur(5px);
+            transform: rotate(-7deg);
+        }
+        .batsignal-projection {
+            position: absolute;
+            top: 15px;
+            right: 25%;
+            width: 190px;
+            height: 115px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, rgba(245, 197, 66, 0.85) 0%, rgba(245, 197, 66, 0.5) 45%, rgba(245, 197, 66, 0.12) 72%, transparent 88%);
+            filter: blur(1px);
+            opacity: 0.75;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease, background 0.6s ease, box-shadow 0.6s ease;
+            animation: batsignal-hover 6s ease-in-out infinite alternate;
+            z-index: 3;
+        }
+        .batsignal-active .batsignal-projection {
+            opacity: 1;
+            filter: blur(0px);
+            transform: scale(1.18);
+            background: radial-gradient(ellipse at center, rgba(245, 197, 66, 0.98) 0%, rgba(245, 197, 66, 0.68) 48%, rgba(245, 197, 66, 0.22) 74%, transparent 88%);
+            box-shadow: 0 0 60px rgba(245, 197, 66, 0.6);
+        }
+        @keyframes batsignal-hover {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-8px) scale(1.05); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .batsignal-projection {
+                animation: none !important;
+            }
+        }
+        .darkknight-only {
+            display: none !important;
+        }
+        .darkknight-only-flex {
+            display: none !important;
+        }
+        body.theme-batman .darkknight-only,
+        body.theme-darkknight .darkknight-only,
+        body.theme-comic .darkknight-only {
+            display: block !important;
+        }
+        body.theme-batman .darkknight-only-flex,
+        body.theme-darkknight .darkknight-only-flex,
+        body.theme-comic .darkknight-only-flex {
+            display: inline-flex !important;
         }
     </style>
 </head>
@@ -925,8 +1373,52 @@
     <main class="flex-1 max-w-7xl w-full mx-auto px-3.5 py-6 sm:px-6 sm:py-10 lg:px-10 lg:py-14 space-y-10 sm:space-y-16">
 
         <!-- HERO SECTION -->
-        <section class="hud-panel hud-clip p-5 xs:p-7 sm:p-10 lg:p-14 flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-12">
-            <div class="space-y-4 max-w-3xl w-full text-left">
+        <section id="hero" class="hud-panel hud-clip p-5 xs:p-7 sm:p-10 lg:p-14 flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-12 relative overflow-hidden">
+            
+            <!-- Gotham City Atmospheric Backdrop (Active in Dark Knight Theme) -->
+            <div id="gotham-backdrop" class="gotham-skyline-bg" aria-hidden="true">
+                <!-- Searchlight Beam -->
+                <div class="gotham-searchlight"></div>
+                
+                <!-- Bat-Signal Projection Cloud with Insignia -->
+                <div class="batsignal-projection" id="batsignal-projection">
+                    <svg viewBox="0 0 128.7 68.138" style="width: 110px; height: 58px; fill: #080A0F; filter: drop-shadow(0 0 14px rgba(245, 197, 66, 0.95));" class="select-none pointer-events-none">
+                        <path d="M 64.618,52.977 C 64.618,52.977 62.788,48.207 61.268,46.208 59.858,44.358 58.008,42.838 56.058,41.578 54.098,40.318 51.888,39.458 49.668,38.738 47.418,38.018 45.068,37.618 42.718,37.308 39.848,36.938 36.948,36.868 34.058,36.828 31.598,36.798 26.678,37.048 26.678,37.048 26.678,37.048 27.198,34.198 27.138,32.758 27.078,31.208 26.818,29.648 26.288,28.188 25.748,26.728 24.968,25.348 23.998,24.138 22.898,22.748 21.488,21.628 20.088,20.548 18.868,19.598 17.568,18.738 16.198,18.013 14.308,17.01 10.278,15.527 10.278,15.527 10.278,15.527 17.138,15.847 20.568,15.842 23.698,15.837 26.818,15.529 29.938,15.527 32.928,15.525 35.918,15.825 38.918,15.818 41.488,15.811 46.638,15.527 46.638,15.527 46.638,15.527 47.128,17.226 47.408,18.062 47.748,19.038 47.898,20.118 48.508,20.948 49.208,21.898 50.228,22.618 51.298,23.118 52.618,23.738 54.128,23.878 55.578,24.088 56.708,24.248 57.878,24.368 59.018,24.288 59.678,24.248 60.308,23.728 60.648,23.168 60.998,22.598 60.828,21.848 60.908,21.188 61.078,19.798 61.368,17.022 61.368,17.022 61.728,18.377 62.098,19.728 62.458,21.088 62.458,21.088 63.898,20.858 64.618,20.858 65.378,20.858 66.888,21.108 66.888,21.108 67.258,19.828 67.628,18.543 67.998,17.261 67.998,17.261 68.198,19.938 68.318,21.278 68.368,21.878 68.178,22.568 68.498,23.078 68.888,23.718 69.658,24.188 70.398,24.288 71.458,24.428 72.588,24.298 73.678,24.148 75.378,23.908 77.178,23.778 78.688,22.968 79.628,22.458 80.418,21.658 81.008,20.768 81.528,19.988 81.718,19.038 82.008,18.144 82.288,17.284 82.738,15.527 82.738,15.527 82.738,15.527 88.978,15.788 92.098,15.803 94.648,15.816 97.208,15.656 99.758,15.653 102.75,15.649 105.73,15.82 108.72,15.803 111.95,15.784 118.42,15.527 118.42,15.527 118.42,15.527 114.65,17.245 112.86,18.287 111.51,19.078 110.2,19.938 108.97,20.908 107.9,21.758 106.85,22.638 105.97,23.668 105.01,24.798 104.12,26.018 103.5,27.358 102.82,28.828 102.32,30.418 102.19,32.028 102.05,33.748 102.77,37.158 102.77,37.158 102.77,37.158 96.008,36.828 92.618,36.918 89.728,36.998 86.798,37.048 83.958,37.588 81.448,38.058 78.988,38.828 76.648,39.838 74.948,40.578 73.278,41.448 71.808,42.578 70.258,43.768 68.828,45.158 67.698,46.747 66.358,48.637 64.618,52.977 64.618,52.977 Z"/>
+                    </svg>
+                </div>
+                
+                <!-- Gotham City Architectural Skyline Silhouette SVG -->
+                <svg class="absolute bottom-0 left-0 right-0 w-full h-40 opacity-40 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 240" fill="currentColor">
+                    <!-- Distant buildings layer -->
+                    <path fill="#080A0F" d="M0,240 L0,150 L35,150 L35,110 L70,110 L70,150 L110,150 L110,80 L140,80 L140,50 L150,20 L160,50 L160,80 L190,80 L190,160 L240,160 L240,95 L285,95 L285,170 L340,170 L340,70 L380,70 L380,140 L430,140 L430,60 L445,40 L460,60 L480,60 L480,160 L540,160 L540,110 L590,110 L590,75 L620,75 L620,35 L630,10 L640,35 L640,75 L670,75 L670,170 L720,170 L720,100 L770,100 L770,145 L820,145 L820,65 L860,65 L860,135 L910,135 L910,85 L950,85 L950,165 L1010,165 L1010,115 L1060,115 L1060,55 L1080,30 L1100,55 L1120,120 L1160,120 L1160,160 L1200,160 L1200,240 Z"/>
+                    <!-- Foreground Gothic spires & lit windows -->
+                    <path fill="#11151D" d="M0,240 L0,180 L25,180 L25,130 L60,130 L60,180 L100,180 L100,110 L130,110 L145,60 L160,110 L180,110 L180,190 L220,190 L220,120 L270,120 L270,195 L320,195 L320,90 L360,90 L360,160 L410,160 L410,80 L440,80 L445,50 L450,80 L470,80 L470,180 L520,180 L520,130 L570,130 L570,95 L610,95 L625,45 L640,95 L660,95 L660,190 L700,190 L700,120 L750,120 L750,165 L800,165 L800,85 L840,85 L840,155 L890,155 L890,105 L930,105 L930,185 L990,185 L990,135 L1040,135 L1040,75 L1070,75 L1080,45 L1090,75 L1110,75 L1110,140 L1150,140 L1150,180 L1200,180 L1200,240 Z"/>
+                    <!-- Ambient lit windows (Signal Yellow & Moonlight Silver) -->
+                    <rect x="115" y="125" width="4" height="6" fill="#F5C542" opacity="0.75"/>
+                    <rect x="125" y="125" width="4" height="6" fill="#F5C542" opacity="0.6"/>
+                    <rect x="115" y="140" width="4" height="6" fill="#C9D1DC" opacity="0.6"/>
+                    <rect x="235" y="135" width="4" height="6" fill="#F5C542" opacity="0.8"/>
+                    <rect x="245" y="135" width="4" height="6" fill="#F5C542" opacity="0.6"/>
+                    <rect x="255" y="150" width="4" height="6" fill="#C9D1DC" opacity="0.6"/>
+                    <rect x="335" y="110" width="4" height="6" fill="#F5C542" opacity="0.7"/>
+                    <rect x="345" y="125" width="4" height="6" fill="#F5C542" opacity="0.7"/>
+                    <rect x="425" y="105" width="4" height="6" fill="#F5C542" opacity="0.8"/>
+                    <rect x="435" y="120" width="4" height="6" fill="#C9D1DC" opacity="0.5"/>
+                    <rect x="630" y="115" width="4" height="6" fill="#F5C542" opacity="0.85"/>
+                    <rect x="640" y="115" width="4" height="6" fill="#F5C542" opacity="0.6"/>
+                    <rect x="630" y="130" width="4" height="6" fill="#C9D1DC" opacity="0.6"/>
+                    <rect x="715" y="135" width="4" height="6" fill="#F5C542" opacity="0.7"/>
+                    <rect x="730" y="150" width="4" height="6" fill="#F5C542" opacity="0.8"/>
+                    <rect x="815" y="100" width="4" height="6" fill="#F5C542" opacity="0.75"/>
+                    <rect x="825" y="115" width="4" height="6" fill="#C9D1DC" opacity="0.6"/>
+                    <rect x="905" y="120" width="4" height="6" fill="#F5C542" opacity="0.7"/>
+                    <rect x="1005" y="150" width="4" height="6" fill="#F5C542" opacity="0.8"/>
+                    <rect x="1055" y="95" width="4" height="6" fill="#F5C542" opacity="0.8"/>
+                </svg>
+            </div>
+
+            <!-- Foreground Hero Content (Z-10 relative) -->
+            <div class="space-y-4 max-w-3xl w-full text-left relative z-10">
                 <!-- Status Badge -->
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/30 text-[10px] xs:text-xs font-hud tracking-wider sm:tracking-widest max-w-full flex-wrap">
                     <span class="w-2 h-2 bg-[#00f0ff] rounded-full animate-pulse shrink-0"></span>
@@ -943,8 +1435,8 @@
                     Building scalable enterprise software & automated AI workflows. Currently engineering high-performance backend modules and responsive frontend systems for <span class="text-[#00f0ff] font-semibold">iNexus</span>.
                 </p>
                 
-                <!-- CTA Action Buttons -->
-                <div class="flex flex-col xs:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4 w-full sm:w-auto">
+                <!-- CTA Action Buttons & Bat-Signal Trigger -->
+                <div class="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 pt-3 sm:pt-4 w-full sm:w-auto items-stretch xs:items-center">
                     <a href="#history" data-sfx="nav" class="hud-btn px-6 sm:px-8 py-3.5 bg-[#00f0ff] hover:bg-[#00f0ff]/90 text-black font-hud text-xs font-black uppercase tracking-wider text-center flex items-center justify-center shadow-lg min-h-[44px]">
                         <i class="fa-solid fa-crosshairs mr-2"></i> View Work History
                     </a>
@@ -954,16 +1446,30 @@
                     <button onclick="openModal('resume-modal')" data-sfx="modal-open" class="hud-btn px-5 py-3.5 bg-panel border border-violet-500/40 text-violet-300 hover:text-white font-hud text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center min-h-[44px]">
                         <i class="fa-solid fa-file-lines mr-2"></i> Dossier / CV
                     </button>
+                    <!-- Bat-Signal Easter Egg Trigger (Dark Knight theme exclusive) -->
+                    <button id="bat-signal-btn" onclick="toggleBatSignal()" type="button" data-sfx="none" title="Summon the Bat-Signal over Gotham" aria-label="Toggle Bat-Signal" class="darkknight-only-flex items-center justify-center gap-2 px-4 py-3.5 bg-[#11151D] border border-[#F5C542]/50 hover:border-[#F5C542] text-[#F5C542] text-xs font-hud tracking-wider transition rounded shadow-lg min-h-[44px] group">
+                        <svg viewBox="0 0 128.7 68.138" style="width: 22px; height: 12px; fill: #F5C542;" class="group-hover:scale-110 transition-transform shrink-0">
+                            <path d="M 64.618,52.977 C 64.618,52.977 62.788,48.207 61.268,46.208 59.858,44.358 58.008,42.838 56.058,41.578 54.098,40.318 51.888,39.458 49.668,38.738 47.418,38.018 45.068,37.618 42.718,37.308 39.848,36.938 36.948,36.868 34.058,36.828 31.598,36.798 26.678,37.048 26.678,37.048 26.678,37.048 27.198,34.198 27.138,32.758 27.078,31.208 26.818,29.648 26.288,28.188 25.748,26.728 24.968,25.348 23.998,24.138 22.898,22.748 21.488,21.628 20.088,20.548 18.868,19.598 17.568,18.738 16.198,18.013 14.308,17.01 10.278,15.527 10.278,15.527 10.278,15.527 17.138,15.847 20.568,15.842 23.698,15.837 26.818,15.529 29.938,15.527 32.928,15.525 35.918,15.825 38.918,15.818 41.488,15.811 46.638,15.527 46.638,15.527 46.638,15.527 47.128,17.226 47.408,18.062 47.748,19.038 47.898,20.118 48.508,20.948 49.208,21.898 50.228,22.618 51.298,23.118 52.618,23.738 54.128,23.878 55.578,24.088 56.708,24.248 57.878,24.368 59.018,24.288 59.678,24.248 60.308,23.728 60.648,23.168 60.998,22.598 60.828,21.848 60.908,21.188 61.078,19.798 61.368,17.022 61.368,17.022 61.728,18.377 62.098,19.728 62.458,21.088 62.458,21.088 63.898,20.858 64.618,20.858 65.378,20.858 66.888,21.108 66.888,21.108 67.258,19.828 67.628,18.543 67.998,17.261 67.998,17.261 68.198,19.938 68.318,21.278 68.368,21.878 68.178,22.568 68.498,23.078 68.888,23.718 69.658,24.188 70.398,24.288 71.458,24.428 72.588,24.298 73.678,24.148 75.378,23.908 77.178,23.778 78.688,22.968 79.628,22.458 80.418,21.658 81.008,20.768 81.528,19.988 81.718,19.038 82.008,18.144 82.288,17.284 82.738,15.527 82.738,15.527 82.738,15.527 88.978,15.788 92.098,15.803 94.648,15.816 97.208,15.656 99.758,15.653 102.75,15.649 105.73,15.82 108.72,15.803 111.95,15.784 118.42,15.527 118.42,15.527 118.42,15.527 114.65,17.245 112.86,18.287 111.51,19.078 110.2,19.938 108.97,20.908 107.9,21.758 106.85,22.638 105.97,23.668 105.01,24.798 104.12,26.018 103.5,27.358 102.82,28.828 102.32,30.418 102.19,32.028 102.05,33.748 102.77,37.158 102.77,37.158 102.77,37.158 96.008,36.828 92.618,36.918 89.728,36.998 86.798,37.048 83.958,37.588 81.448,38.058 78.988,38.828 76.648,39.838 74.948,40.578 73.278,41.448 71.808,42.578 70.258,43.768 68.828,45.158 67.698,46.747 66.358,48.637 64.618,52.977 64.618,52.977 Z"/>
+                        </svg>
+                        <span id="bat-signal-status" class="font-bold text-[11px] text-[#F5C542]">BAT-SIGNAL: SUMMON</span>
+                    </button>
                 </div>
             </div>
             
-            <!-- Agent Badge Visual -->
-            <div class="w-full md:w-auto flex justify-center shrink-0">
-                <div data-sfx="click" role="button" tabindex="0" title="Agent Profile Badge" class="w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 hud-panel-violet hud-clip p-3 flex items-center justify-center relative shadow-2xl cursor-pointer hover:border-violet-400 transition">
+            <!-- Agent / WayneTech Badge Visual -->
+            <div class="w-full md:w-auto flex justify-center shrink-0 relative z-10">
+                <div data-sfx="click" role="button" tabindex="0" title="Agent Profile Badge // WayneTech Forensic Identification" class="w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 hud-panel-violet hud-clip p-3 flex items-center justify-center relative shadow-2xl cursor-pointer hover:border-violet-400 transition">
                     <div class="absolute inset-0 border border-violet-500/30 m-2 pointer-events-none"></div>
-                    <div class="text-center space-y-1 sm:space-y-2">
+                    <!-- WayneTech corner reticles in Dark Knight mode -->
+                    <div class="absolute top-2 left-2 text-[10px] text-slate-500 font-mono pointer-events-none darkknight-only font-bold">┌</div>
+                    <div class="absolute top-2 right-2 text-[10px] text-slate-500 font-mono pointer-events-none darkknight-only font-bold">┐</div>
+                    <div class="absolute bottom-2 left-2 text-[10px] text-slate-500 font-mono pointer-events-none darkknight-only font-bold">└</div>
+                    <div class="absolute bottom-2 right-2 text-[10px] text-slate-500 font-mono pointer-events-none darkknight-only font-bold">┘</div>
+                    <div class="text-center space-y-1 sm:space-y-2 relative z-10">
                         <div class="text-[10px] sm:text-xs font-hud text-violet-400 tracking-widest">// ELITE AGENT</div>
-                        <div class="text-4xl xs:text-5xl font-hud font-black text-white tracking-wider">AA</div>
+                        <div class="text-4xl xs:text-5xl font-hud font-black text-white tracking-wider flex items-center justify-center gap-1">
+                            AA
+                        </div>
                         <div class="inline-block px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono text-emerald-400">
                             STATUS: ONLINE
                         </div>
@@ -1172,7 +1678,10 @@
 
             <div class="hud-panel-violet hud-clip p-5 xs:p-6 sm:p-8 space-y-5 sm:space-y-6">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <h3 class="text-xl sm:text-2xl font-hud font-bold text-white">iNexus Enterprise Platform</h3>
+                    <div>
+                        <div class="text-[10px] font-mono text-[#F5C542] tracking-wider darkknight-only mb-1 font-bold">// INVESTIGATION ARCHIVE &bull; CASE FILE #2026-INX &bull; STATUS: OPERATIONAL</div>
+                        <h3 class="text-xl sm:text-2xl font-hud font-bold text-white">iNexus Enterprise Platform</h3>
+                    </div>
                     <span class="self-start sm:self-auto text-xs font-hud px-3 py-1 bg-cyan-500/10 text-[#00f0ff] border border-[#00f0ff]/30">
                         CORE ARCHITECTURE
                     </span>
@@ -1211,8 +1720,8 @@
                     </div>
                     <div class="font-mono text-xs text-slate-300 font-bold flex items-center gap-1.5">
                         <i class="fa-solid fa-terminal text-[#00f0ff] text-[11px]"></i>
-                        <span class="text-white">ammar@amman-os</span><span class="text-slate-500">:</span><span class="text-[#00f0ff]">~/portfolio</span>
-                        <span class="text-slate-500 text-[11px] hidden sm:inline">&mdash; bash</span>
+                        <span class="text-white" id="term-host-user">ammar@amman-os</span><span class="text-slate-500">:</span><span class="text-[#00f0ff]" id="term-host-path">~/portfolio</span>
+                        <span class="text-slate-500 text-[11px] hidden sm:inline" id="term-host-badge">&mdash; bash</span>
                     </div>
                 </div>
 
@@ -1267,7 +1776,7 @@
 
                 <!-- Active Bash Prompt Line INSIDE the terminal screen buffer -->
                 <div id="terminal-prompt-row" class="flex items-center font-mono text-xs text-white pt-1">
-                    <span class="text-emerald-400 font-bold select-none shrink-0 mr-1.5">ammar@amman-os:~/portfolio$</span>
+                    <span class="text-emerald-400 font-bold select-none shrink-0 mr-1.5" id="terminal-prompt-prefix">ammar@amman-os:~/portfolio$</span>
                     <input type="text" id="terminal-input" onkeydown="handleTerminalInput(event)" autocomplete="off" spellcheck="false" class="flex-1 text-white font-mono text-xs caret-[#00f0ff]" placeholder="" aria-label="Terminal Bash Command Input">
                 </div>
             </div>
@@ -1340,128 +1849,96 @@
         <i class="fa-solid fa-chevron-up text-xs"></i> <span class="hidden xs:inline">TOP</span>
     </button>
 
-    <!-- THEME SELECTION MODAL (CARDS OVERLAY) -->
-    <div id="theme-modal" class="modal-backdrop hidden fixed inset-0 bg-[#050508]/90 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="theme-modal-title" onclick="handleBackdropClick(event, 'theme-modal')">
-        <div class="hud-panel hud-clip max-w-4xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-6 border-[#00f0ff]/50 shadow-2xl relative">
+    <!-- THEME SELECTION MODAL (COMPACT & DECENT) -->
+    <div id="theme-modal" class="modal-backdrop hidden fixed inset-0 bg-[#050508]/85 backdrop-blur-md z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="theme-modal-title" onclick="handleBackdropClick(event, 'theme-modal')">
+        <div class="hud-panel theme-modal-container border-[#00f0ff]/50 shadow-2xl relative" style="max-width: 480px; width: 100%; padding: 18px 20px;">
             <!-- Modal Header -->
-            <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-3">
-                <div class="flex items-center space-x-2.5">
-                    <span class="w-3 h-3 bg-amber-400 rounded-full animate-ping"></span>
-                    <h3 id="theme-modal-title" class="font-hud text-base sm:text-xl font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-palette text-amber-400"></i> VISUAL UNIVERSE // SELECT THEME
+            <div class="flex justify-between items-center border-b border-[#00f0ff]/20 pb-2.5">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2 h-2 bg-amber-400 rounded-full animate-ping"></span>
+                    <h3 id="theme-modal-title" class="font-hud text-xs sm:text-sm font-bold text-white flex items-center gap-2 tracking-wide uppercase">
+                        <i class="fa-solid fa-palette text-amber-400 text-xs"></i> Visual Universe
                     </h3>
                 </div>
-                <button onclick="closeModal('theme-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-2 -mr-2 text-slate-400 hover:text-white transition">
-                    <i class="fas fa-xmark text-xl"></i>
+                <button onclick="closeModal('theme-modal')" data-sfx="modal-close" aria-label="Close modal" class="p-1 -mr-1 text-slate-400 hover:text-white transition">
+                    <i class="fas fa-xmark text-lg"></i>
                 </button>
             </div>
 
             <!-- Subtitle -->
-            <p class="text-xs text-slate-300 font-mono">
-                Select an aesthetic universe for the portfolio. All data, experience, projects, and Linux terminal features stay 100% intact &mdash; while the complete visual styling, typography, and sound effects transform instantly!
+            <p class="text-[11.5px] text-slate-300 font-mono leading-relaxed" style="margin: 10px 0 14px 0;">
+                Choose a visual theme. All projects, experience, and terminal capabilities remain active.
             </p>
 
-            <!-- THEME CARDS GRID (NOT a dropdown, but interactive cards) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            <!-- 2 Compact Theme Cards -->
+            <div class="theme-cards-grid">
                 
-                <!-- CARD 1: CYBER HUD (Sci-Fi Gaming) -->
-                <div id="theme-card-cyber" onclick="setTheme('cyber')" class="theme-card relative p-6 rounded-lg cursor-pointer transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between group" style="background: #090a16; border: 2px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);">
-                    <div class="space-y-4">
-                        <!-- Card Header & Badge -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono px-2.5 py-1 rounded font-bold uppercase tracking-wider" style="background: rgba(0, 240, 255, 0.12); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4);">
-                                // 01. ORIGINAL SCI-FI
-                            </span>
-                            <span id="badge-cyber" class="theme-active-badge text-[11px] font-hud px-2.5 py-0.5 rounded font-bold flex items-center gap-1.5" style="background: #10b981; color: #000;">
-                                <i class="fa-solid fa-check"></i> ACTIVE
-                            </span>
+                <!-- CARD 1: CYBER HUD -->
+                <div id="theme-card-cyber" onclick="setTheme('cyber')" class="theme-card group" style="background: #090a16; border: 1.5px solid #00f0ff; box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);">
+                    <div style="margin-bottom: 8px;">
+                        <!-- Swatch preview -->
+                        <div class="theme-swatch" style="background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.25), transparent 70%), #04050a; border: 1px solid rgba(0, 240, 255, 0.35);">
+                            <i class="fa-solid fa-microchip text-[#00f0ff] text-base" style="filter: drop-shadow(0 0 5px #00f0ff);"></i>
                         </div>
 
-                        <!-- Theme Title -->
                         <div>
-                            <h4 class="font-hud text-xl font-bold text-white group-hover:text-[#00f0ff] transition flex items-center gap-2">
-                                <i class="fa-solid fa-microchip text-[#00f0ff]"></i> CYBER HUD
+                            <h4 class="font-hud text-xs font-bold text-white group-hover:text-[#00f0ff] transition flex items-center gap-1.5" style="font-size: 13px;">
+                                CYBER HUD
                             </h4>
-                            <p class="text-xs text-slate-300 font-sans mt-0.5">AAA Gaming & Sci-Fi Control Deck</p>
+                            <p class="text-[10px] text-slate-400 font-sans mt-0.5 leading-snug" style="font-size: 10px; color: #94a3b8; margin-top: 2px;">Neon sci-fi cockpit & laser SFX</p>
                         </div>
-
-                        <!-- Visual Card Preview Simulation -->
-                        <div class="p-3.5 rounded space-y-2 font-mono text-[11px] cyber-grid relative overflow-hidden" style="background: #04050a; border: 1px solid rgba(0, 240, 255, 0.4);">
-                            <div class="flex items-center justify-between text-[#00f0ff] font-hud text-[11px]">
-                                <span>AGENT_ID: AMMAR</span>
-                                <span class="text-emerald-400">LVL_20</span>
-                            </div>
-                            <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
-                                <div class="h-full w-3/4" style="background: linear-gradient(90deg, #00f0ff, #8b5cf6);"></div>
-                            </div>
-                            <div class="text-[10px] text-slate-300 font-sans flex items-center justify-between pt-0.5">
-                                <span class="text-slate-200">Orbitron Font</span>
-                                <span class="text-violet-300 font-mono">Laser SFX</span>
-                            </div>
-                        </div>
-
-                        <!-- Feature List -->
-                        <ul class="text-[11px] text-slate-300 space-y-1.5 font-mono">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[#00f0ff] text-[11px]"></i> Neon cyan holographic HUD & aerospace styling</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[#00f0ff] text-[11px]"></i> Orbitron futuristic aerospace typography</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[#00f0ff] text-[11px]"></i> Synthesizer laser & telemetry sound FX</li>
-                        </ul>
                     </div>
 
-                    <!-- Activate Button -->
-                    <button type="button" class="mt-5 w-full py-2.5 font-hud font-bold text-xs rounded transition uppercase tracking-wider flex items-center justify-center gap-2" style="background: rgba(0, 240, 255, 0.15); border: 1px solid #00f0ff; color: #00f0ff;">
-                        <i class="fa-solid fa-terminal text-[11px]"></i> ENGAGE CYBER HUD
-                    </button>
+                    <div style="padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <span style="width: 6px; height: 6px; border-radius: 50%; background: #00f0ff; display: inline-block;"></span>
+                            <span style="width: 6px; height: 6px; border-radius: 50%; background: #8b5cf6; display: inline-block;"></span>
+                            <span style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <span id="badge-cyber" class="theme-active-badge text-[9.5px] font-mono font-bold px-2 py-0.5 rounded flex items-center gap-1" style="background: rgba(0, 240, 255, 0.15); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4); font-size: 9.5px;">
+                                <i class="fa-solid fa-check text-[8px]"></i> ACTIVE
+                            </span>
+                            <span id="select-cyber" class="hidden text-[9.5px] font-mono text-slate-400 group-hover:text-cyan-300" style="font-size: 9.5px; color: #94a3b8;">
+                                SELECT &rarr;
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- CARD 2: COMIC UNIVERSE (Dark Graphic Novel / Comic Noir) -->
-                <div id="theme-card-comic" onclick="setTheme('comic')" class="theme-card relative p-6 rounded-lg cursor-pointer transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between group" style="background: #141624; border: 2px solid rgba(100, 116, 139, 0.4); box-shadow: 4px 4px 0px #000;">
-                    <div class="space-y-4">
-                        <!-- Card Header & Badge -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono px-2.5 py-1 rounded font-bold uppercase tracking-wider" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">
-                                // 02. NEW UNIVERSE
-                            </span>
-                            <span id="badge-comic" class="theme-active-badge hidden text-[11px] font-hud px-2.5 py-0.5 rounded font-bold flex items-center gap-1.5" style="background: #fbbf24; color: #000;">
-                                <i class="fa-solid fa-check"></i> ACTIVE
-                            </span>
+                <!-- CARD 2: DARK KNIGHT -->
+                <div id="theme-card-comic" onclick="setTheme('darkknight')" class="theme-card group" style="background: linear-gradient(150deg, #11151D 0%, #080A0F 100%); border: 1.5px solid rgba(48, 57, 70, 0.8); box-shadow: 0 4px 15px rgba(0,0,0,0.6);">
+                    <div style="margin-bottom: 8px;">
+                        <!-- Swatch preview with authentic Batman emblem -->
+                        <div class="theme-swatch" style="background: radial-gradient(circle at 50% 50%, rgba(245, 197, 66, 0.22), transparent 70%), #080A0F; border: 1px solid rgba(245, 197, 66, 0.3);">
+                            <svg viewBox="0 0 128.7 68.138" style="width: 28px; height: 15px; fill: #F5C542; filter: drop-shadow(0 0 5px rgba(245, 197, 66, 0.7));" class="shrink-0">
+                                <path d="M 64.618,52.977 C 64.618,52.977 62.788,48.207 61.268,46.208 59.858,44.358 58.008,42.838 56.058,41.578 54.098,40.318 51.888,39.458 49.668,38.738 47.418,38.018 45.068,37.618 42.718,37.308 39.848,36.938 36.948,36.868 34.058,36.828 31.598,36.798 26.678,37.048 26.678,37.048 26.678,37.048 27.198,34.198 27.138,32.758 27.078,31.208 26.818,29.648 26.288,28.188 25.748,26.728 24.968,25.348 23.998,24.138 22.898,22.748 21.488,21.628 20.088,20.548 18.868,19.598 17.568,18.738 16.198,18.013 14.308,17.01 10.278,15.527 10.278,15.527 10.278,15.527 17.138,15.847 20.568,15.842 23.698,15.837 26.818,15.529 29.938,15.527 32.928,15.525 35.918,15.825 38.918,15.818 41.488,15.811 46.638,15.527 46.638,15.527 46.638,15.527 47.128,17.226 47.408,18.062 47.748,19.038 47.898,20.118 48.508,20.948 49.208,21.898 50.228,22.618 51.298,23.118 52.618,23.738 54.128,23.878 55.578,24.088 56.708,24.248 57.878,24.368 59.018,24.288 59.678,24.248 60.308,23.728 60.648,23.168 60.998,22.598 60.828,21.848 60.908,21.188 61.078,19.798 61.368,17.022 61.368,17.022 61.728,18.377 62.098,19.728 62.458,21.088 62.458,21.088 63.898,20.858 64.618,20.858 65.378,20.858 66.888,21.108 66.888,21.108 67.258,19.828 67.628,18.543 67.998,17.261 67.998,17.261 68.198,19.938 68.318,21.278 68.368,21.878 68.178,22.568 68.498,23.078 68.888,23.718 69.658,24.188 70.398,24.288 71.458,24.428 72.588,24.298 73.678,24.148 75.378,23.908 77.178,23.778 78.688,22.968 79.628,22.458 80.418,21.658 81.008,20.768 81.528,19.988 81.718,19.038 82.008,18.144 82.288,17.284 82.738,15.527 82.738,15.527 82.738,15.527 88.978,15.788 92.098,15.803 94.648,15.816 97.208,15.656 99.758,15.653 102.75,15.649 105.73,15.82 108.72,15.803 111.95,15.784 118.42,15.527 118.42,15.527 118.42,15.527 114.65,17.245 112.86,18.287 111.51,19.078 110.2,19.938 108.97,20.908 107.9,21.758 106.85,22.638 105.97,23.668 105.01,24.798 104.12,26.018 103.5,27.358 102.82,28.828 102.32,30.418 102.19,32.028 102.05,33.748 102.77,37.158 102.77,37.158 102.77,37.158 96.008,36.828 92.618,36.918 89.728,36.998 86.798,37.048 83.958,37.588 81.448,38.058 78.988,38.828 76.648,39.838 74.948,40.578 73.278,41.448 71.808,42.578 70.258,43.768 68.828,45.158 67.698,46.747 66.358,48.637 64.618,52.977 64.618,52.977 Z"/>
+                            </svg>
                         </div>
 
-                        <!-- Theme Title -->
                         <div>
-                            <h4 class="font-hud text-xl font-bold text-white group-hover:text-amber-300 transition flex items-center gap-2">
-                                <i class="fa-solid fa-mask" style="color: #f59e0b;"></i> BATMAN & MARVEL COMIC
+                            <h4 class="font-hud text-xs sm:text-sm font-bold text-white group-hover:text-[#F5C542] transition flex items-center gap-1.5">
+                                DARK KNIGHT
                             </h4>
-                            <p class="text-xs text-slate-300 font-sans mt-0.5">Classic Superhero Comic Book & Action Edition</p>
+                            <p class="text-[10px] text-slate-400 font-sans mt-0.5 leading-snug">Gotham skyline & Batcave systems</p>
                         </div>
-
-                        <!-- Visual Card Preview Simulation -->
-                        <div class="p-3.5 rounded space-y-2 font-mono text-[11px] relative overflow-hidden" style="background: #f3efe6; border: 2.5px solid #000; box-shadow: 4px 4px 0px #000;">
-                            <div class="flex items-center justify-between font-bold text-[14px]" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.5px; color: #111827; text-shadow: 1px 1px 0px #f59e0b;">
-                                <span>AMMAR: HERO // INFER LABS</span>
-                                <span class="text-white px-2 py-0.5 text-[10px] font-bold" style="background: #e23636; border: 1.5px solid #000; border-radius: 3px;">ACTION!</span>
-                            </div>
-                            <div class="h-2 w-full bg-black border overflow-hidden" style="border-color: #000;">
-                                <div class="h-full w-4/5" style="background: linear-gradient(90deg, #f59e0b, #e23636);"></div>
-                            </div>
-                            <div class="text-[11px] font-sans flex items-center justify-between pt-0.5" style="color: #111827;">
-                                <span class="font-bold" style="font-family: 'Outfit', sans-serif;">Outfit & Jakarta Sans</span>
-                                <span style="color: #e23636; font-weight: bold;">Cartoon Pop SFX</span>
-                            </div>
-                        </div>
-
-                        <!-- Feature List -->
-                        <ul class="text-[11px] text-slate-300 space-y-1.5 font-mono">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[11px]" style="color: #f59e0b;"></i> Authentic comic book paper canvas & halftone printing dots</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[11px]" style="color: #f59e0b;"></i> White storyboard panels with bold black ink outlines & 3D drop-shadows</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-[11px]" style="color: #f59e0b;"></i> Batman Gold & Marvel Red hero accents, Batcave terminal console</li>
-                        </ul>
                     </div>
 
-                    <!-- Activate Button -->
-                    <button type="button" class="mt-5 w-full py-2.5 font-bold text-xs rounded transition uppercase tracking-wider flex items-center justify-center gap-2" style="background: #f59e0b; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0px #000; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px; font-size: 13px;">
-                        <i class="fa-solid fa-bolt text-[12px]"></i> UNLEASH COMIC THEME
-                    </button>
+                    <div class="pt-2.5 mt-2 border-t border-white/5 flex items-center justify-between">
+                        <div class="flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#F5C542]"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#6CA6D9]"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#202736]"></span>
+                        </div>
+                        <div class="flex items-center">
+                            <span id="badge-comic" class="theme-active-badge hidden text-[9.5px] font-mono font-bold px-2 py-0.5 rounded flex items-center gap-1" style="background: rgba(245, 197, 66, 0.15); color: #F5C542; border: 1px solid rgba(245, 197, 66, 0.4);">
+                                <i class="fa-solid fa-check text-[8px]"></i> ACTIVE
+                            </span>
+                            <span id="select-comic" class="text-[9.5px] font-mono text-slate-400 group-hover:text-amber-300">
+                                SELECT &rarr;
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -1761,57 +2238,104 @@
         let currentTheme = 'cyber';
         try {
             const savedTheme = localStorage.getItem('portfolio_theme');
-            if (savedTheme === 'comic' || savedTheme === 'cyber') {
-                currentTheme = savedTheme;
+            if (savedTheme === 'comic' || savedTheme === 'darkknight' || savedTheme === 'batman') {
+                currentTheme = 'darkknight';
             }
         } catch(e) {}
 
         function setTheme(theme, playAudio = true) {
-            currentTheme = (theme === 'comic') ? 'comic' : 'cyber';
+            const isDarkKnight = (theme === 'comic' || theme === 'darkknight' || theme === 'batman');
+            currentTheme = isDarkKnight ? 'darkknight' : 'cyber';
             try {
                 localStorage.setItem('portfolio_theme', currentTheme);
             } catch(e) {}
 
             const body = document.body;
             const badgeCyber = document.getElementById('badge-cyber');
+            const selectCyber = document.getElementById('select-cyber');
             const badgeComic = document.getElementById('badge-comic');
+            const selectComic = document.getElementById('select-comic');
             const cardCyber = document.getElementById('theme-card-cyber');
             const cardComic = document.getElementById('theme-card-comic');
             const themeBtnText = document.getElementById('theme-btn-text');
+            const termUser = document.getElementById('term-host-user');
+            const termPath = document.getElementById('term-host-path');
+            const termPrompt = document.getElementById('terminal-prompt-prefix');
 
-            if (currentTheme === 'comic') {
-                body.classList.add('theme-comic');
+            if (isDarkKnight) {
+                body.classList.add('theme-batman', 'theme-darkknight', 'theme-comic');
                 if (badgeCyber) badgeCyber.classList.add('hidden');
+                if (selectCyber) selectCyber.classList.remove('hidden');
                 if (badgeComic) badgeComic.classList.remove('hidden');
+                if (selectComic) selectComic.classList.add('hidden');
                 if (cardCyber) {
-                    cardCyber.style.borderColor = '';
-                    cardCyber.style.boxShadow = '';
+                    cardCyber.style.borderColor = '#232B3B';
+                    cardCyber.style.boxShadow = 'none';
                 }
                 if (cardComic) {
-                    cardComic.style.borderColor = '';
-                    cardComic.style.boxShadow = '';
+                    cardComic.style.borderColor = '#F5C542';
+                    cardComic.style.boxShadow = '0 0 18px rgba(245, 197, 66, 0.3)';
                 }
-                if (themeBtnText) themeBtnText.innerText = 'COMIC';
-                if (playAudio) playComicSound('modal-open');
+                if (themeBtnText) themeBtnText.innerText = 'DARK KNIGHT';
+                if (termUser) termUser.innerText = 'ammar@wayne-tech';
+                if (termPath) termPath.innerText = '~/dossier';
+                if (termPrompt) termPrompt.innerText = 'ammar@batcomputer:~/dossier$';
+                if (playAudio) playDarkKnightSound('modal-open');
             } else {
-                body.classList.remove('theme-comic');
+                body.classList.remove('theme-batman', 'theme-darkknight', 'theme-comic');
+                const heroEl = document.getElementById('hero');
+                if (heroEl) heroEl.classList.remove('batsignal-active');
+                const batSignalStatus = document.getElementById('bat-signal-status');
+                if (batSignalStatus) batSignalStatus.innerText = 'BAT-SIGNAL: SUMMON';
+
                 if (badgeCyber) badgeCyber.classList.remove('hidden');
+                if (selectCyber) selectCyber.classList.add('hidden');
                 if (badgeComic) badgeComic.classList.add('hidden');
+                if (selectComic) selectComic.classList.remove('hidden');
                 if (cardCyber) {
                     cardCyber.style.borderColor = '#00f0ff';
-                    cardCyber.style.boxShadow = '0 0 25px rgba(0, 240, 255, 0.25)';
+                    cardCyber.style.boxShadow = '0 0 16px rgba(0, 240, 255, 0.25)';
                 }
                 if (cardComic) {
-                    cardComic.style.borderColor = 'rgba(100, 116, 139, 0.4)';
-                    cardComic.style.boxShadow = '4px 4px 0px #000';
+                    cardComic.style.borderColor = 'rgba(48, 57, 70, 0.8)';
+                    cardComic.style.boxShadow = 'none';
                 }
                 if (themeBtnText) themeBtnText.innerText = 'CYBER';
+                if (termUser) termUser.innerText = 'ammar@amman-os';
+                if (termPath) termPath.innerText = '~/portfolio';
+                if (termPrompt) termPrompt.innerText = 'ammar@amman-os:~/portfolio$';
                 if (playAudio) playSciFiSound('modal-open');
+            }
+
+            const favicon = document.querySelector('link[rel="icon"]');
+            if (favicon) {
+                if (isDarkKnight) {
+                    favicon.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128.7 68.138'><rect width='100%' height='100%' rx='16' fill='%23080A0F'/><path fill='%23F5C542' d='M 64.618,52.977 C 64.618,52.977 62.788,48.207 61.268,46.208 59.858,44.358 58.008,42.838 56.058,41.578 54.098,40.318 51.888,39.458 49.668,38.738 47.418,38.018 45.068,37.618 42.718,37.308 39.848,36.938 36.948,36.868 34.058,36.828 31.598,36.798 26.678,37.048 26.678,37.048 26.678,37.048 27.198,34.198 27.138,32.758 27.078,31.208 26.818,29.648 26.288,28.188 25.748,26.728 24.968,25.348 23.998,24.138 22.898,22.748 21.488,21.628 20.088,20.548 18.868,19.598 17.568,18.738 16.198,18.013 14.308,17.01 10.278,15.527 10.278,15.527 10.278,15.527 17.138,15.847 20.568,15.842 23.698,15.837 26.818,15.529 29.938,15.527 32.928,15.525 35.918,15.825 38.918,15.818 41.488,15.811 46.638,15.527 46.638,15.527 46.638,15.527 47.128,17.226 47.408,18.062 47.748,19.038 47.898,20.118 48.508,20.948 49.208,21.898 50.228,22.618 51.298,23.118 52.618,23.738 54.128,23.878 55.578,24.088 56.708,24.248 57.878,24.368 59.018,24.288 59.678,24.248 60.308,23.728 60.648,23.168 60.998,22.598 60.828,21.848 60.908,21.188 61.078,19.798 61.368,17.022 61.368,17.022 61.728,18.377 62.098,19.728 62.458,21.088 62.458,21.088 63.898,20.858 64.618,20.858 65.378,20.858 66.888,21.108 66.888,21.108 67.258,19.828 67.628,18.543 67.998,17.261 67.998,17.261 68.198,19.938 68.318,21.278 68.368,21.878 68.178,22.568 68.498,23.078 68.888,23.718 69.658,24.188 70.398,24.288 71.458,24.428 72.588,24.298 73.678,24.148 75.378,23.908 77.178,23.778 78.688,22.968 79.628,22.458 80.418,21.658 81.008,20.768 81.528,19.988 81.718,19.038 82.008,18.144 82.288,17.284 82.738,15.527 82.738,15.527 82.738,15.527 88.978,15.788 92.098,15.803 94.648,15.816 97.208,15.656 99.758,15.653 102.75,15.649 105.73,15.82 108.72,15.803 111.95,15.784 118.42,15.527 118.42,15.527 118.42,15.527 114.65,17.245 112.86,18.287 111.51,19.078 110.2,19.938 108.97,20.908 107.9,21.758 106.85,22.638 105.97,23.668 105.01,24.798 104.12,26.018 103.5,27.358 102.82,28.828 102.32,30.418 102.19,32.028 102.05,33.748 102.77,37.158 102.77,37.158 102.77,37.158 96.008,36.828 92.618,36.918 89.728,36.998 86.798,37.048 83.958,37.588 81.448,38.058 78.988,38.828 76.648,39.838 74.948,40.578 73.278,41.448 71.808,42.578 70.258,43.768 68.828,45.158 67.698,46.747 66.358,48.637 64.618,52.977 64.618,52.977 Z'/></svg>";
+                } else {
+                    favicon.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5' fill='%23050508' stroke='%2300f0ff' stroke-width='6'/><text x='50' y='62' fill='%2300f0ff' font-family='sans-serif' font-weight='900' font-size='38' text-anchor='middle'>AA</text></svg>";
+                }
             }
         }
 
-        // Comic Universe Sound Synthesizer Engine
-        function playComicSound(type = 'click') {
+        // Interactive Bat-Signal Controller
+        function toggleBatSignal() {
+            unlockAudio();
+            const hero = document.getElementById('hero');
+            const statusText = document.getElementById('bat-signal-status');
+            if (!hero) return;
+
+            const isActive = hero.classList.toggle('batsignal-active');
+            if (isActive) {
+                if (statusText) statusText.innerText = 'BAT-SIGNAL: ACTIVE';
+                playDarkKnightSound('batsignal');
+            } else {
+                if (statusText) statusText.innerText = 'BAT-SIGNAL: SUMMON';
+                playDarkKnightSound('modal-close');
+            }
+        }
+
+        // Batman / Dark Knight Cinematic Sound Synthesizer Engine
+        function playDarkKnightSound(type = 'click') {
             if (!soundEnabled && type !== 'power-off') return;
             try {
                 const ctx = getAudioContext();
@@ -1825,127 +2349,155 @@
                 const now = ctx.currentTime;
 
                 if (type === 'click') {
-                    // Cartoon "POP!" / bubble chirp
+                    // Tactical sonar ping (crisp high-tech acoustic chirp)
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
                     osc.type = 'sine';
-                    osc.frequency.setValueAtTime(460, now);
-                    osc.frequency.exponentialRampToValueAtTime(1400, now + 0.05);
-                    gain.gain.setValueAtTime(0.12, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                    osc.frequency.setValueAtTime(940, now);
+                    osc.frequency.exponentialRampToValueAtTime(320, now + 0.045);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
                     osc.start(now);
-                    osc.stop(now + 0.06);
+                    osc.stop(now + 0.05);
                 } else if (type === 'nav') {
-                    // Comic spring "BOING!"
+                    // Encrypted telemetry sweep
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
                     osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(320, now);
-                    osc.frequency.exponentialRampToValueAtTime(760, now + 0.06);
-                    osc.frequency.exponentialRampToValueAtTime(420, now + 0.12);
-                    gain.gain.setValueAtTime(0.12, now);
-                    gain.gain.linearRampToValueAtTime(0.001, now + 0.13);
+                    osc.frequency.setValueAtTime(420, now);
+                    osc.frequency.exponentialRampToValueAtTime(880, now + 0.07);
+                    gain.gain.setValueAtTime(0.07, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.075);
                     osc.start(now);
-                    osc.stop(now + 0.13);
+                    osc.stop(now + 0.075);
                 } else if (type === 'execute') {
-                    // Comic superhero punch "POW!" (impact thump + sharp frequency plunge)
+                    // WayneTech high-voltage mechanical relay + sub-harmonic impact
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(260, now);
-                    osc.frequency.exponentialRampToValueAtTime(40, now + 0.14);
-                    gain.gain.setValueAtTime(0.2, now);
-                    gain.gain.linearRampToValueAtTime(0.001, now + 0.15);
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(360, now);
+                    osc.frequency.exponentialRampToValueAtTime(70, now + 0.08);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.085);
                     osc.start(now);
-                    osc.stop(now + 0.15);
+                    osc.stop(now + 0.085);
                 } else if (type === 'modal-open') {
-                    // Superhero comic fanfare chord (C5 - E5 - G5)
-                    [523.25, 659.25, 783.99].forEach((freq, idx) => {
+                    // Batcomputer diagnostic initialization chord (Cinematic Minor Triad: C3 - Eb3 - G3)
+                    [130.81, 155.56, 196.00].forEach((freq, idx) => {
                         const noteOsc = ctx.createOscillator();
                         const noteGain = ctx.createGain();
                         noteOsc.connect(noteGain);
                         noteGain.connect(ctx.destination);
-                        noteOsc.type = 'triangle';
-                        noteOsc.frequency.setValueAtTime(freq, now + idx * 0.05);
-                        noteGain.gain.setValueAtTime(0.09, now + idx * 0.05);
-                        noteGain.gain.linearRampToValueAtTime(0.001, now + idx * 0.05 + 0.08);
-                        noteOsc.start(now + idx * 0.05);
-                        noteOsc.stop(now + idx * 0.05 + 0.08);
+                        noteOsc.type = 'sine';
+                        noteOsc.frequency.setValueAtTime(freq, now + idx * 0.04);
+                        noteGain.gain.setValueAtTime(0.1, now + idx * 0.04);
+                        noteGain.gain.linearRampToValueAtTime(0.001, now + idx * 0.04 + 0.12);
+                        noteOsc.start(now + idx * 0.04);
+                        noteOsc.stop(now + idx * 0.04 + 0.12);
                     });
                 } else if (type === 'modal-close') {
-                    // Cartoon whoosh slide down
+                    // Batcave pneumatic depressurization / airlock seal
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(950, now);
-                    osc.frequency.exponentialRampToValueAtTime(220, now + 0.09);
-                    gain.gain.setValueAtTime(0.1, now);
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(540, now);
+                    osc.frequency.exponentialRampToValueAtTime(120, now + 0.09);
+                    gain.gain.setValueAtTime(0.08, now);
                     gain.gain.linearRampToValueAtTime(0.001, now + 0.09);
                     osc.start(now);
                     osc.stop(now + 0.09);
+                } else if (type === 'batsignal') {
+                    // Gotham atmospheric surge & sub-bass generator
+                    const subOsc = ctx.createOscillator();
+                    const subGain = ctx.createGain();
+                    subOsc.connect(subGain);
+                    subGain.connect(ctx.destination);
+                    subOsc.type = 'sine';
+                    subOsc.frequency.setValueAtTime(55, now);
+                    subOsc.frequency.linearRampToValueAtTime(80, now + 0.15);
+                    subOsc.frequency.exponentialRampToValueAtTime(35, now + 0.35);
+                    subGain.gain.setValueAtTime(0.25, now);
+                    subGain.gain.linearRampToValueAtTime(0.001, now + 0.36);
+                    subOsc.start(now);
+                    subOsc.stop(now + 0.36);
+
+                    // High voltage carbon-arc shimmer
+                    const arcOsc = ctx.createOscillator();
+                    const arcGain = ctx.createGain();
+                    arcOsc.connect(arcGain);
+                    arcGain.connect(ctx.destination);
+                    arcOsc.type = 'sawtooth';
+                    arcOsc.frequency.setValueAtTime(1400, now);
+                    arcOsc.frequency.exponentialRampToValueAtTime(3200, now + 0.12);
+                    arcGain.gain.setValueAtTime(0.06, now);
+                    arcGain.gain.linearRampToValueAtTime(0.001, now + 0.15);
+                    arcOsc.start(now);
+                    arcOsc.stop(now + 0.15);
                 } else if (type === 'power-on') {
-                    // Comic superhero zap
+                    // WayneTech power grid surge
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(320, now);
-                    osc.frequency.exponentialRampToValueAtTime(960, now + 0.1);
-                    gain.gain.setValueAtTime(0.1, now);
-                    gain.gain.linearRampToValueAtTime(0.001, now + 0.1);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.exponentialRampToValueAtTime(620, now + 0.11);
+                    gain.gain.setValueAtTime(0.09, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.11);
                     osc.start(now);
-                    osc.stop(now + 0.1);
+                    osc.stop(now + 0.11);
                 } else if (type === 'power-off') {
-                    // Cartoon deflation slide
+                    // Standby cycle power down
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(680, now);
-                    osc.frequency.exponentialRampToValueAtTime(140, now + 0.13);
-                    gain.gain.setValueAtTime(0.1, now);
-                    gain.gain.linearRampToValueAtTime(0.001, now + 0.13);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(620, now);
+                    osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
+                    gain.gain.setValueAtTime(0.09, now);
+                    gain.gain.linearRampToValueAtTime(0.001, now + 0.12);
                     osc.start(now);
-                    osc.stop(now + 0.13);
+                    osc.stop(now + 0.12);
                 } else if (type === 'error') {
-                    // Cartoon double honk
-                    [180, 140].forEach((freq, idx) => {
+                    // Batcomputer perimeter alert
+                    [220, 164.81].forEach((freq, idx) => {
                         const noteOsc = ctx.createOscillator();
                         const noteGain = ctx.createGain();
                         noteOsc.connect(noteGain);
                         noteGain.connect(ctx.destination);
-                        noteOsc.type = 'square';
+                        noteOsc.type = 'sawtooth';
                         noteOsc.frequency.setValueAtTime(freq, now + idx * 0.08);
-                        noteGain.gain.setValueAtTime(0.08, now + idx * 0.08);
+                        noteGain.gain.setValueAtTime(0.09, now + idx * 0.08);
                         noteGain.gain.linearRampToValueAtTime(0.001, now + idx * 0.08 + 0.07);
                         noteOsc.start(now + idx * 0.08);
                         noteOsc.stop(now + idx * 0.08 + 0.07);
                     });
                 } else if (type === 'hover') {
-                    // Playful comic bubble tick
+                    // Discrete sonar targeting tick
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
                     osc.type = 'sine';
-                    osc.frequency.setValueAtTime(1400, now);
-                    gain.gain.setValueAtTime(0.02, now);
-                    gain.gain.linearRampToValueAtTime(0.0001, now + 0.025);
+                    osc.frequency.setValueAtTime(1600, now);
+                    gain.gain.setValueAtTime(0.015, now);
+                    gain.gain.linearRampToValueAtTime(0.0001, now + 0.02);
                     osc.start(now);
-                    osc.stop(now + 0.025);
+                    osc.stop(now + 0.02);
                 }
             } catch (e) {}
         }
+        // Backward compatibility alias
+        const playComicSound = playDarkKnightSound;
 
         // Apply saved or default theme without audio fanfare on initial load
         setTheme(currentTheme, false);
@@ -1984,8 +2536,8 @@
 
         // Sci-Fi Sound Synthesizer Engine
         function playSciFiSound(type = 'click') {
-            if (currentTheme === 'comic') {
-                playComicSound(type);
+            if (currentTheme === 'darkknight' || currentTheme === 'comic' || currentTheme === 'batman') {
+                playDarkKnightSound(type);
                 return;
             }
             if (!soundEnabled && type !== 'power-off') return;
@@ -2291,6 +2843,8 @@
             'nano', 'nano about.txt', 'nano education.txt',
             ':q', ':q!', ':wq', ':w', ':help', 'ZZ',
             'about.txt', 'education.txt', 'resume.pdf',
+            'batman', 'darkknight', 'batsignal', 'casefile', 'alfred',
+            'theme', 'theme darkknight', 'theme cyber',
             'cd', 'echo', 'date', 'uptime', 'ps', 'top', 'history', 'sudo', 'git', 
             'fullscreen', 'exit', 'quit', 'clear', 'cls', 'help', 'man'
         ];
@@ -2955,7 +3509,8 @@
                             <div><strong class="text-white">date / uptime</strong> &mdash; System clock and uptime telemetry</div>
                             <div><strong class="text-white">ps / top</strong> &mdash; Process status and system telemetry</div>
                             <div><strong class="text-white">history</strong> &mdash; View command execution log</div>
-                            <div><strong class="text-white">theme [comic|cyber]</strong> &mdash; Switch universe theme & sound</div>
+                            <div><strong class="text-white">theme [darkknight|cyber]</strong> &mdash; Switch universe theme & sound</div>
+                            <div><strong class="text-white">batsignal</strong> &mdash; Summon the Bat-Signal over Gotham</div>
                             <div><strong class="text-white">clear / cls</strong> &mdash; Clear the terminal window</div>
                         </div>
                         <div class="text-slate-400 text-[10px] pt-1">// Pro-tip: Type <span class="text-white font-bold">vim about.txt</span> or <span class="text-white font-bold">tree</span> to explore.</div>
@@ -3018,16 +3573,63 @@
             } else if (main === 'matrix') {
                 response = '<span class="text-emerald-400 font-bold">01010111 01000001 01010010 01010000 // QUANTUM CORE ENGAGED: AMMAN_OS OPERATING AT 100% COHERENCE.</span>';
             } else if (main === 'theme') {
-                if (args[0] === 'comic') {
-                    setTheme('comic');
-                    response = '<span class="text-amber-400 font-bold">// Visual Universe switched to COMIC UNIVERSE!</span>';
+                if (args[0] === 'comic' || args[0] === 'darkknight' || args[0] === 'batman') {
+                    setTheme('darkknight');
+                    response = '<span class="text-[#F5C542] font-bold">// WayneTech Protocol: Visual Universe switched to BATMAN // DARK KNIGHT!</span>';
                 } else if (args[0] === 'cyber') {
                     setTheme('cyber');
                     response = '<span class="text-[#00f0ff] font-bold">// Visual Universe switched to CYBER HUD!</span>';
                 } else {
                     openModal('theme-modal');
-                    response = 'Current visual theme: <strong class="text-white">' + currentTheme.toUpperCase() + '</strong>. Opening Theme selection cards...';
+                    response = 'Current visual theme: <strong class="text-white">' + (currentTheme === 'darkknight' ? 'DARK KNIGHT' : currentTheme.toUpperCase()) + '</strong>. Opening Theme selection cards...';
                 }
+            } else if (main === 'batsignal' || main === 'signal') {
+                toggleBatSignal();
+                response = '<span class="text-[#F5C542] font-bold">// GOTHAM BAT-SIGNAL TRIGGERED: High-intensity carbon arc projector engaged over Gotham City skyline.</span>';
+            } else if (main === 'batman' || main === 'darkknight' || main === 'gotham' || main === 'waynetech') {
+                response = `
+                    <div class="font-mono text-xs space-y-1 text-[#C9D1DC]">
+                        <pre class="text-[#F5C542] font-mono select-none leading-[1.1] text-[7.5px] sm:text-[9px] py-1 overflow-x-auto">
+       _==/          i     i          \==_
+     /XX/            |\___/|            \XX\
+   /XXXX\            |XXXXX|            /XXXX\
+  |XXXXXX\_         _XXXXXXX_         _/XXXXXX|
+ XXXXXXXXXXXxxxxxxxXXXXXXXXXXXxxxxxxxXXXXXXXXXXX
+|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|
+ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  \XXXXXX/^^^^"\XXXXXXXXXXXXXXXXXXXXX/^^^^"\XXXXXX/
+   \XXXX/       \XXXXXXXXXXXXXXXXXXX/       \XXXX/
+     ""          \XXXXXXXXXXXXXXXXX/          ""
+                  \XXXXXXXXXXXXXXX/
+                   \XXXXXXXXXXXXX/
+                    \XXXXXXXXXXX/
+                     \XXXXXXXXX/
+                      \XXXXXXX/
+                       \XXXXX/
+                        \XXX/
+                         \V/</pre>
+                        <div class="text-white font-bold">// WAYNETECH CLASSIFIED FORENSIC INTELLIGENCE //</div>
+                        <div>&bull; <strong class="text-[#F5C542]">SUBJECT:</strong> Shaik Abdul Ammar</div>
+                        <div>&bull; <strong class="text-[#6CA6D9]">PRIMARY ROLE:</strong> Software Developer Intern @ Infer Labs</div>
+                        <div>&bull; <strong class="text-[#6CA6D9]">SYSTEM OF FOCUS:</strong> iNexus Enterprise Suite &mdash; iPersonnel &amp; iPayroll Modules</div>
+                        <div>&bull; <strong class="text-[#6CA6D9]">TECHNICAL ARSENAL:</strong> Python, FastAPI, React, JavaScript, PostgreSQL, SQLAlchemy, AWS, Prometheus, Grafana</div>
+                        <div>&bull; <strong class="text-[#6CA6D9]">STATUS:</strong> All operations nominal. Security perimeter secure.</div>
+                        <div class="text-slate-400 text-[10px] pt-1">// Type <span class="text-[#F5C542] font-bold">batsignal</span> to toggle Gotham spotlight, or <span class="text-[#6CA6D9] font-bold">casefile</span> to inspect project archive.</div>
+                    </div>
+                `;
+            } else if (main === 'casefile' || main === 'casefiles' || main === 'case') {
+                response = `
+                    <div class="font-mono text-xs space-y-1 text-[#C9D1DC]">
+                        <div class="text-[#F5C542] font-bold">// CLASSIFIED CASE FILE #2026-INX: iNexus Enterprise Platform</div>
+                        <div>&bull; <strong class="text-white">Classification:</strong> Enterprise Internal Workforce &amp; Automated Payroll Platform</div>
+                        <div>&bull; <strong class="text-white">Active Deployment:</strong> Infer Labs (Hyderabad, India) &bull; May 8, 2026 &ndash; Present</div>
+                        <div>&bull; <strong class="text-white">Engineering Modules:</strong> iPersonnel (workforce directory &amp; permissions) | iPayroll (precision salary &amp; tax calculation engine)</div>
+                        <div>&bull; <strong class="text-white">Tactical Stack:</strong> Python, FastAPI, React, PostgreSQL, SQLAlchemy, AWS, Prometheus, Grafana</div>
+                        <div class="text-[#6CA6D9] text-[10px] pt-1">// Type <span class="text-white font-bold">cat projects</span> for complete investigation details.</div>
+                    </div>
+                `;
+            } else if (main === 'alfred') {
+                response = '<span class="text-[#C9D1DC] font-mono"><strong class="text-[#F5C542]">Alfred Pennyworth:</strong> "At your service, Master Ammar. All Batcomputer services, FastAPI microservices, and PostgreSQL clusters are executing at optimal parameters."</span>';
             } else if (main === 'fullscreen' || main === 'full') {
                 toggleTerminalFullscreen();
                 response = `<span class="text-emerald-400 font-bold">// Terminal switched to ${isTerminalFullscreen ? 'FULLSCREEN' : 'STANDARD'} mode.</span>`;
